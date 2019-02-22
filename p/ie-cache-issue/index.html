@@ -1,0 +1,49 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - IE Cache Issue</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">IE Cache Issue</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">January 6, 2016</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#ExpressJs" class="label-tag"><span data-v-3cd447cb="" class="label label-success">ExpressJs</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#IE" class="label-tag"><span data-v-3cd447cb="" class="label label-primary">IE</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#NodeJs" class="label-tag"><span data-v-3cd447cb="" class="label label-success">NodeJs</span></a></div></section> <div data-v-713b0d1c=""><p>昨天发现了一个奇怪的问题，一个Web Application Update Entity的功能，在Chrome/Firefox上测试都正常运行，到了IE 11上就不行了，主要表现就是Update成功以后再次读取记录会读取出Update之前的值。功能逻辑就是一些简单的通过RESTful API来执行CRUD操作的Ajax调用。在IE上用控制台仔细调试一番后，发现在打开控制台的时候居然能表现正常，而关掉以后就立刻不行，这明显就是IE爸爸不走寻常路，把API也Cache下来了。于是就有了以下的解决方案。</p>
+<!--more-->
+<h2 id="">前端解决方案 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>既然是因为Cache产生的问题，那么就很容易解决，在API调用（主要是GET）中都添加一个随机数或者时间戳就行了，强制浏览器刷新。比如，原本请求的应该是这样的地址：</p>
+<pre><code>var url = '/api/metadata/entity/list?type=car&amp;name=qq'
+</code></pre>
+<p>可以通过添加一个时间戳修改成这样：</p>
+<pre><code>var url = '/api/metadata/entity/list?type=car&amp;name=qq&amp;_t=' + new Date().getTime()
+</code></pre>
+<p>其中添加的&nbsp;<code>_t</code>&nbsp;参数如果服务端没有定义的话就会自然而然地被扔掉（如果是有意义的参数就换个key，或者不写key也行），浏览器缓存也会因为每次请求的URL实际上都不一样而失效，这样问题就解决了。但是，对于一个大型项目来说，如果每个URL都要怎么来一遍，那么用软件工程界的专业术语来说，叫做不好维护。很有可能什么时候漏掉了一个URL没有加时间戳，就埋下了一个BUG的种子。</p>
+<h2 id="-2">服务端解决方案 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>此处以使用ExpressJS搭建的NodeJS服务器为例，其它代码也可以使用类似的方法达到同样的效果。</p>
+<p>以下是一本万利的解决思路：</p>
+<pre><code>// No cache for RESTful APIs
+    app.use('/api/*', function (req, res, next) {
+        res.header("Cache-Control", "no-cache, no-store, must-revalidate");
+        res.header("Pragma", "no-cache");
+        res.header("Expires", 0);
+        next();
+    });
+</code></pre>
+<p>这段代码所做的事情是，对于所有进来的以’/api’开头为路由的请求，都执行以下操作：</p>
+<ul>
+<li>给响应头添加&nbsp;<code>"Cache-Control": "no-cache, no-store, must-revalidate"</code>&nbsp;键值对</li>
+<li>给响应头添加&nbsp;<code>"Pragma": "no-cache"</code>&nbsp;键值对</li>
+<li>给响应头添加&nbsp;<code>"Expires": 0</code>&nbsp;键值对</li>
+<li>将请求交给下游中间件，继续处理，该干嘛干嘛</li>
+</ul>
+<p>Cache-Control&nbsp;：</p>
+<ul>
+<li>no-cache：指示请求或响应消息不能缓存</li>
+<li>no-store：用于防止重要的信息被无意的发布。在请求消息中发送将使得请求和响应消息都不使用缓存。</li>
+<li>must-revalidate：字面理解，必须重新验证</li>
+</ul>
+<p>Pragma&nbsp;：</p>
+<ul>
+<li>no-cache：在HTTP/1.1协议中，它的含义和Cache- Control:no-cache相同</li>
+</ul>
+<p>Expires：</p>
+<ul>
+<li>自然就是缓存的过期时间了</li>
+</ul>
+<p>那么通过以上方法，只要浏览器是支持基本HTTP协议的，它就应该能够做出相应的操作，从而不对API进行缓存。很显然这段代码应该在所有API的具体方法执行之前被执行，对于Express来说我们只需要把它放在其他路由代码之前就可以了。</p>
+<h2 id="-3">总结 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h2>
+<p>经过验证，两种方法都可以达到预期的效果。至于实际使用哪一种，可能还要视具体需求而定。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/mean-js-menu-service-extension" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> MEAN.js Menu Service Extension
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/2015-annual-summary" class="">
+        2015年度总结 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

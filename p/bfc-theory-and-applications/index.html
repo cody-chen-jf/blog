@@ -1,0 +1,112 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - BFC 原理及应用</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">BFC 原理及应用</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">March 28, 2016</span></div> <!----></section> <div data-v-713b0d1c=""><h2 id="bfc">什么是 BFC <a class="header-anchor" href="#bfc" aria-hidden="true">🔗</a></h2>
+<p>BFC（Block formatting context）是 CSS 中的一个概念，先来看一下定义 （By MDN）：</p>
+<blockquote>
+<p>A <strong>block formatting context</strong> is a part of a visual CSS rendering of a Web page. It is the region in which the layout of block boxes occurs and in which floats interact with each other.</p>
+</blockquote>
+<p>大意就是，BFC 是 Web 页面通过 CSS 渲染的一个块级（Block-level）区域，具有独立性。</p>
+<p>BFC 对浮动元素的定位与清除都很重要：</p>
+<ul>
+<li>浮动元素的定位与清除规则只适用于同一&nbsp;BFC&nbsp;中的元素</li>
+<li>不同 BFC&nbsp;中的浮动元素不会相互影响</li>
+<li>浮动元素的清除只适用于同一 BFC 中的元素</li>
+</ul>
+<!--more-->
+<h2 id="bfc-2">如何生成 BFC <a class="header-anchor" href="#bfc-2" aria-hidden="true">🔗</a></h2>
+<p>一个元素要成为 BFC，必须具备以下特征之一：</p>
+<ul>
+<li>根元素，或者包含根元素的元素</li>
+<li>浮动元素（<code>float</code>&nbsp;属性不为<code>none</code>）</li>
+<li>绝对定位元素（<code>position</code>&nbsp;属性为&nbsp;<code>absolute</code>&nbsp;或&nbsp;<code>fixed</code>）</li>
+<li>行内块级元素（<code>display</code>&nbsp;属性为&nbsp;<code>inline-block</code>）</li>
+<li>表格单元格或者标题（<code>display</code>&nbsp;属性为&nbsp;<code>table-cell</code>&nbsp;或&nbsp;<code>table-caption</code>）</li>
+<li>元素的&nbsp;<code>overflow</code>&nbsp;属性不为&nbsp;<code>visible</code></li>
+<li>Flex 元素（<code>display</code>&nbsp;属性为&nbsp;<code>flex</code>&nbsp;或&nbsp;<code>inline-flex</code>）</li>
+</ul>
+<h2 id="bfc-3">BFC 的应用 <a class="header-anchor" href="#bfc-3" aria-hidden="true">🔗</a></h2>
+<h3 id="">自适应双栏布局 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h3>
+<p>之前一直困扰我的一个问题是，如何使用 CSS 实现一个双栏布局，其中一栏宽度固定，另一栏则自动根据父节点剩余宽度填满容器呢？</p>
+<p>因为 CSS 2.x 是不支持计算的，所以不使用&nbsp;<code>calc</code>&nbsp;的话，还真的好像没什么办法的样子。</p>
+<p>然而，通过使用 BFC 却可以很容易地达到效果。</p>
+<p>先来看一个没有 BFC 的例子：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;BFC Example&lt;/title&gt;
+    &lt;style&gt;
+        .aside {
+            width: 100px;
+            height: 150px;
+            float: left;
+            background: #f66;
+        }
+
+        .main {
+            height: 200px;
+            background: #fcc;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="aside"&gt;&lt;/div&gt;
+&lt;div class="main"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>效果：</p>
+<p><img src="https://user-images.githubusercontent.com/5960988/48595796-3f84d600-e991-11e8-8d0f-1834be558e41.jpg" alt=""></p>
+<p>在这种情况下，二者共享了同一个 BFC，即&nbsp;<code>body</code>&nbsp;根元素，因此，右边元素的定位受到了浮动的影响。</p>
+<p>我们给&nbsp;<code>.main</code>&nbsp;添加一个属性，让它成为独立的 BFC：</p>
+<pre><code>.main {
+    overflow: hidden;
+}
+</code></pre>
+<p>效果：</p>
+<p><img src="https://user-images.githubusercontent.com/5960988/48595797-3f84d600-e991-11e8-9fa6-61ba2b6a3514.jpg" alt=""></p>
+<p>这就是一个自适应两栏布局了。主栏的宽度是随父节点而自动变化的。</p>
+<h3 id="-2">清除内部浮动 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h3>
+<p>写 CSS 代码的时候经常会遇到一个问题：如果一个元素内部全部是由浮动元素组成的话，那么它经常会没有高度，即“不能被撑开”。</p>
+<p>我们可以通过在所有浮动元素的最后清除浮动来解决问题，但通过 BFC 的方式其实更简单。</p>
+<p>只需要通过任意方式将浮动元素的容器转换为 BFC（比如添加&nbsp;<code>overflow: hidden</code>&nbsp;属性），即使不清除浮动，其依然能被正常“撑开”。</p>
+<p>就像这样：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;BFC Example&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            width: 660px;
+        }
+
+        .parent {
+            background: #fcc;
+            overflow: hidden;
+        }
+
+        .child {
+            border: 5px solid #f66;
+            width: 200px;
+            height: 200px;
+            float: left;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="parent"&gt;
+    &lt;div class="child"&gt;&lt;/div&gt;
+    &lt;div class="child"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>效果：</p>
+<p><img src="https://user-images.githubusercontent.com/5960988/48595798-3f84d600-e991-11e8-9663-c217a3190220.jpg" alt=""></p>
+<h3 id="margin">清除 margin 重叠 <a class="header-anchor" href="#margin" aria-hidden="true">🔗</a></h3>
+<p>场景：我们连续定义两个&nbsp;<code>div</code>，并且都给予&nbsp;<code>margin: 100px</code>&nbsp;属性，实际上它们之间的距离也将是 100px 而非 200px，因为 margin 重叠了。</p>
+<p>如果不想让 margin 出现这种重叠的情况，依然可以使用 BFC：给二者都各自套上一个 BFC 容器（或者其中之一），因为 BFC 的独立性，内部布局不会产生对外影响，外部也不会产生对内影响，所以二者的 margin 属性都能生效，最终就能得到 200px 的间距。</p>
+<p>这个就不举实际例子了。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/graceful-degradation-versus-progressive-enhancement" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> “渐进增强”与“优雅降级”
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/efficient-css-and-reflow-repaint" class="">
+        高效 CSS 与 Reflow &amp; Repaint <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

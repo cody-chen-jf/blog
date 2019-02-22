@@ -1,0 +1,154 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Travis CI in Github</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Travis CI in Github</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">April 12, 2017</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Github" class="label-tag"><span data-v-3cd447cb="" class="label label-warning">Github</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Travis-CI" class="label-tag"><span data-v-3cd447cb="" class="label label-default">Travis-CI</span></a></div></section> <div data-v-713b0d1c=""><p>Travis CI 是一款免费的持续集成工具，可以与 Github 无缝集成。能够自动完成项目代码的日常测试、编译、部署等工作。现在，我把它应用到了我的两个项目中。</p>
+<p>首先，要在这个平台上做持续集成的前提是到它上面 <a href="https://travis-ci.org/">https://travis-ci.org/</a> 去注册个账号。实际上直接用 Github 账号进行 OAuth 登录就行了。登录以后可以在首页找到自己的所有仓库，在需要进行持续集成的项目前面的开关打开即可。开启后，Travis CI 会监听项目的代码推送与 PR，当发生改变时会立刻进行相应操作。</p>
+<p>至于具体操作内容，由项目根目录的 <code>.travis.yml</code> 文件决定。这个文件的简单用法由下面两个具体例子来说明。</p>
+<!--more-->
+<h2 id="wxsmsgithubio"><a href="http://wxsms.github.io">wxsms.github.io</a> <a class="header-anchor" href="#wxsmsgithubio" aria-hidden="true">🔗</a></h2>
+<p>该项目就是这个博客了。因为它是静态博客，所以代码上线前都要进行一次打包过程，在之前这个工作是手动完成的，主要的流程如下：</p>
+<ol>
+<li>在 <code>src</code> 分支上进行代码编辑，</li>
+<li>在 <code>src</code> 分支上 push</li>
+<li>在 <code>src</code> 分支上运行 <code>npm run post</code> 与 <code>npm run build</code> 分别生成文章与博客代码</li>
+<li>切换到 <code>master</code> 分支，将上一步打包编译出来的东西覆盖到相应目录下</li>
+<li>在 <code>master</code> 分支上 push</li>
+<li>切换回 <code>src</code> 分支</li>
+</ol>
+<p>这些步骤看似简单却又容易出错，每次想要刷博客都必须做这么多事情，烦不胜烦。而且，Github 仓库会因为充斥了无意义的 <code>master</code> 历史记录而变得臃肿与难看。</p>
+<p>现在有了 Travis CI，一切都将变得简单。</p>
+<p><code>.travis.yml</code> 文件内容：</p>
+<pre><code>language: node_js
+cache:
+  directories:
+  - node_modules
+node_js:
+  - "node"
+script:
+  - npm run post
+  - npm run build
+  - npm run dist-config
+deploy:
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: dist
+    target_branch: master
+    on:
+      branch: src
+</code></pre>
+<p>说明：</p>
+<ul>
+<li><code>language</code> 指项目代码的语言，这里使用 <code>node_js</code></li>
+<li><code>cache</code> 是 Travis CI 会缓存的内容，比如一些依赖文件无需每次都完全安装。这里缓存了 <code>npm_modules</code> 这个目录</li>
+<li><code>node_js</code> 这里指定 node 的版本，<code>node</code> 的意思是使用最新版</li>
+<li><code>script</code> 则是 Travis CI 具体会去完成的工作，是有顺序关系的，如果没有指定，则默认是 <code>npm run test</code>，这里依次执行了 3 个脚本：
+<ul>
+<li><code>npm run post</code> 打包文章</li>
+<li><code>npm run build</code> 打包代码</li>
+<li><code>npm run dist-config</code> 生成配置文件以及 Readme 等。前两步显而易见，至于第三步，因为 Travis 部署会是一个 force push 的过程，会删除原有分支上的所有内容，因此需要手动生成 Github 的 <a href="http://README.md">README.md</a> 文件以及 Github Page 的 CNAME 文件。</li>
+</ul>
+</li>
+<li><code>deploy</code> 则是项目在所有脚本执行完成后会进行的部署操作，部署只会在脚本全部执行成功（返回 0）后进行
+<ul>
+<li>这里使用 <code>page</code> 即 Github Page 方式部署。</li>
+<li><code>skip_cleanup</code> 这个参数用来防止 Travis 删除脚本生成的文件（删掉了就没意义了）</li>
+<li><code>github_token</code> 是我们 Github 账号的 Access Token，因为私密原因不能写在代码文件里，因此可以在此写一个变量 <code>$GITHUB_TOKEN</code>，然后在 Travis 相应的仓库设置中添加 <code>GITHUB_TOKEN</code> 环境变量，Travis 会在运行时自动替换</li>
+<li><code>local_dir</code> 是指需要部署的打包出来的目录，设置为 <code>dist</code> 目录</li>
+<li><code>target_branch</code> 即目标分支，Travis 会将为 <code>dist</code> 目录整个部署到 <code>master</code> 分支上去</li>
+<li><code>on</code> 则是附加条件。这里的含义应该是只监听 <code>src</code> 分支上的更改</li>
+</ul>
+</li>
+</ul>
+<p>因此，Travis 可以帮我完成以下工作</p>
+<ul>
+<li>监听 <code>src</code> 分支上的改动</li>
+<li>出现改动时，自动执行所有 build 步骤</li>
+<li>如果 build 成功则将相应文件部署到 <code>master</code> 分支上去</li>
+</ul>
+<p>如此一来，我自己需要做的事情就只剩下简单的两步了：</p>
+<ol>
+<li>在 <code>src</code> 分支上进行代码编辑</li>
+<li>在 <code>src</code> 分支上 push</li>
+</ol>
+<p>在我无需关注发布过程的同时，Travis 还能帮我保持整个代码仓库的整洁（<code>master</code> 分支始终进行的都是 force push，不存在无用的历史记录），简直完美！</p>
+<h2 id="uiv">uiv <a class="header-anchor" href="#uiv" aria-hidden="true">🔗</a></h2>
+<p>这个项目其实也差不多，有些许变化：</p>
+<ul>
+<li>脚本变为：
+<ul>
+<li><code>npm run test</code> 执行测试</li>
+<li><code>npm run build</code> 打包代码</li>
+<li><code>npm run build-docs</code> 打包文档</li>
+</ul>
+</li>
+<li>需要将代码部署到 npm，而文档部署到 Github Page</li>
+<li>代码与文档都只在版本发布时（Tagged）才进行部署</li>
+</ul>
+<p><code>.travis.yml</code> 文件内容：</p>
+<pre><code>language: node_js
+cache:
+  directories:
+  - node_modules
+node_js:
+  - "node"
+script:
+  - npm run test
+  - npm run build
+  - npm run build-docs
+after_success: 'npm run coveralls'
+
+deploy:
+  - provider: npm
+    skip_cleanup: true
+    email: "edisond@qq.com"
+    api_key: $NPM_TOKEN
+    on:
+      tags: true
+      branch: master
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN
+    local_dir: docs
+    on:
+      tags: true
+      branch: master
+</code></pre>
+<p>这个配置文件多了一些内容：</p>
+<ul>
+<li><code>after_success: 'npm run coveralls'</code> 这个是在所有脚本成功以后执行的，目的是与 Coveralls 集成来在项目仓库上添加测试覆盖率的集成，这个在后面说</li>
+<li><code>deploy</code> 中增加了 <code>npm</code> 一项，配置内容跟 <code>pages</code> 基本一致，其中不同的：
+<ul>
+<li><code>email</code> 是用来发布的 npm 账户邮箱名</li>
+<li><code>api_key</code> 是用来发布的 npm 账户 token，可以在本地 <code>~/.npmrc</code> 文件中找到（前提是本地电脑的 npm 已登录）</li>
+<li><code>on</code> -&gt; <code>tags: true</code> 这个标志是说只在带有标签的 Commit 推送时才进行 deploy</li>
+</ul>
+</li>
+<li>Github Page 的部署配置中也加入了 <code>on</code> -&gt; <code>tags: true</code>，起的是一样的作用。这里的 Github Page 是从 master 分支的 docs 文件夹 deploy 到 gh-pages 分支（gh-pages 是 Github Page 的默认分支，所以不用配置 <code>target_branch</code> 项）</li>
+</ul>
+<p>这样一来，Travis 就可以：</p>
+<ul>
+<li>在日常 push 的时候执行 test and build 脚本，但不发布</li>
+<li>在版本 push 的时候执行 test and build 脚本，全部成功则将内容分别发布到 NPM 与 Github Pages</li>
+</ul>
+<p>完美！</p>
+<h2 id="coveralls">关于 Coveralls <a class="header-anchor" href="#coveralls" aria-hidden="true">🔗</a></h2>
+<p>Coveralls <a href="https://coveralls.io/">https://coveralls.io/</a> 是一个将代码测试覆盖率集成到 Github 的工具，在 Travis 的加持下，算是锦上添花的一项。同样，到相应网站注册账号是第一步。</p>
+<p>由于 vue-cli 生成的项目默认已经附带了代码测试覆盖率的检测，我要做的只是把这个结果上传而已。</p>
+<p>步骤：</p>
+<ol>
+<li><code>npm install coveralls --save-dev</code></li>
+<li>将 <code>"coveralls": "cat test/unit/coverage/lcov.info | ./node_modules/.bin/coveralls"</code> 添加到 npm scripts 中。注意：cat 的路径是随项目不同而改变的</li>
+<li>在 <code>.travis.yml</code> 中添加 <code>after_success: 'npm run coveralls'</code> 配置项</li>
+</ol>
+<p>它可以：</p>
+<ol>
+<li>在测试完成后生成覆盖率文件（这一步 vue-cli 已经做了）</li>
+<li>将文件内容传给 <code>coveralls</code>，这个模块可以将结果从 Travis 上传到 Coveralls 平台</li>
+<li>Github 上会 by commit 地显示测试率是增加还是降低了</li>
+</ol>
+<h2 id="">总结 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>持续集成的好处无需多言，反正 Travis 就是一个免费的、能与 Github 集成的持续集成工具（实际上其它开源平台也可以，以及可以付费为私有项目提供服务）。简单、易用。</p>
+<p>这些配置看似简单，却花费了我大量时间去摸索。由于只能通过不断推送 commit 的方式来触发 build 并验证配置的正确性，其过程异常繁琐，但是现在看来是十分值得的！</p>
+<p>BTW：测试用的 commit 事后可以用本地 reset 与 force push 干掉。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/uiv-release" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> 基于 Vue 2 与 Bootstrap 3 的组件库 uiv 发布啦
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/vue-components-i18n" class="">
+        为 Vue 组件库实现国际化支持 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Vue-Router Note</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" async="" id="embed-disqus" data-timestamp="1550820571814" src="//wxsm.disqus.com/embed.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <div data-v-ab0ce35e="" class="toc-div"><ul data-v-d065e12c="" data-v-ab0ce35e="" class="toc-ul"><li data-v-d065e12c=""><a data-v-d065e12c="" href="#scroll-behaviours"><b data-v-d065e12c="">Scroll Behaviours </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#lazy-loading"><b data-v-d065e12c="">Lazy Loading </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#progress"><b data-v-d065e12c="">Progress </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#active-style"><b data-v-d065e12c="">Active Style </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#route-reuse"><b data-v-d065e12c="">Route Reuse </b></a> <!----></li></ul></div></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Vue-Router Note</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">November 6, 2017</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Vue" class="label-tag"><span data-v-3cd447cb="" class="label label-success">Vue</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Router" class="label-tag"><span data-v-3cd447cb="" class="label label-default">Router</span></a></div></section> <div data-v-713b0d1c=""><p>Vue Router (<a href="https://github.com/vuejs/vue-router">https://github.com/vuejs/vue-router</a>) 使用笔记。虽然<a href="https://router.vuejs.org/">官方文档</a>比较详尽，但实际用起来依然有些地方需要特别注意的（其实主要是我的个人需求）。</p>
+<!--more-->
+<h2 id="scroll-behaviours">Scroll Behaviours <a class="header-anchor" href="#scroll-behaviours" aria-hidden="true">🔗</a></h2>
+<p>文档上有 scroll behaviours 的示例，但实际上用起来不太完美，还需要自己改造一下。需要注意的是 <code>scrollBehavior</code> 必须搭配 <code>history</code> 模式，否则代码无效且无任何错误信息。</p>
+<p>上面说到<strong>不完美</strong>的地方主要是在模拟 'scroll to anchor' 这一行为时，文档的代码是不够好的：</p>
+<pre><code class="language-javascript">scrollBehavior (to, <span class="hljs-keyword">from</span>, savedPosition) {
+  <span class="hljs-keyword">if</span> (to.hash) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">selector</span>: to.hash
+    }
+  }
+}
+</code></pre>
+<p>这里实际上会调用 <code>querySelector(to.hash)</code> 来实现滚动，但是用起来会发现有些时候这段会报错，因为类似 <code>#1-anything</code> 这样的数字（或者其他非字母字符）打头的 hash 作为 selector 是 <strong>Invalid</strong> 的。但是要修复只需要稍微改动一下就好了：</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">if</span> (to.hash) {
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">selector</span>: <span class="hljs-string">`[id='<span class="hljs-subst">${to.hash.slice(<span class="hljs-number">1</span>)}</span>']`</span>
+  }
+}
+</code></pre>
+<p>所以一段完善的 scroll behaviour 代码应该是：</p>
+<pre><code class="language-javascript">scrollBehavior (to, <span class="hljs-keyword">from</span>, savedPosition) {
+  <span class="hljs-keyword">if</span> (to.hash) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">selector</span>: <span class="hljs-string">`[id='<span class="hljs-subst">${to.hash.slice(<span class="hljs-number">1</span>)}</span>']`</span>
+    }
+  } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (savedPosition) {
+    <span class="hljs-keyword">return</span> savedPosition
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-keyword">return</span> {<span class="hljs-attr">x</span>: <span class="hljs-number">0</span>, <span class="hljs-attr">y</span>: <span class="hljs-number">0</span>}
+  }
+}
+</code></pre>
+<p>它可以做到在路由变化时：</p>
+<ol>
+<li>有锚点时滚动到锚点</li>
+<li>有历史位置时滚动到历史位置</li>
+<li>都没有时滚动到页头</li>
+</ol>
+<h2 id="lazy-loading">Lazy Loading <a class="header-anchor" href="#lazy-loading" aria-hidden="true">🔗</a></h2>
+<p>官方的 Lazy load 示例代码换了很多茬，比如之前有类似 <code>require('...', resolve)</code> 的，还有用 <code>System.import</code> 的，但是它们并不能向后兼容，所以如果用的是新版本的话，并不能够直接 copy 旧项目的方式。目前感觉会稳定下来的方式是：</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> Foo = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">'./Foo.vue'</span>)
+</code></pre>
+<p>但是这里又有一个注意点，以上语法必须引入一个 babel 插件 <a href="https://babeljs.io/docs/plugins/syntax-dynamic-import/">syntax-dynamic-import</a> 才行：</p>
+<pre><code class="language-bash">npm install --save-dev babel-plugin-syntax-dynamic-import
+</code></pre>
+<p><strong>.babelrc</strong></p>
+<pre><code class="language-json">{
+  <span class="hljs-attr">"plugins"</span>: [<span class="hljs-string">"syntax-dynamic-import"</span>]
+}
+</code></pre>
+<p>以上就可以在 webpack + babel 的环境下实现代码分块了。</p>
+<h2 id="progress">Progress <a class="header-anchor" href="#progress" aria-hidden="true">🔗</a></h2>
+<p>经常会有这样的需求（尤其是使用 lazy load 时）：路由跳转时提供一个进度条（像 Github 头部那种），然而 Vue Router 没有提供这方面的示例。经过实际使用发现，并不需要刻意使用 Vue 封装的进度条，比如说轻量级的 <a href="https://github.com/rstacruz/nprogress">nprogress</a> 也可以很好地搭配使用。</p>
+<p>但是需要注意的是，Vue Router 会将 hash 跳转也视为一次 route 跳转，因此如果在全局钩子中注册 progress 方法的话，那么它也会在 hash 跳转中出现，实际上应该是不需要的。所以需要一点点判断：</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">import</span> NProgress <span class="hljs-keyword">from</span> <span class="hljs-string">'nprogress'</span>
+
+<span class="hljs-comment">// ...</span>
+
+router.beforeEach(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span>, next</span>) =&gt;</span> {
+  <span class="hljs-comment">// not start progressbar on same path &amp;&amp; not the same hash</span>
+  <span class="hljs-comment">// which means hash jumping inside a route</span>
+  <span class="hljs-keyword">if</span> (!(<span class="hljs-keyword">from</span>.path === to.path &amp;&amp; <span class="hljs-keyword">from</span>.hash !== to.hash)) {
+    NProgress.start()
+  }
+  next()
+})
+
+router.afterEach(<span class="hljs-function">(<span class="hljs-params">to, <span class="hljs-keyword">from</span></span>) =&gt;</span> {
+  <span class="hljs-comment">// Finish progress</span>
+  NProgress.done()
+})
+</code></pre>
+<p>以上就是一个简单的页面跳转进度条示例，它会在<strong>除了同页 hash 跳转以外的所有页面跳转</strong>行为发生时，在页头显示一个简单的进度条。</p>
+<h2 id="active-style">Active Style <a class="header-anchor" href="#active-style" aria-hidden="true">🔗</a></h2>
+<p>当使用 <code>&lt;router-link&gt;</code> 的时候，Vue Router 会自动给当前路由的 link 加一个 active class，用来做 nav menu 时非常方便。但是有一点需要注意的是，它默认并不是一个精确匹配的模式，而是一个 <strong>matchStart</strong>，比如说 <code>&lt;router-link to="/a"&gt;</code> 会被一个 <code>/a/b</code> 的路由激活，更甚者，<code>&lt;router-link to="/"&gt;</code> 会被所有路由激活（真的）。然而这一般来说都不会是想要的结果。</p>
+<p>在老旧版本（0.x）的 Vue-Router 中这个问题是无解的，现在则<strong>可以使用 <code>&lt;router-link exact&gt;</code> 来将它转换为精确匹配</strong>。</p>
+<h2 id="route-reuse">Route Reuse <a class="header-anchor" href="#route-reuse" aria-hidden="true">🔗</a></h2>
+<p>当使用 <code>&lt;router-view&gt;</code> 时，默认会启用组件复用，也就是说在可能的情况下，作为路由页面的组件不会被销毁重建，而是直接复用。</p>
+<p>就好像一个博客的文章页面，一般来说会是给出这样的路由配置：<code>/post/:id</code>，那么在从 <code>/post/1</code> 跳转到 <code>/post/2</code> 的时候，实际上路由组件是不会重建的。</p>
+<p>有时候我们会想要避免这样的事情发生，因为一个路由可能在创建的时候有比较多的逻辑（如数据动态获取、判断等），如果它在路由变化的时候直接复用的话，那么 <code>mount</code> 方法将不再被调用，我们还要为 <code>update</code> 再写一套类似的逻辑。<strong>更过分的是</strong>，其所用到的所有子组件也不再会执行 <code>mount</code> 方法，那么我们要为所有子组件编写 <code>update</code> 方法。非常麻烦。</p>
+<p>不知道为什么，老版本的文档是有为这种情况提供解决方案的，但是在现在的文档里面找不到了。实际上很简单：</p>
+<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">router-view</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">"$route.path"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span>
+</code></pre>
+<p>就这样就可以了。如此一来，<strong>只要在 <code>$route.path</code> 变化的时候，路由组件就会被销毁重建</strong>。用一点点的性能损耗，节省大量冗余代码。</p>
+<p>当然这里也可以使用定制化逻辑来控制，比如使用 computed value 来实现更复杂的复用逻辑。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/limit-prerender-plugin-workers-by-webpack" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Limit Prerender Plugin Workers By Webpack
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/common-used-commands" class="">
+        Common-used Commands <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

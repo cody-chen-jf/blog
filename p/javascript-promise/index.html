@@ -1,0 +1,239 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - JavaScript Promise</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" async="" id="embed-disqus" data-timestamp="1550820584754" src="//wxsm.disqus.com/embed.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">JavaScript Promise</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">September 5, 2016</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Async" class="label-tag"><span data-v-3cd447cb="" class="label label-default">Async</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#ES6" class="label-tag"><span data-v-3cd447cb="" class="label label-default">ES6</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Promise" class="label-tag"><span data-v-3cd447cb="" class="label label-default">Promise</span></a></div></section> <div data-v-713b0d1c=""><p>知乎上有一个黑 JavaScript 的段子，大概是说：</p>
+<blockquote>
+<p>N 年后，外星人截获了 NASA 发射的飞行器并破解其源代码，翻到最后发现好几页的 }}}}}}……</p>
+</blockquote>
+<p>这是因为 NASA 近年发射过使用 JavaScript 编程的飞行器，而 Node.js 环境下的 JavaScript 有个臭名昭著的特色：Callback hell（回调地狱的意思）</p>
+<p>JavaScript Promise 是一种用来取代超长回调嵌套编程风格（特指 Node.js）的解决方案。</p>
+<p>比如：</p>
+<pre><code>getAsync("/api/something", (error, result) =&gt; {
+    if(error){
+        //error
+    }
+    //success
+});
+</code></pre>
+<p>将可以写作：</p>
+<pre><code>let promise = getAsyncPromise("/api/something"); 
+promise.then((result) =&gt; {
+    //success
+}).catch((error) =&gt; {
+    //error
+});
+</code></pre>
+<p>乍一看好像并没有什么区别，依然是回调。但最近在做的一个东西让我明白，Promise 的目的不是为了干掉回调函数，而是为了干掉嵌套回调函数。</p>
+<!--more-->
+<h2 id="">定义 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>MDN 定义：</p>
+<blockquote>
+<p>The Promise&nbsp;object is used for asynchronous computations. A Promise&nbsp;represents a value which may be available now, or in the future, or never.</p>
+</blockquote>
+<p>意思大概就是，Promise 是专门用于异步处理的对象。一个 Promise 代表着一个值，这个值可能已经获得了，又可能在将来的某个时刻会获得，又或者永远都无法获得。</p>
+<p>简单地说，Promise 对象就是值的代理。经纪人。</p>
+<h2 id="-2">简单用法 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>创建一个 Promise：</p>
+<pre><code>let promise = new Promise((resolve, reject) =&gt; {
+    //success -&gt; resolve(data)
+    //error -&gt; reject(data)
+});
+</code></pre>
+<p>使用 <code>new Promise</code>&nbsp; 来创建 Promise 对象，构造器中传入一个函数，同时对该函数传入 <code>resolve</code>&nbsp; 和 <code>reject</code>&nbsp; 参数，分别代表异步处理成功与失败时将要调用的方法。</p>
+<p>处理 Promise 结果：</p>
+<pre><code>promise.then(onFulfilled, onRejected)
+</code></pre>
+<p>使用 <code>then</code>&nbsp; 方法来注册结果函数，共可以注册两个函数，其中&nbsp;<code>onFulfilled</code>&nbsp; 代表成功，后者代表失败。两个参数都是可选参数。</p>
+<p>不过，对于失败处理，更加推荐的方式是使用 <code>catch</code>&nbsp; 方法：</p>
+<pre><code>promise.catch(onRejected)
+</code></pre>
+<p>这两个方法可以进行链式操作。组合示例：</p>
+<pre><code>function asyncFunction() {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            resolve('Async Hello world');
+        }, 1000);
+    });
+}
+
+asyncFunction()
+    .then((value) =&gt; {
+        console.log(value); //Async Hello world
+    })
+    .catch((error) =&gt; {
+        console.log(error);
+    });
+</code></pre>
+<p>这里使用了定时器来模拟异步过程，实际上其它异步过程（如 XHR）也大概都是这么个写法。</p>
+<h2 id="-3">状态 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h2>
+<p>Promise 对象共有三种状态：</p>
+<ul>
+<li>Fulfilled （成功）</li>
+<li>Rejected （失败）</li>
+<li>Pending （处理中）</li>
+</ul>
+<p>有两条转换路径：</p>
+<ul>
+<li>Pending -&gt;&nbsp;Fulfilled -&gt; <code>then</code>&nbsp; call</li>
+<li>Pending -&gt; Rejected -&gt; <code>catch</code>&nbsp; call</li>
+</ul>
+<p>Promise 对象的状态，从&nbsp;Pending&nbsp;转换为&nbsp;Fulfilled&nbsp;或&nbsp;Rejected&nbsp;之后， <code>then</code>&nbsp; 方法或者 <code>catch</code>&nbsp; 方法就会被立即调用，并且这个 promise 对象的状态不会再发生任何变化。也就是说，调用且只调用一次。</p>
+<h2 id="-4">链式操作 <a class="header-anchor" href="#-4" aria-hidden="true">🔗</a></h2>
+<p>链式操作是 Promise 对象的一大亮点。</p>
+<p>本节引用一些 <a href="https://github.com/azu/promises-book" target="_blank"><em>Promise Book</em></a> 的内容。</p>
+<p>例如：</p>
+<pre><code>function taskA() {
+    console.log("Task A");
+}
+function taskB() {
+    console.log("Task B");
+}
+function onRejected(error) {
+    console.log("Catch Error: A or B", error);
+}
+function finalTask() {
+    console.log("Final Task");
+}
+
+var promise = Promise.resolve();
+promise
+    .then(taskA)
+    .then(taskB)
+    .catch(onRejected)
+    .then(finalTask);
+
+//Task A
+//Task B
+//Final Task
+</code></pre>
+<p>该代码块实际流程如图所示：</p>
+<p><img src="https://user-images.githubusercontent.com/5960988/48595808-41e73000-e991-11e8-8abe-199dae72c567.png" alt=""></p>
+<p>&nbsp;</p>
+<p>可以看到，这个 onRejected 并不仅仅是 TaskB 的失败处理函数，同时它也是 TaskA 的失败处理函数。而且当 TaskA 失败（reject 被调用或者抛出异常）时，TaskB 将不会被调用，直接进入失败处理。熟悉 express 的玩家应该能看出来了，这简直就和中间件一模一样嘛。</p>
+<p>比如说，TaskA&nbsp;出现异常：</p>
+<pre><code>function taskA() {
+    console.log("Task A");
+    throw new Error("throw Error @ Task A")
+}
+function taskB() {
+    console.log("Task B");// 不会被调用
+}
+function onRejected(error) {
+    console.log(error);// =&gt; "throw Error @ Task A"
+}
+function finalTask() {
+    console.log("Final Task");
+}
+
+var promise = Promise.resolve();
+promise
+    .then(taskA)
+    .then(taskB)
+    .catch(onRejected)
+    .then(finalTask);
+</code></pre>
+<p>这里的输出应该就是：</p>
+<pre><code>//Task A
+//Error: throw Error @ Task A
+//Final Task
+</code></pre>
+<p>需要注意的是，如果在 <code>onRejected</code>&nbsp; 或 <code>finalTask</code>&nbsp; 中出现异常，那么这个异常将不会再被捕捉到。因为并没有再继续注册 <code>catch</code>&nbsp; 函数。</p>
+<p>借助 Promise 链式操作的特点，复杂的 JavaScript 回调简化将不再是梦。</p>
+<h2 id="-5">递归 <a class="header-anchor" href="#-5" aria-hidden="true">🔗</a></h2>
+<p>Promise 可以实现递归调用，在用来一次性抓取所有分页内容的时候有用。例：</p>
+<pre><code>function get(url, p) {
+  return $.get(url + "?page=" + p)
+      .then(function(data) {
+          if(!data.list.length) {
+              return [];
+          }
+
+          return get(url, p+1)
+              .then(function(nextList) {
+                  return [].concat(data.list, nextList);
+              });
+      });
+}
+
+get("urlurl", 1).then(function(list) {
+    console.log(list);//your full list is here
+});
+</code></pre>
+<h2 id="-6">实用方法 <a class="header-anchor" href="#-6" aria-hidden="true">🔗</a></h2>
+<h3 id="promiseall">Promise.all <a class="header-anchor" href="#promiseall" aria-hidden="true">🔗</a></h3>
+<p><code>Promise.all</code>&nbsp; 接受一个 promise 对象的数组作为参数，当这个数组里的所有promise对象全部变为 resolve 或 reject 状态的时候，它才会去调用 <code>then</code>&nbsp; 方法。</p>
+<p>例：</p>
+<pre><code>function taskA() {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            console.log('TaskA resolved!');
+            resolve();
+        }, 1000);
+    });
+}
+
+function taskB() {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            console.log('TaskB resolved!');
+            resolve();
+        }, 2000);
+    });
+}
+
+function main() {
+    return Promise.all([taskA(), taskB()]);
+}
+
+main()
+    .then((value) =&gt; {
+        console.log('All resolved!');
+    })
+    .catch((error) =&gt; {
+        console.log(error);
+    });
+
+//TaskA resolved!
+//TaskB resolved!
+//All resolved!
+</code></pre>
+<h3 id="promiserace">Promise.race <a class="header-anchor" href="#promiserace" aria-hidden="true">🔗</a></h3>
+<p>跟 <code>Promise.all</code>&nbsp; 类似，略有区别，从名字就能看出来，只要有一个 Task 执行完毕，整个 Promise 就会返回。但是需要注意的是，返回以后并不会取消其它未完成的 Promise 的执行。</p>
+<pre><code>function taskA() {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            console.log('TaskA resolved!');
+            resolve();
+        }, 1000);
+    });
+}
+
+function taskB() {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            console.log('TaskB resolved!');
+            resolve();
+        }, 2000);
+    });
+}
+
+function main() {
+    return Promise.race([taskA(), taskB()]);
+}
+
+main()
+    .then((value) =&gt; {
+        console.log('All resolved!');
+    })
+    .catch((error) =&gt; {
+        console.log(error);
+    });
+
+//TaskA resolved!
+//All resolved!
+//TaskB resolved!
+</code></pre>
+<h2 id="-7">支持性 <a class="header-anchor" href="#-7" aria-hidden="true">🔗</a></h2>
+<p>由于是 ES6 语法，目前在浏览器端支持不是特别好，很多移动端浏览器以及 IE 家族均不支持（具体可查看 MDN）。如果要在浏览器端使用需要借助 Babel 编译器。</p>
+<p>至于 Node.js 环境则毫无问题。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/using-excerpt-in-wp-2016-theme" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> WP 2016 主题使用摘要
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/node-js-web-spider-note-1" class="">
+        Node.js Web Spider Note - 1 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

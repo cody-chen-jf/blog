@@ -1,0 +1,47 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - JavaScript 事件代理</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">JavaScript 事件代理</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">April 1, 2016</span></div> <!----></section> <div data-v-713b0d1c=""><p>jQuery 曾经存在 3 种绑定事件的方法：bind / live / delegate，后来 live 被砍掉了，只留下 bind 与 delegate，它们之间的区别是，通过 bind 方法绑定的事件，只对当前存在的元素生效，而通过 delegate 则可以绑定“现在”以及“将来”的所有元素。</p>
+<p>为“将来”元素绑定事件的适用场景还是挺多的。比如一个列表，或者一个表格，它可能会动态地被插入或者移除一些子元素，然后每个元素都需要有一个点击事件，这样的话我们就需要保证“现在”已存在的元素以及“将来”可能被添加进去的元素都能够正常工作。怎么办呢，我们总不能每插入一个元素就给它绑一次事件吧（事实上我以前没少干这事），因此 jQuery 就为我们提供了后者的方法。</p>
+<p>一开始我觉得很奇怪，像 delegate 这样的方法是怎么实现的呢？通过监听 DOM 树变化吗？性能开销会不会特别大？后来知道了 JavaScript 有一种机制叫事件代理（event delegation），也就是本文要说的东西，才明白，原来一切都很简单。</p>
+<!--more-->
+<h2 id="">事件代理及其工作原理 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>何为代理呢，大概就是，你把你要做的事情告诉我，我帮你做，我就是你的代理。</p>
+<p>那么事件代理，顾名思义，在一个元素上触发的事件，由另一个元素去处理，后者就是前者的事件代理。</p>
+<p>大概就是这么回事。那么，如何实现呢？</p>
+<p>这里就涉及两个关于 JavaScript 事件的知识：事件冒泡（event bubbling）以及目标元素（target element）：</p>
+<ul>
+<li>当一个元素上触发事件的时候，比如说鼠标点击了一个按钮，同样的事件将会在它的所有祖先元素上触发。这就是所谓的事件冒泡。</li>
+<li>所有事件的目标元素都将是最原始触发它的那个特定元素，就比如说那个按钮，其引用将被储存在事件对象内。</li>
+</ul>
+<p>因此，我们可以做到：</p>
+<ul>
+<li>给一个节点绑定事件</li>
+<li>等待其子孙节点的冒泡事件</li>
+<li>判断事件实际来源</li>
+<li>做出相应处理</li>
+</ul>
+<p>这就是事件代理的工作原理。</p>
+<h2 id="-2">有什么用 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>一个典型的场景是，如果一个表格有 100 行 100 列，你需要给每一个单元格都添加点击事件，怎么办？</p>
+<p>当然可以说一次性把它们全选出来，绑定事件不就完了。但是，内存 BOOM，浏览器 BOOM</p>
+<p>用事件代理就简单多了，给 table 绑一次事件，然后等它们冒泡上来就行了。</p>
+<p>还有就是动态添加的元素。比如某一时刻 table 被添加了一行，那么新的一行其事件同样能冒泡并且被 table 上的事件处理器接收到。</p>
+<h2 id="-3">代码 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h2>
+<p>Talk is cheap, show me the code.</p>
+<pre><code>//Some browser diff issue handler
+function getEventTarget(e) {
+  e = e || window.event;
+  return e.target || e.srcElement;
+}
+
+//Easy event handler on 'table' element
+function editCell(e) {
+  var target = getEventTarget(e);
+  if(target.tagName.toLowerCase() === 'td') {
+    // DO SOMETHING WITH THE CELL
+  }
+}
+</code></pre>
+<p>&nbsp;</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/efficient-css-and-reflow-repaint" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> 高效 CSS 与 Reflow &amp; Repaint
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/some-project-memo" class="">
+        记一次项目经历 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

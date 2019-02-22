@@ -1,0 +1,222 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - MEAN.js Menu Service Extension</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">MEAN.js Menu Service Extension</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">January 5, 2016</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#AngularJs" class="label-tag"><span data-v-3cd447cb="" class="label label-danger">AngularJs</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#MEAN-Stack" class="label-tag"><span data-v-3cd447cb="" class="label label-success">MEAN-Stack</span></a></div></section> <div data-v-713b0d1c=""><p>MEAN.js解决方案只提供了1级/2级菜单栏的service支持，最近项目中需要用到第3级菜单，所以需要进行一个小的功能扩展。一开始我以为可以很容易地做到无限级，真正做起来以后发现并没有那么简单，所以目前通过这个办法只能达到第3级。</p>
+<!--more-->
+<h2 id="menu">修改Menu服务 <a class="header-anchor" href="#menu" aria-hidden="true">🔗</a></h2>
+<p>初始的Menu Service中为使用者写了两个添加菜单项的方法：</p>
+<pre><code>// Add menu item object
+this.addMenuItem = function (menuId, options)
+</code></pre>
+<p>以及</p>
+<pre><code>// Add submenu item object
+this.addSubMenuItem = function (menuId, parentItemState, options)
+</code></pre>
+<p>第一个方法很显然就是用来添加顶级菜单了，第二个在没有看代码以前我曾经天真地以为它可以无限嵌套，然而并没有，它做的事情仅限于添加第2级菜单。所以现在我需要自己写第三个方法来完成添加第三级菜单。考虑到三级循环的效率问题，虽然一般来说菜单项不会有太多，但看起来就是非常不爽，所以我给每个Menu项都添加了一个哈希表来储存其下面所有菜单项的引用，这样多花费一点点内存就可以不用写循环嵌套了。由于使用了哈希表，对原2级菜单做了一些修改：</p>
+<pre><code>// Add submenu item object
+    this.addSubMenuItem = function (menuId, parentItemState, options) {
+        options = options || {};
+
+        // Validate that the menu exists
+        this.validateMenuExistance(menuId);
+
+        // Search for menu item
+        for (var itemIndex in this.menus[menuId].items) {
+            if (this.menus[menuId].items[itemIndex].state === parentItemState) {
+                // Push new submenu item
+                var newSubmenuItem = {
+                    title: options.title || '',
+                    state: options.state || '',
+                    disabled: options.disabled || false,
+                    roles: ((options.roles === null || typeof options.roles === 'undefined') ? this.menus[menuId].items[itemIndex].roles : options.roles),
+                    position: options.position || 0,
+                    shouldRender: shouldRender,
+                    items: []
+                };
+                this.menus[menuId].items[itemIndex].items.push(newSubmenuItem);
+                this.menus[menuId].menuHash[newSubmenuItem.state] = newSubmenuItem;
+
+                if (options.items) {
+                    for (var i in options.items) {
+                        this.addSubMenuItemToSubMenu(menuId, options.state, options.items[i]);
+                    }
+                }
+            }
+        }
+
+        // Return the menu object
+        return this.menus[menuId];
+    };
+</code></pre>
+<p>然后是新的添加3级菜单的方法：</p>
+<pre><code>//For level 3 menu items
+    this.addSubMenuItemToSubMenu = function (menuId, parentItemState, options) {
+        options = options || {};
+        this.validateMenuExistance(menuId);
+        for (var itemIndex in this.menus[menuId].menuHash) {
+            if (this.menus[menuId].menuHash[itemIndex].state === parentItemState) {
+                // Push new submenu item
+                var newSubMenuItem = {
+                    title: options.title || '',
+                    state: options.state || '',
+                    disabled: options.disabled || false,
+                    roles: ((options.roles === null || typeof options.roles === 'undefined') ? this.menus[menuId].menuHash[itemIndex].roles : options.roles),
+                    position: options.position || 0,
+                    shouldRender: shouldRender,
+                    items: []
+                };
+                this.menus[menuId].menuHash[itemIndex].items.push(newSubMenuItem);
+                this.menus[menuId].menuHash[newSubMenuItem.state] = newSubMenuItem;
+            }
+        }
+        return this.menus[menuId];
+    };
+</code></pre>
+<h2 id="header">修改Header模板 <a class="header-anchor" href="#header" aria-hidden="true">🔗</a></h2>
+<p>原Header模板中嵌套了两层Angular循环来遍历菜单项，我们给它加一层就好了，改完以后就像这样：</p>
+<pre><code>&lt;nav class="collapse navbar-collapse" uib-collapse="!isCollapsed" role="navigation"&gt;
+    &lt;ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);"&gt;
+      &lt;li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);"
+          ng-switch="item.type"
+          ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown',disabled:item.disabled }"
+          class="{{item.class}}" uib-dropdown="item.type === 'dropdown'"&gt;
+        &lt;a ng-switch-when="dropdown" class="dropdown-toggle" uib-dropdown-toggle role="button"&gt;{{::item.title}}&amp;nbsp;&lt;span
+          class="caret"&gt;&lt;/span&gt;&lt;/a&gt;
+        &lt;ul ng-switch-when="dropdown" class="dropdown-menu"&gt;
+          &lt;li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);"
+              ui-sref-active="active" ng-class="{'dropdown-submenu':subitem.items.length&gt;0,disabled:subitem.disabled}"&gt;
+            &lt;a ui-sref="{{subitem.state}}" ng-bind="subitem.title" ng-if="subitem.items.length===0"&gt;&lt;/a&gt;
+            &lt;a href="javascript:;" ng-bind="subitem.title" ng-if="subitem.items.length&gt;0"&gt;&lt;/a&gt;
+            &lt;ul class="dropdown-menu" ng-if="subitem.items.length&gt;0"&gt;
+              &lt;li ng-repeat="i in subitem.items | orderBy: 'position'" ng-if="i.shouldRender(authentication.user);"
+                  ui-sref-active="active" ng-class="{disabled:i.disabled}"&gt;
+                &lt;a ui-sref="{{i.state}}" ng-bind="i.title"&gt;&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"&gt;&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class="nav navbar-nav navbar-right" ng-hide="authentication.user"&gt;
+      &lt;li ui-sref-active="active"&gt;
+        &lt;a ui-sref="authentication.signup"&gt;Sign Up&lt;/a&gt;
+      &lt;/li&gt;
+      &lt;li class="divider-vertical"&gt;&lt;/li&gt;
+      &lt;li ui-sref-active="active"&gt;
+        &lt;a ui-sref="authentication.signin"&gt;Sign In&lt;/a&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class="nav navbar-nav navbar-right" ng-show="authentication.user"&gt;
+      &lt;li class="dropdown" uib-dropdown&gt;
+        &lt;a class="dropdown-toggle user-header-dropdown-toggle" uib-dropdown-toggle role="button"&gt;
+          &lt;img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}"
+               class="header-profile-image"/&gt;
+          &lt;span ng-bind="authentication.user.displayName"&gt;&lt;/span&gt; &lt;b class="caret"&gt;&lt;/b&gt;
+        &lt;/a&gt;
+        &lt;ul class="dropdown-menu" role="menu"&gt;
+          &lt;li ui-sref-active="active"&gt;
+            &lt;a ui-sref="settings.profile"&gt;Edit Profile&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li ui-sref-active="active"&gt;
+            &lt;a ui-sref="settings.picture"&gt;Change Profile Picture&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li ui-sref-active="active" ng-show="authentication.user.provider === 'local'"&gt;
+            &lt;a ui-sref="settings.password"&gt;Change Password&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;!--li ui-sref-active="active"&gt;
+            &lt;a ui-sref="settings.accounts"&gt;Manage Social Accounts&lt;/a&gt;
+          &lt;/li--&gt;
+          &lt;li class="divider"&gt;&lt;/li&gt;
+          &lt;li&gt;
+            &lt;a href="/api/auth/signout" target="_self"&gt;Signout&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+</code></pre>
+<h2 id="css">修改CSS <a class="header-anchor" href="#css" aria-hidden="true">🔗</a></h2>
+<p>为了让菜单看起来更自然些，这里修改的是&nbsp;<code>core.css</code>，添加以下内容：</p>
+<pre><code>.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-menu {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+.dropdown-submenu &gt; .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    margin-left: -1px;
+}
+
+.dropdown-submenu:hover &gt; .dropdown-menu {
+    display: block;
+}
+
+.dropdown-submenu &gt; a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: #333;
+    margin: 5px -10px 0;
+}
+
+.dropdown-submenu:hover &gt; a:after {
+    border-left-color: #333;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left &gt; .dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: 6px 0 6px 6px;
+    -moz-border-radius: 6px 0 6px 6px;
+    border-radius: 6px 0 6px 6px;
+}
+</code></pre>
+<p>&nbsp;</p>
+<h2 id="">使用方法 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>3级菜单的定义方法与2级菜单一模一样，除了直接调用&nbsp;<code>addSubMenuItemToSubMenu</code>&nbsp; 以外，还可以通过在2级菜单内定义 <code>items</code> 来实现添加子菜单，示例如下，高亮部分则为3级菜单：</p>
+<pre><code>Menus.addMenuItem('topbar', {
+            title: '...',
+            state: '...',
+            type: 'dropdown',
+            position: 0,
+            roles: ['*'],
+            items: [{
+                title: '...',
+                state: '...',
+                roles: ['*']
+            }, {
+                title: '...',
+                state: '...',
+                roles: ['*'],
+                items: [{
+                    title: '...',
+                    state: '...',
+                    roles: ['*']
+                }, {
+                    title: '...',
+                    state: '...',
+                    roles: ['*']
+                }]
+            }]
+        });
+</code></pre>
+<h2 id="-2">实现无限级 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>目前看来菜单层级的限制不是在于Service代码，而在于模板。如何在模板中让Angular做一个DFS搜索才是重点。Angular貌似没有提供类似的API，要做的话比较好的办法应该是自己写一个指令。以后有时间再来实现。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/angular-tutorial-applying-animations" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Angular 教程：添加动画
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/ie-cache-issue" class="">
+        IE Cache Issue <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

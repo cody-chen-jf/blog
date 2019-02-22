@@ -1,0 +1,132 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - “渐进增强”与“优雅降级”</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><script type="text/javascript" async="" id="embed-disqus" data-timestamp="1550820588294" src="//wxsm.disqus.com/embed.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">“渐进增强”与“优雅降级”</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">March 25, 2016</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#CSS3" class="label-tag"><span data-v-3cd447cb="" class="label label-primary">CSS3</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#User-Experience" class="label-tag"><span data-v-3cd447cb="" class="label label-primary">User-Experience</span></a></div></section> <div data-v-713b0d1c=""><p>“渐进增强”与“优雅降级”是 Web 页面两种不同的开发理念，为了简单起见，先给出定义（By W3C）：</p>
+<blockquote>
+<p>Graceful degradation Providing an alternative version of your functionality or making the user aware of shortcomings of a product as a safety measure to ensure that the product is usable. Progressive enhancement Starting with a baseline of usable functionality, then increasing the richness of the user experience step by step by testing for support for enhancements before applying them.</p>
+</blockquote>
+<p>翻译：“优雅降级”的目的是为你的功能模块提供一种替代方案，或者让用户意识到某种产品（浏览器）的缺陷来保证你的产品的可用性。“渐进增强”是在一个最基本的可用功能之上，通过在拓展功能前检测（浏览器的）支持性逐步地提升用户体验。</p>
+<p>这两种方案看起来好像没有什么太大区别，并且最终的结果貌似也是一样的。但是看完后面更多的解释和示例，就会更明白一些，其实这里面是真的有区别的。</p>
+<p>一些博文将其简单地归结为如下内容：</p>
+<pre><code>.transition {   /*渐进增强写法*/
+  -webkit-transition: all .5s;
+     -moz-transition: all .5s;
+       -o-transition: all .5s;
+          transition: all .5s;  
+} 
+.transition {   /*优雅降级写法*/ 
+          transition: all .5s;
+       -o-transition: all .5s;
+     -moz-transition: all .5s;
+  -webkit-transition: all .5s;
+}
+</code></pre>
+<p>这个解释是<strong>完全错误的</strong>。实际上任何情况下我们都应该使用前者的 CSS 写法。</p>
+<!--more-->
+<h2 id="">在不断变化的环境中开发 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>稍微接触过 Web 开发的同学都能发现，我们目前所面对的最大难题不是如何实现强大的功能，而是如何保证即使是不那么强大的功能也能够被所有（退一步说，大多数）用户正常地使用。</p>
+<blockquote>
+<p>The web was invented and defined to be used with any display device, in any language, anywhere you want. The only thing expected of end users is that they are using a browsing device that can reach out to the web and understand the protocols used to transmit information — http, https, ftp and so on.</p>
+</blockquote>
+<p>正是因为可以访问 Web 的设备、语言、环境等因素太多太复杂，在极大促进 Web 发展的同时，也导致了以上困境。我们开发者无法对用户所使用的设备有任何期待。因此，我们无法保证 Web 应用上的所有功能都能够正确运行。</p>
+<p>我们需要在未知中寻找出路，这就是“渐进增强”与“优雅降级”出现的原因。</p>
+<h2 id="-2">二者概览 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>上面有对二者有一个简单的定义，这里再作一些扩展。</p>
+<p><strong>优雅降级：</strong></p>
+<p>首先确保使用现代浏览器的用户能够获得最好的用户体验，然后为使用老旧浏览器的用户优雅降级。降级的结果可能会导致功能不再那么美好，但是，只要能够为用户保留住访问网站的最后一点价值就算是达到了目的。让他们至少能看到正常的页面。</p>
+<p><strong>渐进增强：</strong></p>
+<p>相似，但又不一样。首先为所有浏览器都提供一个能够正常渲染并工作的版本，然后为更高级的浏览器构建高级功能。</p>
+<p>换句话说，“优雅降级”是从复杂的现状开始，尝试去修复一些问题；而“渐进增强”则从最基础入手，为更好的环境提供扩展。“渐进增强”可以让你的基础更加牢固，并且始终保持向前看的姿态。</p>
+<h2 id="-3">一个例子 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h2>
+<p>光说真的很难理解，我们来看个例子。（By W3C）</p>
+<p><strong>“打印此页”链接</strong></p>
+<p>有时候我们会想让用户可以点击一个链接或按钮以打印整个页面，于是拍脑袋就有了如下代码：</p>
+<pre><code>&lt;p id="printthis"&gt;
+  &lt;a href="javascript:window.print()"&gt;Print this page&lt;/a&gt;
+&lt;/p&gt;
+</code></pre>
+<p>这段语句在启用 JavaScript 并且支持&nbsp;<code>print</code>&nbsp;方法的浏览器中非常完美。然而，悲催的是，万一浏览器禁用了 JavaScript，或者根本就不支持，那么点击它就完全没有任何反应了。这就造成了一个问题，作为站点开发者，你写出这个链接就相当于向用户保证了这项功能，然而并没有，用户会感到困惑、被欺骗，并且责怪你提供了如此差的用户体验。</p>
+<p>为了减轻问题的严重程度，开发者通常会使用<strong>优雅降级</strong>的策略：</p>
+<p>告诉用户这个链接可能会不起作用，或者提供替代方案。一般来说我们会使用&nbsp;<code>noscript</code>&nbsp;元素来达到目的，就像这样：</p>
+<pre><code>&lt;p id="printthis"&gt;
+  &lt;a href="javascript:window.print()"&gt;Print this page&lt;/a&gt;
+&lt;/p&gt;
+&lt;noscript&gt;
+  &lt;p class="scriptwarning"&gt;
+    Printing the page requires JavaScript to be enabled. 
+    Please turn it on in your browser.
+  &lt;/p&gt;
+&lt;/noscript&gt;
+</code></pre>
+<p>这就是优雅降级的一种体现 —— 我们告诉用户发生了错误并且如何去修复。但是，这有一个前提，用户必须是：</p>
+<ul>
+<li>知道什么是 JavaScript</li>
+<li>知道怎么启用它</li>
+<li>有权限去启用它</li>
+<li>愿意去启用它</li>
+</ul>
+<p>下面这种方式可能会更好些：</p>
+<pre><code>&lt;p id="printthis"&gt;
+  &lt;a href="javascript:window.print()"&gt;Print this page&lt;/a&gt;
+&lt;/p&gt;
+&lt;noscript&gt;
+  &lt;p class="scriptwarning"&gt;
+    Print a copy of your confirmation. 
+    Select the "Print" icon in your browser,
+    or select "Print" from the "File" menu.
+  &lt;/p&gt;
+&lt;/noscript&gt;
+</code></pre>
+<p>这样上面所说的问题就都解决了。然而它的前提是所有浏览器都提供了“打印”功能。并且，事实依然没有任何改变：我们提供了一些可能完全没用的功能，并且需要做出解释。实际上这个“打印此页”链接完全就是没有必要存在的。</p>
+<p>如果我们换一种方式，使用“<strong>渐进增强</strong>”法，则步骤如下。</p>
+<p>首先我们考虑是否有一种方式可以不用写脚本实现打印功能，事实上并没有，因此我们从一开始就不应该选择“链接”这种 HTML 元素来使用。如果一项功能依赖 JavaScript 来实现，那就应该用 button</p>
+<p>第二步，告诉用户去打印这个页面，就这么简单：</p>
+<pre><code>&lt;p id="printthis"&gt;Thank you for your order. Please print this page for your records.&lt;/p&gt;
+</code></pre>
+<p>注意，这无论在什么情况下都一定是适用的。接下来，我们使用“循序渐进”的 JavaScript 来给支持此功能的浏览器添加一个打印按钮：</p>
+<pre><code>&lt;p id="printthis"&gt;Thank you for your order. Please print this page for your records.&lt;/p&gt;
+&lt;script type="text/javascript"&gt;
+(function(){
+  if(document.getElementById){
+    var pt = document.getElementById('printthis');
+    if(pt &amp;&amp; typeof window.print === 'function'){
+      var but = document.createElement('input');
+      but.setAttribute('type','button');
+      but.setAttribute('value','Print this now');
+      but.onclick = function(){
+        window.print();
+      };
+      pt.appendChild(but);
+    }
+  }
+})();
+&lt;/script&gt;
+</code></pre>
+<p>注意到何为“循序渐进”了吗：</p>
+<ul>
+<li>使用自执行匿名函数包装法，不留下任何影响</li>
+<li>测试 DOM 方法的支持性，并且尝试获取节点</li>
+<li>测试节点是否存在，<code>window</code>&nbsp;对象以及&nbsp;<code>print</code>&nbsp;方法是否存在</li>
+<li>如果全都没问题，我们就创建这个功能按钮</li>
+<li>把按钮添加到需要的位置上去</li>
+</ul>
+<p>我们永远不给用户提供不能工作的 UI —— 只在它真正能工作时才显示出来。</p>
+<h2 id="-4">适用场景 <a class="header-anchor" href="#-4" aria-hidden="true">🔗</a></h2>
+<p><strong>优雅降级</strong>适用场景：</p>
+<ul>
+<li>当你在改进一个旧项目但时间有限的时候</li>
+<li>当你没有足够的时间使用渐进增强法去完成项目的时候</li>
+<li>当你要做的产品比较特别，比如说对性能要求特别高的时候</li>
+<li>当你的项目必须要有一些基础功能的时候（地图，邮箱等）</li>
+</ul>
+<p>其余的所有情况下，<strong>渐进增强</strong>都能让用户与你都更开心：</p>
+<ul>
+<li>不管环境如何，你的产品都能工作</li>
+<li>当新技术或浏览器发布的时候，你只需在原有基础上扩展功能，而无需修改最基础的解决方案</li>
+<li>技术可以更“用得其所”，而不仅仅是为了实现功能</li>
+<li>维护方便</li>
+</ul>
+<h2 id="-5">总结 <a class="header-anchor" href="#-5" aria-hidden="true">🔗</a></h2>
+<p>“渐进增强”与“优雅降级”最终都是为了实现一个目标：让所有用户都能够使用我们的产品。“渐进增强”方案看起来更优雅，但它需要更多的时间与资源去达成。“优雅降级”可以看成是现有产品的补丁：易于开发但难以维护。</p>
+<p>注：本文大部分内容来自 <a href="https://www.w3.org/wiki/Graceful_degradation_versus_progressive_enhancement" target="_blank">W3C</a></p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/baidu-submit-for-wordpress-update-0-1-0" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Baidu Submit for WordPress update 0.1.0
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/bfc-theory-and-applications" class="">
+        BFC 原理及应用 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

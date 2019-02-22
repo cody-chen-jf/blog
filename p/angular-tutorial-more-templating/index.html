@@ -1,0 +1,132 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Angular 教程：更多的模板</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Angular 教程：更多的模板</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">December 29, 2015</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#AngularJs" class="label-tag"><span data-v-3cd447cb="" class="label label-danger">AngularJs</span></a></div></section> <div data-v-713b0d1c=""><p>在这一步中，你将实现当用户点击手机列表中的一条记录时显示的详细视图。</p>
+<ul>
+<li>当你点击列表中的一条记录时，页面会显示一个带有该记录详细信息的视图</li>
+</ul>
+<p>为了实现这个目标，我们使用<a href="https://docs.angularjs.org/api/ng/service/$http">$http</a>来抓取数据并刷新<code>phone-detail.html</code>视图模板。 最重要的改动如下所示。你可以在<a href="https://github.com/angular/angular-phonecat/compare/step-7...step-8" title="See diff on Github">GitHub</a>上查看它与之前的代码有何区别。</p>
+<hr>
+<h2 id="">数据 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>除了<code>phones.json</code>以外，<code>app/phones/</code>目录还包含了每台手机设备详细信息的JSON文件：</p>
+<p><code>app/phones/nexus-s.json</code>：</p>
+<pre><code>{
+  "additionalFeatures": "Contour Display, Near Field Communications (NFC),...",
+  "android": {
+      "os": "Android 2.3",
+      "ui": "Android"
+  },
+  ...
+  "images": [
+      "img/phones/nexus-s.0.jpg",
+      "img/phones/nexus-s.1.jpg",
+      "img/phones/nexus-s.2.jpg",
+      "img/phones/nexus-s.3.jpg"
+  ],
+  "storage": {
+      "flash": "16384MB",
+      "ram": "512MB"
+  }
+}
+</code></pre>
+<p>这些文件使用了同样的格式来为手机设备描述一些各种各样的属性。我们会在详细视图中展现它们。</p>
+<hr>
+<h2 id="-2">控制器 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>我们扩展了<code>PhoneDetailCtrl</code>控制器，在其中使用<code>$http</code>服务来抓取JSON文件，就跟获取手机列表的方式一模一样：</p>
+<p><code>app/js/controllers.js</code>：</p>
+<pre><code>var phonecatControllers = angular.module('phonecatControllers',[]);
+
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', '$http',
+  function($scope, $routeParams, $http) {
+    $http.get('phones/' + $routeParams.phoneId + '.json').success(function(data) {
+      $scope.phone = data;
+    });
+  }]);
+</code></pre>
+<p>为了构建HTTP请求的URL，我们使用到了<code>$route</code>服务从当前路由中提取到的<code>$routeParams.phoneId</code></p>
+<hr>
+<h2 id="-3">模板 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h2>
+<p>之前临时加入的TBD模板现在被一些包含手机详细信息的列表与绑定取代了。注意我们是如何使用Angular表达式以及<code>ngRepeat</code>来将手机数据从模型映射到视图上的。</p>
+<p><code>app/partials/phone-detail.html</code>：</p>
+<pre><code>&lt;img ng-src="{{phone.images[0]}}" class="phone"&gt;
+
+&lt;h1&gt;{{phone.name}}&lt;/h1&gt;
+
+&lt;p&gt;{{phone.description}}&lt;/p&gt;
+
+&lt;ul class="phone-thumbs"&gt;
+  &lt;li ng-repeat="img in phone.images"&gt;
+    &lt;img ng-src="{{img}}"&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class="specs"&gt;
+  &lt;li&gt;
+    &lt;span&gt;Availability and Networks&lt;/span&gt;
+    &lt;dl&gt;
+      &lt;dt&gt;Availability&lt;/dt&gt;
+      &lt;dd ng-repeat="availability in phone.availability"&gt;{{availability}}&lt;/dd&gt;
+    &lt;/dl&gt;
+  &lt;/li&gt;
+    ...
+  &lt;li&gt;
+    &lt;span&gt;Additional Features&lt;/span&gt;
+    &lt;dd&gt;{{phone.additionalFeatures}}&lt;/dd&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<hr>
+<h2 id="-4">测试 <a class="header-anchor" href="#-4" aria-hidden="true">🔗</a></h2>
+<p>我们为<code>PhoneListCtrl</code>编写了一个类似于step 5的单元测试。</p>
+<p><code>test/unit/controllersSpec.js</code>：</p>
+<pre><code>beforeEach(module('phonecatApp'));
+
+  ...
+
+  describe('PhoneDetailCtrl', function(){
+    var scope, $httpBackend, ctrl;
+
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $routeParams, $controller) {
+      $httpBackend = _$httpBackend_;
+      $httpBackend.expectGET('phones/xyz.json').respond({name:'phone xyz'});
+
+      $routeParams.phoneId = 'xyz';
+      scope = $rootScope.$new();
+      ctrl = $controller('PhoneDetailCtrl', {$scope: scope});
+    }));
+
+
+    it('should fetch phone detail', function() {
+      expect(scope.phone).toBeUndefined();
+      $httpBackend.flush();
+
+      expect(scope.phone).toEqual({name:'phone xyz'});
+    });
+  });
+...
+</code></pre>
+<p>你现在应该可以在Karma终端看到以下输出：</p>
+<pre><code>Chrome 22.0: Executed 3 of 3 SUCCESS (0.039 secs / 0.012 secs)
+</code></pre>
+<p>同时我们也添加了一个端到端测试，验证当页面跳转到Nexus S详细视图的时候页头是不是真的显示了Nexus S</p>
+<p><code>test/e2e/scenarios.js</code>：</p>
+<pre><code>...
+  describe('Phone detail view', function() {
+
+    beforeEach(function() {
+      browser.get('app/index.html#/phones/nexus-s');
+    });
+
+
+    it('should display nexus-s page', function() {
+      expect(element(by.binding('phone.name')).getText()).toBe('Nexus S');
+    });
+  });
+...
+</code></pre>
+<p>你可以通过执行<code>npm run protractor</code>来观察测试运行。</p>
+<h2 id="-5">课外扩展 <a class="header-anchor" href="#-5" aria-hidden="true">🔗</a></h2>
+<p>使用<a href="http://angular.github.io/protractor/#/api">Protractor API</a>编写一个测试，验证我们在Nexus S详细页上显示了4张标题图片。</p>
+<h2 id="-6">总结 <a class="header-anchor" href="#-6" aria-hidden="true">🔗</a></h2>
+<p>现在手机详细视图已经到位了，在<a href="/p/angular-tutorial-filters/">step 9</a>中我们将学习如何编写自定义的过滤器。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/angular-tutorial-routing-and-multiple-views" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Angular 教程：多页面与路由
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/angular-tutorial-filters" class="">
+        Angular 教程：过滤器 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

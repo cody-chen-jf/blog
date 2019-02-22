@@ -1,0 +1,134 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - D3 Note - Basis</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" async="" id="embed-disqus" data-timestamp="1550820584713" src="//wxsm.disqus.com/embed.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">D3 Note - Basis</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">October 25, 2016</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#D3" class="label-tag"><span data-v-3cd447cb="" class="label label-warning">D3</span></a></div></section> <div data-v-713b0d1c=""><p>D3 (Data-Driven Documents) 是一个 JavaScript Library，用来做 Web 端的数据可视化实现以及各种绘图。</p>
+<blockquote>
+<p><strong>D3.js</strong> is a JavaScript library for manipulating documents based on data. <strong>D3</strong> helps you bring data to life using HTML, SVG, and CSS.</p>
+</blockquote>
+<p>学习 D3 需要很多预备知识：</p>
+<ol>
+<li>HTML / DOM</li>
+<li>CSS</li>
+<li>JavaScript (better with jQuery)</li>
+<li>SVG</li>
+</ol>
+<p>HTML / CSS 不必多说，因为 D3 含有大量链式操作函数以及选择器等，因此如果有 jQuery 基础将轻松很多。此外，由于一般采用 SVG 方式进行绘图，所以 SVG 基础知识也需要掌握。</p>
+<p>虽然必须的预备知识如此之多，但 D3 的定位其实是 Web 前端绘图的底层工具，所谓底层，即是操作复杂而功能强大者。</p>
+<!--more-->
+<h2 id="svg">关于 SVG <a class="header-anchor" href="#svg" aria-hidden="true">🔗</a></h2>
+<p>SVG (Scalable Vector Graphics) 是一种绘图标准，已经被绝大多数的现代浏览器所支持。SVG 采用 XML 语法定义图像，可直接嵌入 HTML 中使用。</p>
+<p>SVG 的特点是矢量绘图（与 Canvas 不同），除了预设样式以外同时也支持 CSS 样式。</p>
+<p>比如，画一个园圈，坐标为 (100, 50)，半径为 40px，拥有 2px 的黑色 border，以及红色填充：</p>
+<pre><code>&lt;svg&gt;
+    &lt;circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red"/&gt;
+&lt;/svg&gt;
+</code></pre>
+<p>SVG 有一些预定义的形状元素，可被开发者使用和操作：</p>
+<ul>
+<li>矩形 <rect></rect></li>
+<li>圆形 <circle></circle></li>
+<li>椭圆 <ellipse></ellipse></li>
+<li>线 <line></line></li>
+<li>折线 <polyline></polyline></li>
+<li>多边形 <polygon></polygon></li>
+<li>路径 <path></path></li>
+</ul>
+<p>其中，<code>path</code> 是功能最强大者，使用 <code>path</code> 可以构成所有图形。</p>
+<h2 id="">选择器 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<h3 id="-2">选择元素 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h3>
+<p>D3 使用与 jQuery 类似的选择器来获取 HTML 元素。常用的方法有：</p>
+<ul>
+<li><code>d3.select(selector)</code></li>
+<li><code>d3.selectAll(selector)</code></li>
+</ul>
+<p>（参数既可以传 selector 也可以直接传 HTML Element ）</p>
+<p>顾名思义，<code>selectAll</code> 就是选择所有符合条件的元素了，那么 <code>select</code> 选择的是符合条件的第一个元素。如：</p>
+<pre><code>d3.select('body') //选择 body 元素
+
+d3.selectAll('p') //选择所有 p 元素
+
+d3.selectAll('.className') //选择所有 class 包含 className 的元素
+</code></pre>
+<p>更多就不说了。</p>
+<h3 id="-3">操作选择 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h3>
+<p>选择器返回的是一组<strong>选择</strong>（selection），这组<strong>选择</strong>可以进行一些操作，如：</p>
+<ul>
+<li>在此选择的基础上继续选择；</li>
+<li>改变属性；</li>
+<li>改变样式；</li>
+<li>绑定事件；</li>
+<li>插入、删除；</li>
+<li>绑定数据。</li>
+</ul>
+<p>大多数操作都与 jQuery 十分类似，同时也支持链式操作，不再赘述。只是这个“绑定数据”操作稍有特别。</p>
+<h2 id="-4">数据绑定 <a class="header-anchor" href="#-4" aria-hidden="true">🔗</a></h2>
+<p>通过 D3 可以把数据“绑定”到 HTML 元素上，绑定的目的主要是为了方便一些需要相应数据才能进行的元素操作（如：更改元素大小、位置等）。</p>
+<p>绑定数据有两个方法：</p>
+<ul>
+<li><code>datum</code>: 将一个数据绑定到选择上；</li>
+<li><code>data</code>: 将一个数组绑定到选择上，数组的各项分别与选择的各项一一对应。</li>
+</ul>
+<p>下面引用一个例子来说明这二者的不同。假设有如下三个节点：</p>
+<pre><code>&lt;p&gt;Apple&lt;/p&gt;
+&lt;p&gt;Pear&lt;/p&gt;
+&lt;p&gt;Banana&lt;/p&gt;
+</code></pre>
+<h3 id="datum">datum <a class="header-anchor" href="#datum" aria-hidden="true">🔗</a></h3>
+<p>执行以下代码：</p>
+<pre><code>let str = 'datum';
+let p = d3.selectAll('p');
+
+p.datum(str);
+p.text((d, i) =&gt; `Element ${i} bind with ${d}`);
+</code></pre>
+<p>将得到：</p>
+<pre><code>Element 0 bind with datum
+Element 1 bind with datum
+Element 2 bind with datum
+</code></pre>
+<p>在对选择进行操作时，传入的<strong>值</strong>可以是<strong>值</strong>，也可以是函数。当传入函数时，D3 会向函数注入两个参数，分别是 d (data) 与 i (index)，代表当前元素绑定的数据与其索引。</p>
+<h3 id="data">data <a class="header-anchor" href="#data" aria-hidden="true">🔗</a></h3>
+<p>执行以下代码：</p>
+<pre><code>let strArr = ['data0', 'data1', 'data2'];
+let p = d3.selectAll('p');
+
+p.data(strArr);
+p.text((d, i) =&gt; `Element ${i} bind with ${d}`);
+</code></pre>
+<p>将得到：</p>
+<pre><code>Element 0 bind with data0
+Element 1 bind with data1
+Element 2 bind with data2
+</code></pre>
+<p>可以看到，数组中的 3 个项分别与 3 个 p 元素绑定到了一起。因此，可以将 <code>datum</code> 看作是 <code>data</code> 函数的一个特例，实际开发中使用更多的是 <code>data</code> 函数。</p>
+<h2 id="-5">实践：简单柱状图 <a class="header-anchor" href="#-5" aria-hidden="true">🔗</a></h2>
+<p>先定义一个 SVG 画布，并将它插入到 HTML 的 body 中去：</p>
+<pre><code>let width = 300,
+  height = 300；
+
+let svg = d3.select('body')
+  .append('svg')
+  .attr('width', width)
+  .attr('height', height);
+</code></pre>
+<p>在这里，画布的宽高都为 300 像素。</p>
+<p>然后，定义一组数据：</p>
+<pre><code>let data = [250, 210, 170, 100, 190];
+</code></pre>
+<p>最后使用以上数据画出柱状图，柱子使用 SVG 预定义的 <code>rect</code>&nbsp;元素：</p>
+<pre><code>let rectWidth = 25;
+
+svg.selectAll('rect')
+ .data(data)
+ .enter()
+ .append('rect')
+ .attr('y', (d, i) =&gt; height - d)
+ .attr('x', (d, i) =&gt; i * rectWidth)
+ .attr('height', d =&gt; d)
+ .attr('width', rectWidth - 2)
+ .attr('fill', 'steelblue');
+</code></pre>
+<p><code>rectWidth</code> 表示柱子的宽度，至于坐标、宽高则分别通过 x / y 以及 height / width 属性来控制，效果如下：</p>
+<p><img src="https://user-images.githubusercontent.com/5960988/48595801-401d6c80-e991-11e8-97c6-580489b7aeab.gif" alt=""></p>
+<p>可以发现，这里并没有指定需要插入的 <code>rect</code> 个数，但 D3 却根据数据量自动地把图画出来了，这个工作是通过 <code>enter</code>&nbsp;语句完成的。关于其工作原理，下回分解。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/wordpress-hole-record" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> WordPress 掉坑记录
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/node-js-web-spider-note-2" class="">
+        Node.js Web Spider Note - 2 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

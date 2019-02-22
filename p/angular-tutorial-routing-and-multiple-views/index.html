@@ -1,0 +1,203 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Angular 教程：多页面与路由</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Angular 教程：多页面与路由</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">December 28, 2015</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#AngularJs" class="label-tag"><span data-v-3cd447cb="" class="label label-danger">AngularJs</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Router" class="label-tag"><span data-v-3cd447cb="" class="label label-default">Router</span></a></div></section> <div data-v-713b0d1c=""><p>在这一步中，你将学习如何使用布局模版以及通过Angular的<code>ngRoute</code>模块来给应用添加路由功能。</p>
+<ul>
+<li>当你现在访问<code>app/index.html</code>的时候页面被重定向到了<code>app/index.html/#/phones</code>，并且手机列表将在此展示</li>
+<li>当你点击其中一条手机链接的时候，浏览器将显示一个手机详细信息页面，同时URL相应地更新</li>
+</ul>
+<p>最重要的改动如下所示。你可以在<a href="https://github.com/angular/angular-phonecat/compare/step-6...step-7" title="See diff on Github">GitHub</a>上查看它与之前的代码有何区别。</p>
+<hr>
+<h2 id="">依赖 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>这一步中添加的路由功能是由Angular的<code>ngRoute</code>模块提供的，该模块没有包含在Angular框架的核心内容中。 我们使用<a href="http://bower.io/">Bower</a>来安装客户端依赖。更新<code>bower.json</code>配置文件来包含新的依赖：</p>
+<pre><code>{
+  "name": "angular-phonecat",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-phonecat",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-mocks": "1.4.x",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.1.1",
+    "angular-route": "1.4.x"
+  }
+}
+</code></pre>
+<p>新的依赖项<code>"angular-route": "1.4.x"</code>会告诉Bower去安装1.4.x版本的angular-route组件。我们必须使用Bower来下载以及安装该组件。 如果你已经全局安装了bower，你可以使用<code>bower install</code>指令。但在这个项目中我们有预设的指令来完成相同的事情：</p>
+<pre><code>npm install
+</code></pre>
+<hr>
+<h2 id="-2">多视图，路由以及布局模板 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>我们的应用慢慢地成长并开始变得复杂起来了。在这一步之前，应用提供给用户的只有一个视图（所有手机的列表），并且所有模板代码都在<code>index.html</code>文件中。现在我们将要给应用添加一个显示列表中手机细节的视图。</p>
+<p>为了添加细节视图，我们可以扩展<code>index.html</code>视图以包含新的模板代码，但这么做的话项目很快就会变得异常糟糕。所以我们将要做的是把<code>index.html</code>变成一个“布局模版”。这个模板可以理解为应用程序中所有其它模板的母版，至于其它的“局部模板”则将根据当前的“路由”（当前展示给用户的视图）选择性地加载到母版中来。</p>
+<p>Angular的应用路由是由<a href="https://docs.angularjs.org/api/ngRoute/provider/$routeProvider">$routeProvider</a>声明的，它是<a href="https://docs.angularjs.org/api/ngRoute/service/$route">$route</a>服务的提供者。这个服务的目的是让控制器，视图模版以及当前浏览器URL地址之间的连接变得更简单一些。我们可以使用这个功能来实现<a href="http://en.wikipedia.org/wiki/Deep_linking">深度链接</a>，从而允许用户使用浏览器的前进后退以及书签等功能。</p>
+<h2 id="-3">依赖注入，注入器和提供者 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h2>
+<p>正如我们所知，依赖注入（DI）是AngularJS的核心，所以对其工作原理稍加理解是很有必要的。 在应用程序被引导的时候，Angular会创建一个注入器，它会寻找并且注入所有被应用程序所需求的服务。注入器本身完全不知道诸如<code>$http</code>或者<code>$route</code>的服务具体做了些什么。实际上，在被正确配置之前，注入器甚至不知道这些服务是否存在。 注入器只是按部就班地做了以下事情：</p>
+<ul>
+<li>读取应用所声明的模块</li>
+<li>注册所有在模块声明中定义的提供者（Provider）</li>
+<li>当需要的时候，给模块注入指定的函数以及任何需要的依赖（服务），它们将被提供者懒加载</li>
+</ul>
+<p>提供者是一个提供（创建）服务实例并且暴露配置接口以控制服务的创建过程与实际行为的对象。对于<code>$route</code>服务而言，<code>$routeProvider</code>暴露的API允许你为自己的应用定义路由。</p>
+<blockquote>
+<p>注意：提供者只能够注入到<code>config</code>函数内。因此你不能给<code>PhoneListCtrl</code>注入<code>$routeProvider</code></p>
+</blockquote>
+<p>Angular模块通过移除应用的全局状态以及提供配置注入器的方法来解决以上问题。与AMD或者require.js截然相反的是，Angular模块并没有尝试去解决脚本加载顺序以及脚本懒加载的问题。这些目标都是完全独立的，同时所有的模块系统都能共存并且实现它们的目标。 查看<a href="https://github.com/angular/angular.js/wiki/Understanding-Dependency-Injection">理解依赖注入</a>来深入了解Angular的DI系统。</p>
+<hr>
+<h2 id="-4">模板 <a class="header-anchor" href="#-4" aria-hidden="true">🔗</a></h2>
+<p><code>$route</code>服务通常结合<a href="https://docs.angularjs.org/api/ngRoute/directive/ngView">ngView</a>指令使用。<code>ngView</code>指令的作用是根据当前路由将视图模版加载到布局模板中去。</p>
+<blockquote>
+<p>注意：从Angular 1.2版本开始，<code>ngRoute</code>作为一个独立的模块，必须要额外加载<code>angular-route.js</code>文件，我们刚才已经通过Bower下载了它</p>
+</blockquote>
+<p><code>app/index.html</code>：</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="en" ng-app="phonecatApp"&gt;
+&lt;head&gt;
+...
+  &lt;script src="bower_components/angular/angular.js"&gt;&lt;/script&gt;
+  &lt;script src="bower_components/angular-route/angular-route.js"&gt;&lt;/script&gt;
+  &lt;script src="js/app.js"&gt;&lt;/script&gt;
+  &lt;script src="js/controllers.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div ng-view&gt;&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>我们给index模板添加了两个<code>&lt;script&gt;</code>标签来为应用程序加载JavaScript文件：</p>
+<ul>
+<li><code>angular-route.js</code>：定义了Angular的<code>ngRoute</code>模块，它将给我们提供路由功能</li>
+<li><code>app.js</code>：这个文件现在将担任应用的路由模块</li>
+</ul>
+<p>需要注意的是我们把之前<code>index.html</code>模板中的大部分代码都移除了，取而代之的只有一个带有<code>ng-view</code>标签的div元素。移除的代码被移动到了<code>phone-list.html</code>模板中去：</p>
+<p><code>app/partials/phone-list.html</code>：</p>
+<pre><code>&lt;div class="container-fluid"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-2"&gt;
+      &lt;!--Sidebar content--&gt;
+
+      Search: &lt;input ng-model="query"&gt;
+      Sort by:
+      &lt;select ng-model="orderProp"&gt;
+        &lt;option value="name"&gt;Alphabetical&lt;/option&gt;
+        &lt;option value="age"&gt;Newest&lt;/option&gt;
+      &lt;/select&gt;
+
+    &lt;/div&gt;
+    &lt;div class="col-md-10"&gt;
+      &lt;!--Body content--&gt;
+
+      &lt;ul class="phones"&gt;
+        &lt;li ng-repeat="phone in phones | filter:query | orderBy:orderProp" class="thumbnail"&gt;
+          &lt;a href="#/phones/{{phone.id}}" class="thumb"&gt;&lt;img ng-src="{{phone.imageUrl}}"&gt;&lt;/a&gt;
+          &lt;a href="#/phones/{{phone.id}}"&gt;{{phone.name}}&lt;/a&gt;
+          &lt;p&gt;{{phone.snippet}}&lt;/p&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>同时我们给手机详细视图临时添加了一个简单的模板：</p>
+<p><code>app/partials/phone-detail.html</code>：</p>
+<pre><code>TBD: detail view for &lt;span&gt;{{phoneId}}&lt;/span&gt;
+</code></pre>
+<p>需要注意的是我们使用了<code>phoneId</code>表达式，这将在<code>PhoneDetailCtrl</code>中定义。</p>
+<hr>
+<h2 id="app">App模块 <a class="header-anchor" href="#app" aria-hidden="true">🔗</a></h2>
+<p>为了完善应用程序的架构，我们使用了<code>ngRoute</code>模块，并且将控制器都移动到了它们自己所属的模块<code>phonecatControllers</code>内（如下所示）。 我们给<code>index.html</code>添加了一个<code>angular-route.js</code>引用，同时在<code>controllers.js</code>&nbsp;中创建了一个新的<code>phonecatControllers</code>&nbsp;模块。但我们所要做的将不仅限于此。我们需要给应用添加模块依赖。通过在phonecatApp中列出这两个模块作为依赖，我们就可以使用它们提供的指令和服务了。</p>
+<p><code>app/js/app.js</code>：</p>
+<pre><code>var phonecatApp = angular.module('phonecatApp', [
+  'ngRoute',
+  'phonecatControllers'
+]);
+
+...
+</code></pre>
+<p>注意传入到<code>angular.module</code>方法中的第二个参数<code>['ngRoute', 'phonecatControllers']</code>，这个数组中列出的是<code>phonecatApp</code>将要依赖到的模块。</p>
+<pre><code>...
+
+phonecatApp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider.
+      when('/phones', {
+        templateUrl: 'partials/phone-list.html',
+        controller: 'PhoneListCtrl'
+      }).
+      when('/phones/:phoneId', {
+        templateUrl: 'partials/phone-detail.html',
+        controller: 'PhoneDetailCtrl'
+      }).
+      otherwise({
+        redirectTo: '/phones'
+      });
+  }]);
+</code></pre>
+<p>在<code>phonecatApp.config()</code>方法中，我们请求给配置方法注入<code>$routeProvider</code>，并使用<code>$routeProvider.when()</code>方法来定义我们的路由。 我们的应用路由定义如下：</p>
+<ul>
+<li><code>when('/phones')</code>：当URL匹配到<code>/phones</code>时，页面将会显示手机列表视图。Angular会使用<code>phone-list.html</code>模板和<code>PhoneListCtrl</code>控制器来构造这个它</li>
+<li><code>when('/phones/:phoneId')</code>：当URL匹配到<code>/phones/:phoneId</code>（<code>:phoneId</code>是URL的一个参数）时，页面将会显示手机详细视图。 Angular会使用<code>phone-detail.html</code>模板和<code>PhoneDetailCtrl</code>来构造它</li>
+<li><code>otherwise({redirectTo: '/phones'})</code>：当浏览器地址没有匹配上我们定义的路由时重定向到<code>/phones</code></li>
+</ul>
+<p>我们复用了在前面的教程中构建的<code>PhoneListCtrl</code>控制器，并且在<code>app/js/controllers.js</code>文件中为手机详细视图创建了一个空白的<code>PhoneDetailCtrl</code>控制器。 注意在第二条路由定义中使用到的<code>:phoneId</code>参数。<code>$route</code>服务会将<code>/phones/:phoneId</code>声明当成一个模板来使用。所有使用<code>:</code>前缀声明的变量都会被提取到<code>$routeParams</code>对象中去。</p>
+<hr>
+<h2 id="-5">控制器 <a class="header-anchor" href="#-5" aria-hidden="true">🔗</a></h2>
+<p><code>app/js/controllers.js</code>：</p>
+<pre><code>var phonecatControllers = angular.module('phonecatControllers', []);
+
+phonecatControllers.controller('PhoneListCtrl', ['$scope', '$http',
+  function ($scope, $http) {
+    $http.get('phones/phones.json').success(function(data) {
+      $scope.phones = data;
+    });
+
+    $scope.orderProp = 'age';
+  }]);
+
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams',
+  function($scope, $routeParams) {
+    $scope.phoneId = $routeParams.phoneId;
+  }]);
+</code></pre>
+<p>注意到我们创建了一个名为<code>phonecatControllers</code>的新模块。对一些小型AngularJS应用而言或许一个模块就够用了，但是随着应用的增长，将代码重构到不同的模块中去是非常普遍的做法。对大型应用来说，你很可能会为应用的每一个主要功能都创建不同的模块。 因为我们的教学应用相对来说比较小，所以我们把所有的控制器添加到<code>phonecatControllers</code>模块中就完事了。</p>
+<hr>
+<h2 id="-6">测试 <a class="header-anchor" href="#-6" aria-hidden="true">🔗</a></h2>
+<p>为了验证应用的正确性，我们编写了一些端到端测试来验证当URL发生变化时应用是否渲染了正确的视图。</p>
+<pre><code>...
+   it('should redirect index.html to index.html#/phones', function() {
+    browser.get('app/index.html');
+    browser.getLocationAbsUrl().then(function(url) {
+        expect(url).toEqual('/phones');
+      });
+  });
+
+  describe('Phone list view', function() {
+    beforeEach(function() {
+      browser.get('app/index.html#/phones');
+    });
+...
+
+  describe('Phone detail view', function() {
+
+    beforeEach(function() {
+      browser.get('app/index.html#/phones/nexus-s');
+    });
+
+
+    it('should display placeholder page with phoneId', function() {
+      expect(element(by.binding('phoneId')).getText()).toBe('nexus-s');
+    });
+  });
+</code></pre>
+<p>你可以通过执行<code>npm run protractor</code>来观察测试运行</p>
+<h2 id="-7">课外扩展 <a class="header-anchor" href="#-7" aria-hidden="true">🔗</a></h2>
+<p>尝试给<code>index.html</code>添加一个<code>{{orderProp}}</code>绑定，你会发现即使正处在手机列表视图中它也没有引发任何改变。这是因为<code>orderProp</code>模型只在<code>PhoneListCtrl</code>管理的作用域中可见。如果你把同样的绑定添加到<code>phone-list.html</code>模板内它就会如预期一般地工作了。</p>
+<h2 id="-8">总结 <a class="header-anchor" href="#-8" aria-hidden="true">🔗</a></h2>
+<p>既然已经设置好了路由与手机列表视图，我们就可以准备通过<a href="/p/angular-tutorial-more-templating/">step 8</a>来实现详细视图了。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/angular-tutorial-templating-links-and-images" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Angular 教程：模板化的链接与图片
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/angular-tutorial-more-templating" class="">
+        Angular 教程：更多的模板 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

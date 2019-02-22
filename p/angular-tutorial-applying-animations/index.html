@@ -1,0 +1,347 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Angular 教程：添加动画</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Angular 教程：添加动画</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">December 29, 2015</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#AngularJs" class="label-tag"><span data-v-3cd447cb="" class="label label-danger">AngularJs</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Animation" class="label-tag"><span data-v-3cd447cb="" class="label label-default">Animation</span></a></div></section> <div data-v-713b0d1c=""><p>在这最后一步中，我们将通过在模板代码中添加一些CSS以及JavaScript动画来让Web应用看起来更酷炫一点。</p>
+<ul>
+<li>我们通过使用<code>ngAnimate</code>模块来在应用程序中启用动画</li>
+<li>我们也会使用一些通用的<code>ng</code>指令来自动配置动画的切入时机</li>
+<li>在注册了动画效果后，标准的DOM操作将会触发相应的动画（比如说通过<code>ngRepeat</code>插入以及移除节点，或者在<code>ngClass</code>中添加或移除CSS类）</li>
+</ul>
+<p>最重要的改动如下所示。你可以在<a href="https://github.com/angular/angular-phonecat/compare/step-11...step-12" title="See diff on Github">GitHub</a>上查看它与之前的代码有何区别。</p>
+<hr>
+<h2 id="">依赖 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>动画功能由Angular的<code>ngAnimate</code>模块提供，该模块没有包含在Angular的核心框架中。在此我们还使用了<code>jQuery</code>来做一些额外的JavaScript动画效果。 我们使用<a href="http://bower.io/">Bower</a>来安装客户端的依赖。通过更新 <code>bower.json</code>&nbsp;配置文件来加入新的依赖项：</p>
+<pre><code>{
+  "name": "angular-seed",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-mocks": "1.4.x",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.1.1",
+    "angular-route": "1.4.x",
+    "angular-resource": "1.4.x",
+    "angular-animate": "1.4.x"
+  }
+}
+</code></pre>
+<ul>
+<li><code>"angular-animate": "1.4.x"</code>告诉Bower需要安装1.4.x版本的angular-resource组件</li>
+<li><code>"jquery": "~2.1.1"</code>告诉Bower需要安装2.1.1版本的jQuery，需要注意的是这并不是一个Angular模块，它是标准的jQuery库。我们可以使用Bower来安装各种各样的第三方工具</li>
+</ul>
+<p>我们使用Bower来下载以及安装这些组件，通过执行：</p>
+<pre><code>npm install
+</code></pre>
+<blockquote>
+<p>警告：如果在你上一次运行 npm install&nbsp;之后Angular发布了新版本的话，在运行 install&nbsp;的时候可能就会遇到问题（因为angular.js的版本发生了冲突）。解决方法是在执行 install&nbsp;之前先删除bower_components&nbsp;目录。</p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+<p>注意：如果你已经全局安装了bower，你可以使用 install&nbsp;指令。但在这个项目中我们有预设的 install&nbsp;指令来完成相同的事</p>
+</blockquote>
+<hr>
+<h2 id="nganimate">ngAnimate的工作机制 <a class="header-anchor" href="#nganimate" aria-hidden="true">🔗</a></h2>
+<p>如果想要了解关于AngularJS中动画的运行机制的话，可以先阅读<a href="https://docs.angularjs.org/guide/animations">AngularJS动画指导</a>。</p>
+<hr>
+<h2 id="-2">模板 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>我们需要在HTML模板代码中添加对<code>angular-animate.js</code>文件的依赖。<code>angular-animate.js</code>文件中定义了<code>ngAnimate</code>模块，它的作用是让应用能够注意到一些动画的存在。</p>
+<p><code>app/index.html</code>：</p>
+<pre><code>...
+  &lt;!-- for CSS Transitions and/or Keyframe Animations --&gt;
+  &lt;link rel="stylesheet" href="css/animations.css"&gt;
+
+  ...
+
+  &lt;!-- jQuery is used for JavaScript animations (include this before angular.js) --&gt;
+  &lt;script src="bower_components/jquery/dist/jquery.js"&gt;&lt;/script&gt;
+
+  ...
+
+  &lt;!-- required module to enable animation support in AngularJS --&gt;
+  &lt;script src="bower_components/angular-animate/angular-animate.js"&gt;&lt;/script&gt;
+
+  &lt;!-- for JavaScript Animations --&gt;
+  &lt;script src="js/animations.js"&gt;&lt;/script&gt;
+
+...
+</code></pre>
+<blockquote>
+<p><strong>重要</strong>：当使用Angular 1.4版本的时候必须确保同时使用的jQuery版本大于或等于2.1；官方不确保jQuery 1.x是被完全支持的。确保在加载所有的AngularJS脚本以前先加载jQuery，反之Angular将不会检测到jQuery的存在，动画效果也就会出现一些问题。</p>
+</blockquote>
+<p>我们现在可以同时在CSS代码（<code>animations.css</code>）以及JavaScript代码（<code>animations.js</code>）中创建动画了。但在这之前，就像使用<code>ngResource</code>，我们先来创建一个依赖于<code>ngAnimate</code>的新模块。</p>
+<hr>
+<h2 id="-3">模块与动画 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h2>
+<p><code>app/js/animations.js</code>：</p>
+<pre><code>angular.module('phonecatAnimations', ['ngAnimate']);
+// ...
+// this module will later be used to define animations
+// ...
+
+</code></pre>
+<p>然后我们把它附加到应用中去。</p>
+<p><code>app/js/app.js</code>：</p>
+<pre><code>// ...
+angular.module('phonecatApp', [
+  'ngRoute',
+
+  'phonecatAnimations',
+  'phonecatControllers',
+  'phonecatFilters',
+  'phonecatServices',
+]);
+// ...
+</code></pre>
+<p>现在应用可以检测动画了。我们来做些动画吧！</p>
+<hr>
+<h2 id="cssngrepeat">带有CSS动画的ngRepeat <a class="header-anchor" href="#cssngrepeat" aria-hidden="true">🔗</a></h2>
+<p>我们先来给<code>phone-list.html</code>页面中的<code>ngRepeat</code>指令加点CSS动画。首先我们给循环体添加一些额外的CSS类，然后我们就可以把它和我们定义的CSS动画挂上钩了。</p>
+<p><code>app/partials/phone-list.html</code>：</p>
+<pre><code>&lt;!--
+  Let's change the repeater HTML to include a new CSS class
+  which we will later use for animations:
+--&gt;
+&lt;ul class="phones"&gt;
+  &lt;li ng-repeat="phone in phones | filter:query | orderBy:orderProp"
+      class="thumbnail phone-listing"&gt;
+    &lt;a href="#/phones/{{phone.id}}" class="thumb"&gt;&lt;img ng-src="{{phone.imageUrl}}"&gt;&lt;/a&gt;
+    &lt;a href="#/phones/{{phone.id}}"&gt;{{phone.name}}&lt;/a&gt;
+    &lt;p&gt;{{phone.snippet}}&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>看到我们是怎么给它加上<code>phone-listing</code>CSS类的了吗？在HTML中写这么点代码就完全足够了。 接下来是真正的CSS Transition动画代码。</p>
+<p><code>app/css/animations.css</code>：</p>
+<pre><code>.phone-listing.ng-enter,
+.phone-listing.ng-leave,
+.phone-listing.ng-move {
+  -webkit-transition: 0.5s linear all;
+  -moz-transition: 0.5s linear all;
+  -o-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+}
+
+.phone-listing.ng-enter,
+.phone-listing.ng-move {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.phone-listing.ng-move.ng-move-active,
+.phone-listing.ng-enter.ng-enter-active {
+  opacity: 1;
+  height: 120px;
+}
+
+.phone-listing.ng-leave {
+  opacity: 1;
+  overflow: hidden;
+}
+
+.phone-listing.ng-leave.ng-leave-active {
+  opacity: 0;
+  height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+</code></pre>
+<p>如你所见，<code>phone-listing</code>CSS类用来与一些动画钩子结合使用了。钩子会在动画事件发生时被添加或者删除。</p>
+<ul>
+<li><code>ng-enter</code>类会在新元素添加到列表并且渲染到页面中时触发</li>
+<li><code>ng-move</code>类会在元素在列表中移动时触发</li>
+<li><code>ng-leave</code>类会在元素从列表中移除时触发</li>
+</ul>
+<p>手机列表中的元素会根据传入<code>ng-repeat</code>指令中的数据被添加或者移除。举例说，如果过滤器的值发生了变化，那么这些元素会在列表中动画式的出场或退场。 在这里，重点是要注意到当动画发生时，两组CSS类会被添加到元素上：</p>
+<ol>
+<li><code>starting</code>类意味着动画开始时的样式</li>
+<li><code>active</code>类意味着动画结束时的样式</li>
+</ol>
+<p>starting样式的类名由<code>ng-</code>前缀和当时触发的事件名（比如<code>enter</code>，<code>move</code>或者<code>leave</code>）组成，所以<code>enter</code>事件会与<code>ng-enter</code>类挂钩。 active样式的类名与starting类一模一样，除了<code>-active</code>后缀。这两种CSS命名转换允许开发者构建完整的，从开始到结束的所有动画。</p>
+<p>在上面的例子中，当元素被添加进列表时，它们的高度会从<strong><strong>变成<strong>120</strong>个像素，并且在被移除之前会重新变回</strong></strong>像素。同时它们还有一个不错的淡出淡入效果。所有这些都是由以上的CSS Transition声明来控制的。 虽然绝大多数主流浏览器对CSS Transition和CSS动画都有着不错的支持，但请不要忘记IE爸爸，如果你想要让动画效果可以支持到更老旧一些的浏览器的话，可以考虑使用基于JavaScript的动画，我们会在下面的内容中介绍。</p>
+<hr>
+<h2 id="css-keyframengview">带有CSS Keyframe动画的ngView <a class="header-anchor" href="#css-keyframengview" aria-hidden="true">🔗</a></h2>
+<p>接下来我们给<code>ngView</code>在路由转换的时候添加一个动画。 在开始之前，我们给HTML添加一个新的CSS类，就跟刚才所做的一样。这一次我们把它添加到包含<code>ng-view</code>指令的元素中去。为了做到这些，我们对HTML代码做了少许改动，这样我们在视图转换的时候可以有更多的控制权。</p>
+<p><code>app/index.html</code>：</p>
+<pre><code>&lt;div class="view-container"&gt;
+  &lt;div ng-view class="view-frame"&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p>通过这个改动，<code>ng-view</code>指令将被包含在一个拥有<code>view-container</code>CSS类的父节点中。这个CSS类给节点添加了一个<code>position: relative</code>类，因此在动画效果执行时<code>ng-view</code>的位置是通过这个父节点计算得出的。 做完这些工作后，我们就可以给它添加一些CSS动画了。</p>
+<p><code>app/css/animations.css</code>：</p>
+<pre><code>.view-container {
+  position: relative;
+}
+
+.view-frame.ng-enter, .view-frame.ng-leave {
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.view-frame.ng-enter {
+  -webkit-animation: 0.5s fade-in;
+  -moz-animation: 0.5s fade-in;
+  -o-animation: 0.5s fade-in;
+  animation: 0.5s fade-in;
+  z-index: 100;
+}
+
+.view-frame.ng-leave {
+  -webkit-animation: 0.5s fade-out;
+  -moz-animation: 0.5s fade-out;
+  -o-animation: 0.5s fade-out;
+  animation: 0.5s fade-out;
+  z-index:99;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@-moz-keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@-webkit-keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@-moz-keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@-webkit-keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+/* don't forget about the vendor-prefixes! */
+</code></pre>
+<p>这些代码中除了页面切换时的淡出淡入效果以外没什么丧心病狂的东西。唯一特别的事情是我们使用了绝对定位来对新页面（由<code>ng-enter</code></p>
+<p>标记）与旧页面（由<code>ng-leave</code></p>
+<p>标记）在交叉动画的过程中进行定位。因此当旧页面即将被移除的时候，在它淡出的同时新页面也将同时在与其相同的顶端位置上淡入。 一旦leave动画结束元素就会被移除，同理一旦enter动画结束<code>ng-enter</code>以及<code>ng-enter-active</code>CSS类也会从元素中被移除，然后它就会由其本身的CSS代码来重新渲染和定位（所以一旦动画结束就不存在有失优雅的绝对定位了）。在路由变化的整个过程中这些都会是非常流畅的，页面将表现得非常自然而不是各种闪现。 添加的CSS代码（start和end类）与给<code>ng-repeat</code>添加的代码非常相似。每次新页面加载完成的时候<code>ng-view</code>都会创建一个自身的副本，下载模板然后追加内容。这么做可以保证所有的视图都包含在一个HTML元素中，于是动画就会变得更容易控制。</p>
+<p>更多的CSS动画请参考<a href="http://docs.webplatform.org/wiki/css/properties/animations">文档</a>。</p>
+<hr>
+<h2 id="javascriptngclass">带JavaScript动画的ngClass <a class="header-anchor" href="#javascriptngclass" aria-hidden="true">🔗</a></h2>
+<p>我们来给应用添加另一种动画。打开<code>phone-detail.html</code>页面，我们已经完成了一个不错的图片切换功能。通过点击缩略图我们可以改变显示在详细页面上的大图。但我们要怎么给它加点动画呢？</p>
+<p>首先我们先来思考一下。从根本而言，当点击略缩图时，我们是通过改变大图的状态来反应这一次点击的。在HTML世界中最好的反应状态的方法就是使用CSS类。就像我们之前所做的通过CSS类来定义动画，这次动画将在CSS类本身发生变化时启动。 无论选中的缩略图在何时发生变化都将导致状态的变化，同时我们将给大图添加一个<code>.active</code>CSS类来执行动画效果。 我们先来处理<code>phone-detail.html</code>页面。需要注意的是显示大图的方式已经发生了变化。</p>
+<p><code>app/partials/phone-detail.html</code>：</p>
+<pre><code>&lt;!-- We're only changing the top of the file --&gt;
+&lt;div class="phone-images"&gt;
+  &lt;img ng-src="{{img}}"
+       class="phone"
+       ng-repeat="img in phone.images"
+       ng-class="{active:mainImageUrl==img}"&gt;
+&lt;/div&gt;
+
+&lt;h1&gt;{{phone.name}}&lt;/h1&gt;
+
+&lt;p&gt;{{phone.description}}&lt;/p&gt;
+
+&lt;ul class="phone-thumbs"&gt;
+  &lt;li ng-repeat="img in phone.images"&gt;
+    &lt;img ng-src="{{img}}" ng-mouseenter="setImage(img)"&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+<p>就像略所图一样，我们使用一个循环器来显示了<strong>所有</strong>大图，但我们并不会给它添加任何与循环有关的动画。不同的是我们使用<code>ng-class</code>指令来做了一个判断，当且仅当<code>active</code>类为真时它才会被添加到元素上去，然后元素会显示为可见。除此以外它们就将处于隐藏的状态。对于我们目前的情况来说，总会有一张图片是拥有<code>active</code></p>
+<p>类的，因此任何时候都会有仅有一张图片在视图上是可见的。 当<code>active</code>类被添加到元素上的时候，<code>active-add</code>和<code>active-add-active</code>类会在此之前被AngularJS触发。同理当移除类时，<code>active-remove</code>和<code>active-remove-active</code>类也会在恰当的时机被添加到元素上去。 为了保证手机图片在页面一开始加载的时候能够正确地显示，我们给详细页添加了一些CSS样式。</p>
+<p><code>app/css/app.css</code>：</p>
+<pre><code>.phone-images {
+  background-color: white;
+  width: 450px;
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+}
+
+...
+
+img.phone {
+  float: left;
+  margin-right: 3em;
+  margin-bottom: 2em;
+  background-color: white;
+  padding: 2em;
+  height: 400px;
+  width: 400px;
+  display: none;
+}
+
+img.phone:first-child {
+  display: block;
+  }
+</code></pre>
+<p>你可能会觉得我们要做的不过是创建另一个CSS动画。虽然确实可以这么做，但既然有这么个机会我们就可以学习如何使用JavaScript来编写动画。</p>
+<p><code>app/js/animations.js</code>：</p>
+<pre><code>var phonecatAnimations = angular.module('phonecatAnimations', ['ngAnimate']);
+
+phonecatAnimations.animation('.phone', function() {
+
+  var animateUp = function(element, className, done) {
+    if(className != 'active') {
+      return;
+    }
+    element.css({
+      position: 'absolute',
+      top: 500,
+      left: 0,
+      display: 'block'
+    });
+
+    jQuery(element).animate({
+      top: 0
+    }, done);
+
+    return function(cancel) {
+      if(cancel) {
+        element.stop();
+      }
+    };
+  }
+
+  var animateDown = function(element, className, done) {
+    if(className != 'active') {
+      return;
+    }
+    element.css({
+      position: 'absolute',
+      left: 0,
+      top: 0
+    });
+
+    jQuery(element).animate({
+      top: -500
+    }, done);
+
+    return function(cancel) {
+      if(cancel) {
+        element.stop();
+      }
+    };
+  }
+
+  return {
+    addClass: animateUp,
+    removeClass: animateDown
+  };
+});
+</code></pre>
+<p>注意到我们使用了<a href="http://jquery.com/">jQuery</a>来实现动画效果。Angular并不需要jQuery来完成JavaScript动画，但我们还是用了它，因为如何编写一个JavaScript动画库并不在本教程的范围之内。更多关于<code>jQuery.animate</code>的信息请查看<a href="http://api.jquery.com/animate/">jQuery文档</a>。</p>
+<p><code>addClass</code>和<code>removeClass</code>回调函数会在元素添加或者移除所注册的CSS类（<code>.phone</code>）的时候被调用。当<code>.active</code>类被添加到元素上（通过<code>ng-class</code>指令）的时候，<code>addClass</code>JavaScript回调就会在被当作参数而传入到其中的元素（element上执行。最后一个传入的参数是<code>done</code>回调函数。<code>done</code>函数的目的是可以通过调用它让Angular知道这次JavaScript动画已经执行完了。<code>removeClass</code>回调除了触发的时机不同以外，工作方式和上面一模一样。</p>
+<p>在JavaScript回调内，我们通过操作DOM来创建动画。在上面的代码中我们使用了<code>element.css()</code>和<code>element.animate()</code>来操作DOM，回调函数把新元素放在了距离原位置<strong>500</strong>个像素的地方，然后把旧元素和新元素同时地向上移动<strong>500</strong>个像素。因此这个动画看起来就跟传送带一样。当<code>animate</code>函数完成所有事情以后，它就会调用<code>done</code>方法。 需要注意的是<code>addClass</code>和<code>removeClass</code>都返回了一个函数。这个<strong>可选</strong>函数将在动画被取消（另一个动画发生在同一元素上）时触发，当然也包括动画自然完成的情况。函数将被传入一个布尔类型的参数，开发者可以根据它来判断动画是否被取消了。这个函数可以用来给动画做一些收尾工作。</p>
+<h2 id="-4">总结 <a class="header-anchor" href="#-4" aria-hidden="true">🔗</a></h2>
+<p>就这样了！我们在超短的时间内构建了一个Web应用。你可以继续在代码中进行深入的探索，并且使用<code>git checkout</code>随时退回到之前步骤的状态下。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/angular-tutorial-rest-and-custom-services" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Angular 教程：REST 和自定义服务
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/mean-js-menu-service-extension" class="">
+        MEAN.js Menu Service Extension <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

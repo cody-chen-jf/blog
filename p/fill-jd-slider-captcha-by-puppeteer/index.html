@@ -1,0 +1,136 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - 使用 Puppeteer 自动输入京东滑动验证码</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" async="" id="embed-disqus" data-timestamp="1550820567142" src="//wxsm.disqus.com/embed.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">使用 Puppeteer 自动输入京东滑动验证码</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">November 5, 2018</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Puppeteer" class="label-tag"><span data-v-3cd447cb="" class="label label-default">Puppeteer</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#NodeJs" class="label-tag"><span data-v-3cd447cb="" class="label label-success">NodeJs</span></a></div></section> <div data-v-713b0d1c=""><!-- 「」 -->
+<p>京东网页端登录有时候需要输入滑动验证码，就像这样：</p>
+<p><img src="https://user-images.githubusercontent.com/5960988/48596434-ff732280-e993-11e8-94db-2f82be82a1ab.png" alt="jd-verify"></p>
+<p>在做自动签到脚本的时候遇到这个很不舒服，如果不处理的话就只能每次弹出浏览器手动登录，因此稍微研究了下。下面是一个非常简单，但成功率很高（达到80%）的自动识别并输入方案，使用 puppeteer 实现。</p>
+<p><strong>总体思路：通过图像特征识别出滑块缺口的位置，然后通过模拟用户点击将滑块拖动到该处。</strong></p>
+<!-- more -->
+<p>首先，我们能够看到这个滑块缺口是一个黑色半透明的遮罩区域，通过代码分析并不能得到它的具体色值。因此只能自行比对尝试。通过肉眼测试与对比，可以得到这个遮罩的色值大约为 <code>rgba(0,0,0,0.65)</code></p>
+<p><img src="https://user-images.githubusercontent.com/5960988/48612937-52b19900-e9c5-11e8-97c4-eab52883c540.png" alt="img"></p>
+<p>得到这个色值的目的是：通过判断相邻像素点 a, b 的色值之差，来决定像素点 b 的色值是否是像素点 a 的色值加上遮罩之后的结果，以此来推断遮罩所在的位置。</p>
+<p>下面介绍两个函数：</p>
+<ul>
+<li><code>combineRgba</code> rgba 色值相加，返回相加结果</li>
+<li><code>tolerance</code> rgba 色值比对，通过传入一个「容忍值」，返回颜色是否相似</li>
+</ul>
+<pre><code class="language-typescript"><span class="hljs-comment">/**
+ * combine rgba colors [r, g, b, a]
+ * @param rgba1 底色
+ * @param rgba2 遮罩色
+ * @returns {number[]}
+ */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">combineRgba</span> (<span class="hljs-params">rgba1: <span class="hljs-built_in">number</span>[], rgba2: <span class="hljs-built_in">number</span>[]</span>): <span class="hljs-title">number</span>[] </span>{
+  <span class="hljs-keyword">const</span> [r1, g1, b1, a1] = rgba1
+  <span class="hljs-keyword">const</span> [r2, g2, b2, a2] = rgba2
+  <span class="hljs-keyword">const</span> a = a1 + a2 - a1 * a2
+  <span class="hljs-keyword">const</span> r = (r1 * a1 + r2 * a2 - r1 * a1 * a2) / a
+  <span class="hljs-keyword">const</span> g = (g1 * a1 + g2 * a2 - g1 * a1 * a2) / a
+  <span class="hljs-keyword">const</span> b = (b1 * a1 + b2 * a2 - b1 * a1 * a2) / a
+  <span class="hljs-keyword">return</span> [r, g, b, a]
+}
+
+<span class="hljs-comment">/**
+ * 判断两个颜色是否相似
+ * @param rgba1
+ * @param rgba2
+ * @param t
+ * @returns {boolean}
+ */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tolerance</span> (<span class="hljs-params">rgba1: <span class="hljs-built_in">number</span>[], rgba2: <span class="hljs-built_in">number</span>[], t: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">boolean</span> </span>{
+  <span class="hljs-keyword">const</span> [r1, g1, b1] = rgba1
+  <span class="hljs-keyword">const</span> [r2, g2, b2] = rgba2
+  <span class="hljs-keyword">return</span> (
+    r1 &gt; r2 - t &amp;&amp; r1 &lt; r2 + t
+    &amp;&amp; g1 &gt; g2 - t &amp;&amp; g1 &lt; g2 + t
+    &amp;&amp; b1 &gt; b2 - t &amp;&amp; b1 &lt; b2 + t
+  )
+}
+</code></pre>
+<p>接下来就可以写出距离算法了，通过传入包含缺口的验证码图片的 base64 编码，以及图片的实际宽度，返回缺口位置 x 值。具体思路是：通过自左而右，自上而下的逐列像素分析，找出第一个跟上个像素的色值与遮罩色值相加后的结果相似的像素点，就认为是遮罩的 x 位置。</p>
+<p><img src="https://user-images.githubusercontent.com/5960988/48612892-33b30700-e9c5-11e8-94d7-a6cc6ec30c87.png" alt="img"></p>
+<pre><code class="language-typescript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getVerifyPosition</span> (<span class="hljs-params">base64: <span class="hljs-built_in">string</span>, actualWidth: <span class="hljs-built_in">number</span></span>): <span class="hljs-title">Promise</span>&lt;<span class="hljs-title">number</span>&gt; </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function">(<span class="hljs-params">resolve, reject</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> canvas = createCanvas(<span class="hljs-number">1000</span>, <span class="hljs-number">1000</span>)
+    <span class="hljs-keyword">const</span> ctx = canvas.getContext(<span class="hljs-string">'2d'</span>)
+    <span class="hljs-keyword">const</span> img = <span class="hljs-keyword">new</span> Image()
+    img.onload = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      <span class="hljs-keyword">const</span> width: <span class="hljs-built_in">number</span> = img.naturalWidth
+      <span class="hljs-keyword">const</span> height: <span class="hljs-built_in">number</span> = img.naturalHeight
+      ctx.drawImage(img, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+      <span class="hljs-keyword">const</span> maskRgba: <span class="hljs-built_in">number</span>[] = [<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.65</span>]
+      <span class="hljs-keyword">const</span> t: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span> <span class="hljs-comment">// 色差容忍值</span>
+      <span class="hljs-keyword">let</span> prevPixelRgba = <span class="hljs-literal">null</span>
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> x = <span class="hljs-number">0</span>; x &lt; width; x++) {
+        <span class="hljs-comment">// 重新开始一列，清除上个像素的色值</span>
+        prevPixelRgba = <span class="hljs-literal">null</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> y = <span class="hljs-number">0</span>; y &lt; height; y++) {
+          <span class="hljs-keyword">const</span> rgba = ctx.getImageData(x, y, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>).data
+          <span class="hljs-keyword">if</span> (prevPixelRgba) {
+            <span class="hljs-comment">// 所有原图中的 alpha 通道值都是1</span>
+            prevPixelRgba[<span class="hljs-number">3</span>] = <span class="hljs-number">1</span>
+            <span class="hljs-keyword">const</span> maskedPrevPixel = combineRgba(prevPixelRgba, maskRgba)
+            <span class="hljs-comment">// 只要找到了一个色值匹配的像素点则直接返回，因为是自上而下，自左往右的查找，第一个像素点已经满足"最近"的条件</span>
+            <span class="hljs-keyword">if</span> (tolerance(maskedPrevPixel, rgba, t)) {
+              resolve(x * actualWidth / width)
+              <span class="hljs-keyword">return</span>
+            }
+          } <span class="hljs-keyword">else</span> {
+            prevPixelRgba = rgba
+          }
+        }
+      }
+      <span class="hljs-comment">// 没有找到任何符合条件的像素点</span>
+      resolve(<span class="hljs-number">0</span>)
+    }
+    img.onerror = reject
+    img.src = base64
+  })
+}
+</code></pre>
+<p>得到 x 位置后，就可以使用 puppeteer 操纵滑块来实现验证了：</p>
+<pre><code class="language-typescript"><span class="hljs-comment">// 验证码图片（带缺口）</span>
+<span class="hljs-keyword">const</span> img = <span class="hljs-keyword">await</span> page.$(<span class="hljs-string">'.JDJRV-bigimg &gt; img'</span>)
+<span class="hljs-comment">// 获取缺口左x坐标</span>
+<span class="hljs-keyword">const</span> distance: <span class="hljs-built_in">number</span> = <span class="hljs-keyword">await</span> getVerifyPosition(
+  <span class="hljs-keyword">await</span> page.evaluate(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> element.getAttribute(<span class="hljs-string">'src'</span>), img),
+  <span class="hljs-keyword">await</span> page.evaluate(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> <span class="hljs-built_in">parseInt</span>(<span class="hljs-built_in">window</span>.getComputedStyle(element).width), img)
+)
+<span class="hljs-comment">// 滑块</span>
+<span class="hljs-keyword">const</span> dragBtn = <span class="hljs-keyword">await</span> page.$(<span class="hljs-string">'.JDJRV-slide-btn'</span>)
+<span class="hljs-keyword">const</span> dragBtnPosition = <span class="hljs-keyword">await</span> page.evaluate(<span class="hljs-function"><span class="hljs-params">element</span> =&gt;</span> {
+<span class="hljs-comment">// 此处有 bug，无法直接返回 getBoundingClientRect()</span>
+  <span class="hljs-keyword">const</span> {x, y, width, height} = element.getBoundingClientRect()
+  <span class="hljs-keyword">return</span> {x, y, width, height}
+}, dragBtn)
+<span class="hljs-comment">// 按下位置设置在滑块中心</span>
+<span class="hljs-keyword">const</span> x: <span class="hljs-built_in">number</span> = dragBtnPosition.x + dragBtnPosition.width / <span class="hljs-number">2</span>
+<span class="hljs-keyword">const</span> y: <span class="hljs-built_in">number</span> = dragBtnPosition.y + dragBtnPosition.height / <span class="hljs-number">2</span>
+
+<span class="hljs-keyword">if</span> (distance &gt; <span class="hljs-number">10</span>) {
+  <span class="hljs-comment">// 如果距离够长，则将距离设置为二段（模拟人工操作）</span>
+  <span class="hljs-keyword">const</span> distance1: <span class="hljs-built_in">number</span> = distance - <span class="hljs-number">10</span>
+  <span class="hljs-keyword">const</span> distance2: <span class="hljs-built_in">number</span> = <span class="hljs-number">10</span>
+  <span class="hljs-keyword">await</span> page.mouse.move(x, y)
+  <span class="hljs-keyword">await</span> page.mouse.down()
+  <span class="hljs-comment">// 第一次滑动</span>
+  <span class="hljs-keyword">await</span> page.mouse.move(x + distance1, y, {steps: <span class="hljs-number">30</span>})
+  <span class="hljs-keyword">await</span> page.waitFor(<span class="hljs-number">500</span>)
+  <span class="hljs-comment">// 第二次滑动</span>
+  <span class="hljs-keyword">await</span> page.mouse.move(x + distance1 + distance2, y, {steps: <span class="hljs-number">20</span>})
+  <span class="hljs-keyword">await</span> page.waitFor(<span class="hljs-number">500</span>)
+  <span class="hljs-keyword">await</span> page.mouse.up()
+} <span class="hljs-keyword">else</span> {
+  <span class="hljs-comment">// 否则直接滑到相应位置</span>
+  <span class="hljs-keyword">await</span> page.mouse.move(x, y)
+  <span class="hljs-keyword">await</span> page.mouse.down()
+  <span class="hljs-keyword">await</span> page.mouse.move(x + distance, y, {steps: <span class="hljs-number">30</span>})
+  <span class="hljs-keyword">await</span> page.mouse.up()
+}
+<span class="hljs-comment">// 等待验证结果</span>
+<span class="hljs-keyword">await</span> page.waitFor(<span class="hljs-number">3000</span>)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/5960988/48613026-91dfea00-e9c5-11e8-988b-42d823a3699a.png" alt="img"></p>
+<p>大概就这样。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/react-node-starter" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> React node starter
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/case-insensitive-auto-complete-in-oxs-terminal" class="">
+        Case insensitive auto-complete in OSX Terminal <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - React Note - Basic</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <div data-v-ab0ce35e="" class="toc-div"><ul data-v-d065e12c="" data-v-ab0ce35e="" class="toc-ul"><li data-v-d065e12c=""><a data-v-d065e12c="" href="#"><b data-v-d065e12c="">安装 </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#hello-world"><b data-v-d065e12c="">Hello World </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#jsx"><b data-v-d065e12c="">JSX 语法 </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-2"><b data-v-d065e12c="">元素 </b></a> <ul data-v-d065e12c=""><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-3">元素渲染 </a></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-4">元素更新 </a></li></ul></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-5"><b data-v-d065e12c="">组件 </b></a> <ul data-v-d065e12c=""><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-6">组件渲染 </a></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-7">组件使用与拆解 </a></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-8">参数只读 </a></li></ul></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-9"><b data-v-d065e12c="">状态管理与生命周期 </b></a> <ul data-v-d065e12c=""><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-10">添加状态管理 </a></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-11">添加生命周期 </a></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-12">正确使用状态 </a></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-16">数据流 </a></li></ul></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-17"><b data-v-d065e12c="">事件处理 </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-18"><b data-v-d065e12c="">条件渲染 </b></a> <ul data-v-d065e12c=""><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-19">行内判断 </a></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-20">阻止渲染 </a></li></ul></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-21"><b data-v-d065e12c="">循环 </b></a> <ul data-v-d065e12c=""><li data-v-d065e12c=""><a data-v-d065e12c="" href="#-22">循环组件 </a></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#key">Key </a></li></ul></li></ul></div></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">React Note - Basic</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">February 8, 2017</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#React" class="label-tag"><span data-v-3cd447cb="" class="label label-primary">React</span></a></div></section> <div data-v-713b0d1c=""><p>React 学习笔记（基础篇）。</p>
+<!--more-->
+<h2 id="">安装 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<pre><code class="language-bash">npm install -g create-react-app
+create-react-app hello-world
+<span class="hljs-built_in">cd</span> hello-world
+npm start
+</code></pre>
+<p>实践：create 这一步会同时执行 <code>npm install</code> 因此有失败的可能，多尝试几次就成功了。</p>
+<p>这个程序跟 vue-loader 很像，会造出一个简单的手脚架，包含了 Babel 编译器以及打包工具等等。但是细看它的 <code>package.json</code> 文件并没有包含上述内容：</p>
+<pre><code class="language-json">"devDependencies": {
+  "react-scripts": "0.8.5"
+},
+"dependencies": {
+  "react": "^15.4.2",
+  "react-dom": "^15.4.2"
+}
+</code></pre>
+<p>因此，跟 vue-loader 不一样的是，react 这个手脚架把无关内容都封装了。这么做我觉得有利有弊：它让人用起来更方便，然而不可能达到直接使用原组件的自由度了。相比之下，这里我更喜欢 vue-loader 的处理方式。</p>
+<h2 id="hello-world">Hello World <a class="header-anchor" href="#hello-world" aria-hidden="true">🔗</a></h2>
+<p>最简示例：</p>
+<pre><code class="language-js">ReactDOM.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, world!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+);
+</code></pre>
+<h2 id="jsx">JSX 语法 <a class="header-anchor" href="#jsx" aria-hidden="true">🔗</a></h2>
+<p>JSX 是 JavaScript 的一种语法扩展，实际上可以看做是语法糖。通过编译器，以下语法：</p>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> element = (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"greeting"</span>&gt;</span>
+    Hello, world!
+  <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+);
+</code></pre>
+<p>相当于：</p>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> element = {
+  <span class="hljs-attr">type</span>: <span class="hljs-string">'h1'</span>,
+  <span class="hljs-attr">props</span>: {
+    <span class="hljs-attr">className</span>: <span class="hljs-string">'greeting'</span>,
+    <span class="hljs-attr">children</span>: <span class="hljs-string">'Hello, world'</span>
+  }
+};
+</code></pre>
+<p>后者就是编译后的结果，JSX 语法块变成了一个对象（称之为 <code>React element</code>）。</p>
+<p>（JB 家的 IDE 已经对 JSX 语法提供了默认支持，不然这篇笔记就到此为止了）</p>
+<p>JSX 支持一些稍微高级的用法，如：</p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatName</span>(<span class="hljs-params">user</span>) </span>{
+  <span class="hljs-keyword">return</span> user.firstName + <span class="hljs-string">' '</span> + user.lastName;
+}
+
+<span class="hljs-keyword">const</span> user = {
+  <span class="hljs-attr">firstName</span>: <span class="hljs-string">'Harper'</span>,
+  <span class="hljs-attr">lastName</span>: <span class="hljs-string">'Perez'</span>
+};
+
+<span class="hljs-keyword">const</span> element = (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+    Hello, {formatName(user)}!
+  <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+);
+
+ReactDOM.render(
+  element,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+);
+</code></pre>
+<p>在任何地方使用 JSX：</p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getGreeting</span>(<span class="hljs-params">user</span>) </span>{
+  <span class="hljs-keyword">if</span> (user) {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, {formatName(user)}!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+  }
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, Stranger.<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+}
+</code></pre>
+<h2 id="-2">元素 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>上面有说到 <code>React element</code>（元素），<strong>元素</strong>的概念与<strong>组件</strong>不同：元素是组件的组成部分。</p>
+<h3 id="-3">元素渲染 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h3>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> element = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, world<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+ReactDOM.render(
+  element,
+  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'root'</span>)
+);
+</code></pre>
+<p>显然，它掌控了 DOM 中一个 ID 为 root 的节点，并往里面插入了元素。</p>
+<h3 id="-4">元素更新 <a class="header-anchor" href="#-4" aria-hidden="true">🔗</a></h3>
+<p><strong>已创建的元素是无法更新属性的</strong>。因此，如果要改变它，只能够重新创建并渲染一次。</p>
+<p>然而，托虚拟 DOM 的福，重新渲染并不代表重新渲染整个 DOM，React 会查找并只更新有改变的节点。</p>
+<p>但是一般不回这么做。因为有一点很重要：在设计一个元素的时候就要考虑到它在所有状态下的表现。这个其实在其它框架下也是一样的。</p>
+<h2 id="-5">组件 <a class="header-anchor" href="#-5" aria-hidden="true">🔗</a></h2>
+<p>React 是组件化框架，因此组件是组成一个应用的基础。组件的特点：独立、可重用。</p>
+<p>组件有两种定义方法：</p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Welcome</span>(<span class="hljs-params">props</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+}
+</code></pre>
+<p>或者：</p>
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Welcome</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  render() {
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, {this.props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+  }
+}
+</code></pre>
+<h3 id="-6">组件渲染 <a class="header-anchor" href="#-6" aria-hidden="true">🔗</a></h3>
+<p>一个简单的例子：</p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Welcome</span>(<span class="hljs-params">props</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+}
+
+<span class="hljs-keyword">const</span> element = <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Welcome</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Sara"</span> /&gt;</span>;
+
+ReactDOM.render(
+  element,
+  document.getElementById('root')
+);
+</span></code></pre>
+<p>可以看到元素组成了组件，组件又组成了元素，最后渲染在 DOM 上的是元素。</p>
+<p>这个跟 Vue 很像了，区别是 Vue 没有区分所谓的“元素”跟“组件”，通通都是组件。</p>
+<p>需要注意的是，在 React 世界中有个约定：自定义控件以大写字母打头。这是为了跟 HTML 元素有所区分。</p>
+<h3 id="-7">组件使用与拆解 <a class="header-anchor" href="#-7" aria-hidden="true">🔗</a></h3>
+<p>一个简单的例子：</p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Welcome</span>(<span class="hljs-params">props</span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>;
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    &lt;div&gt;
+      &lt;Welcome name="Sara" /&gt;
+      &lt;Welcome name="Cahal" /&gt;
+      &lt;Welcome name="Edite" /&gt;
+    &lt;/div&gt;
+  );
+}
+
+ReactDOM.render(
+  &lt;App /&gt;,
+  document.getElementById('root')
+);
+</code></pre>
+<p>需要注意的是，组件只能有一个根节点。（如例子中的 3 个 <code>Welcome</code> 必须包裹在 <code>div</code> 中）</p>
+<h3 id="-8">参数只读 <a class="header-anchor" href="#-8" aria-hidden="true">🔗</a></h3>
+<p>简单地说，React 不允许在控件内修改参数（包括值的修改以及对象修改）。允许修改的称之为“状态”（约等于 Vue 中的 component data）</p>
+<h2 id="-9">状态管理与生命周期 <a class="header-anchor" href="#-9" aria-hidden="true">🔗</a></h2>
+<h3 id="-10">添加状态管理 <a class="header-anchor" href="#-10" aria-hidden="true">🔗</a></h3>
+<p>组件的更新依赖于状态，因此需要实时更新的组件应在其内部建立状态管理机制（低耦合高内聚）。</p>
+<p>需要状态管理机的组件，必须使用 ES6 方式声明，如：</p>
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Clock</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = {<span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()};
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, world!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>It is {this.state.date.toLocaleTimeString()}.<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  }
+}
+
+ReactDOM.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Clock</span> /&gt;</span>,
+  document.getElementById('root')
+);
+</span></code></pre>
+<p>但是，此时，组件是无法更新的：因为状态在创建时就已经被决定了。</p>
+<h3 id="-11">添加生命周期 <a class="header-anchor" href="#-11" aria-hidden="true">🔗</a></h3>
+<p>代码有注释：</p>
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Clock</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-keyword">constructor</span>(props) {
+    <span class="hljs-keyword">super</span>(props);
+    <span class="hljs-keyword">this</span>.state = {<span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()};
+  }
+
+  <span class="hljs-comment">// 组件渲染到 DOM 后调用</span>
+  componentDidMount() {
+    <span class="hljs-keyword">this</span>.timerID = setInterval(
+      <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="hljs-keyword">this</span>.tick(),
+      <span class="hljs-number">1000</span>
+    );
+  }
+
+  <span class="hljs-comment">// 组件将销毁后调用</span>
+  componentWillUnmount() {
+    clearInterval(<span class="hljs-keyword">this</span>.timerID);
+  }
+  
+  tick() {
+    <span class="hljs-keyword">this</span>.setState({
+      <span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()
+    });
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, world!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>It is {this.state.date.toLocaleTimeString()}.<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+  }
+}
+
+ReactDOM.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Clock</span> /&gt;</span>,
+  document.getElementById('root')
+);
+</span></code></pre>
+<p>整个流程很简单清晰了：</p>
+<ol>
+<li>ReactDOM 渲染 <code>Clock</code>，并对 state 做第一次初始化</li>
+<li><code>render</code> 方法被调用，插入 DOM</li>
+<li><code>componentDidMount</code> 方法被调用，计时器启动，<code>tick</code> 每秒钟执行一次</li>
+<li>每次 <code>tick</code> 执行都调用 <code>setState</code> 方法去更新状态，这样 React 就知道需要更新 DOM 了</li>
+<li>当组件被从 DOM 移除后，<code>componentWillUnmount</code> 执行</li>
+</ol>
+<h3 id="-12">正确使用状态 <a class="header-anchor" href="#-12" aria-hidden="true">🔗</a></h3>
+<p>直接更改 state 属性是不会触发 UI 更新的。因此，有一些规则需要遵守。</p>
+<h4 id="-13">不直接修改状态 <a class="header-anchor" href="#-13" aria-hidden="true">🔗</a></h4>
+<p>在组件内进行修改状态操作，使用 <code>setState</code> 方法：</p>
+<pre><code class="language-js"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">this</span>.state.comment = <span class="hljs-string">'Hello'</span>;
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">this</span>.setState({<span class="hljs-attr">comment</span>: <span class="hljs-string">'Hello'</span>});
+</code></pre>
+<h4 id="-14">关于异步更新 <a class="header-anchor" href="#-14" aria-hidden="true">🔗</a></h4>
+<pre><code class="language-js"><span class="hljs-comment">// Wrong</span>
+<span class="hljs-keyword">this</span>.setState({
+  <span class="hljs-attr">counter</span>: <span class="hljs-keyword">this</span>.state.counter + <span class="hljs-keyword">this</span>.props.increment,
+});
+
+<span class="hljs-comment">// Correct</span>
+<span class="hljs-keyword">this</span>.setState(<span class="hljs-function">(<span class="hljs-params">prevState, props</span>) =&gt;</span> ({
+  <span class="hljs-attr">counter</span>: prevState.counter + props.increment
+}));
+</code></pre>
+<h4 id="-15">状态合并 <a class="header-anchor" href="#-15" aria-hidden="true">🔗</a></h4>
+<p>在进行 <code>setState</code> 的时候，只关心需要更改的属性即可，没有传入的属性会被保留。就好像新的状态被“合并”进入旧状态一样。</p>
+<h3 id="-16">数据流 <a class="header-anchor" href="#-16" aria-hidden="true">🔗</a></h3>
+<p>在 React 世界，组件与组件之间的状态传递是单向的，传值的方式就是将 state 当做 prop 传给子组件。</p>
+<h2 id="-17">事件处理 <a class="header-anchor" href="#-17" aria-hidden="true">🔗</a></h2>
+<p>跟 DOM 操作很像，区别：</p>
+<ol>
+<li>事件命名使用驼峰式</li>
+<li>直接向 JSX 中传入方法</li>
+<li>不支持 <code>return false</code> 操作</li>
+</ol>
+<p>例：</p>
+<pre><code class="language-js">// DOM
+&lt;button onclick="activateLasers()"&gt;
+  Activate Lasers
+&lt;/button&gt;
+
+// React
+&lt;button onClick={activateLasers}&gt;
+  Activate Lasers
+&lt;/button&gt;
+
+// A prevent default sample
+function ActionLink() {
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('The link was clicked.');
+  }
+
+  return (
+    &lt;a href="#" onClick={handleClick}&gt;
+      Click me
+    &lt;/a&gt;
+  );
+}
+
+// A class sample
+class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {isToggleOn: true};
+
+    // This binding is necessary to make `this` work in the callback
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(prevState =&gt; ({
+      isToggleOn: !prevState.isToggleOn
+    }));
+  }
+
+  render() {
+    return (
+      &lt;button onClick={this.handleClick}&gt;
+        {this.state.isToggleOn ? 'ON' : 'OFF'}
+      &lt;/button&gt;
+    );
+  }
+}
+</code></pre>
+<p>注意：这个 <code>e</code> 是 React 封装过的，但遵循 W3C 标准，因此无需做浏览器差异化处理。</p>
+<p>另外，<code>this.handleClick.bind</code> 方法是为了保证在 <code>onClick</code> 中调用了正确的 <code>this</code>，但使用箭头函数可以避免这个累赘的方法：</p>
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LoggingButton</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  <span class="hljs-comment">// This syntax ensures `this` is bound within handleClick.</span>
+  <span class="hljs-comment">// Warning: this is *experimental* syntax.</span>
+  handleClick = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'this is:'</span>, <span class="hljs-keyword">this</span>);
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.handleClick}</span>&gt;</span>
+        Click me
+      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+    );
+  }
+}
+</code></pre>
+<h2 id="-18">条件渲染 <a class="header-anchor" href="#-18" aria-hidden="true">🔗</a></h2>
+<p>例子：</p>
+<pre><code class="language-js">render() {
+  <span class="hljs-keyword">const</span> isLoggedIn = <span class="hljs-keyword">this</span>.state.isLoggedIn;
+  
+  <span class="hljs-keyword">let</span> button = <span class="hljs-literal">null</span>;
+  <span class="hljs-keyword">if</span> (isLoggedIn) {
+    button = &lt;LogoutButton onClick={this.handleLogoutClick} /&gt;;
+  } else {
+    button = &lt;LoginButton onClick={this.handleLoginClick} /&gt;;
+  }
+  
+  return (
+    &lt;div&gt;
+      &lt;Greeting isLoggedIn={isLoggedIn} /&gt;
+      {button}
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+<h3 id="-19">行内判断 <a class="header-anchor" href="#-19" aria-hidden="true">🔗</a></h3>
+<p>例子：</p>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Mailbox</span>(<span class="hljs-params">props</span>) </span>{
+  <span class="hljs-keyword">const</span> unreadMessages = props.unreadMessages;
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      {unreadMessages.length &gt; 0 &amp;&amp;
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>
+          You have {unreadMessages.length} unread messages.
+        <span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+      }
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+
+<span class="hljs-keyword">const</span> messages = [<span class="hljs-string">'React'</span>, <span class="hljs-string">'Re: React'</span>, <span class="hljs-string">'Re:Re: React'</span>];
+ReactDOM.render(
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Mailbox</span> <span class="hljs-attr">unreadMessages</span>=<span class="hljs-string">{messages}</span> /&gt;</span>,
+  document.getElementById('root')
+);
+</span></code></pre>
+<p>这段代码的工作方式跟 JavaScript 一致：</p>
+<ul>
+<li><code>true &amp;&amp; expression</code> -&gt; <code>expression</code></li>
+<li><code>false &amp;&amp; expression</code> -&gt; <code>false</code></li>
+</ul>
+<p>因此，当 <code>unreadMessages.length &gt; 0</code> 为真时，后面的 JSX 会被渲染，反则不会。</p>
+<p>除此以外还有三元表达式：</p>
+<pre><code class="language-js">render() {
+  <span class="hljs-keyword">const</span> isLoggedIn = <span class="hljs-keyword">this</span>.state.isLoggedIn;
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      The user is <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>{isLoggedIn ? 'currently' : 'not'}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> logged in.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre>
+<h3 id="-20">阻止渲染 <a class="header-anchor" href="#-20" aria-hidden="true">🔗</a></h3>
+<p>在组件的 <code>render</code> 方法内 <code>return null</code> 会阻止组件的渲染，但是其生命周期不受影响。</p>
+<h2 id="-21">循环 <a class="header-anchor" href="#-21" aria-hidden="true">🔗</a></h2>
+<p>一个简单的例子：</p>
+<pre><code class="language-js">const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =&gt;
+  &lt;li&gt;{number}&lt;/li&gt;
+);
+
+ReactDOM.render(
+  &lt;ul&gt;{listItems}&lt;/ul&gt;,
+  document.getElementById('root')
+);
+</code></pre>
+<h3 id="-22">循环组件 <a class="header-anchor" href="#-22" aria-hidden="true">🔗</a></h3>
+<p>一个列表组件示例：</p>
+<pre><code class="language-js">function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =&gt;
+    &lt;li key={number.toString()}&gt;
+      {number}
+    &lt;/li&gt;
+  );
+  return (
+    &lt;ul&gt;{listItems}&lt;/ul&gt;
+  );
+}
+
+const numbers = [1, 2, 3, 4, 5];
+ReactDOM.render(
+  &lt;NumberList numbers={numbers} /&gt;,
+  document.getElementById('root')
+);
+</code></pre>
+<p>注意，这里对列表项添加了一个 <code>key</code> 属性。</p>
+<h3 id="key">Key <a class="header-anchor" href="#key" aria-hidden="true">🔗</a></h3>
+<p><code>Key</code> 是 React 用来追踪列表项的一个属性。跟 angular 以及 vue 中 <code>track-by</code> 的概念一样。</p>
+<p>如果列表项没有唯一标识，也可以用索引作为 key （不推荐）：</p>
+<pre><code class="language-js">const todoItems = todos.map((todo, index) =&gt;
+  // Only do this if items have no stable IDs
+  &lt;li key={index}&gt;
+    {todo.text}
+  &lt;/li&gt;
+);
+</code></pre>
+<p>注意：<code>Key</code> 只能直接在数组循环体内定义。如：</p>
+<pre><code class="language-js">function ListItem(props) {
+  const value = props.value;
+  return (
+    // Wrong! There is no need to specify the key here:
+    &lt;li key={value.toString()}&gt;
+      {value}
+    &lt;/li&gt;
+  );
+}
+
+function NumberList(props) {
+  const numbers = props.numbers;
+  const listItems = numbers.map((number) =&gt;
+    // Wrong! The key should have been specified here:
+    &lt;ListItem value={number} /&gt;
+  );
+  return (
+    &lt;ul&gt;
+      {listItems}
+    &lt;/ul&gt;
+  );
+}
+</code></pre>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/2016" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> 2016
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/meanjs-5-x-ng-repeat-flashing" class="">
+        MEAN.JS 在 0.5 版本下发现的 NG-REPEAT 闪动问题 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

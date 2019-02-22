@@ -1,0 +1,84 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - 使用 Vue Transition 实现高度渐变动画</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">使用 Vue Transition 实现高度渐变动画</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">March 16, 2017</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Vue" class="label-tag"><span data-v-3cd447cb="" class="label label-success">Vue</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#CSS3" class="label-tag"><span data-v-3cd447cb="" class="label label-primary">CSS3</span></a></div></section> <div data-v-713b0d1c=""><p>CSS Transition 中的高度从 0 到 auto 以及从 auto 到 0 是个艰难的任务（相比于其它属性的 transition 而言），原因也很简单：就是浏览器不支持此类 CSS 动画，无论在何种情况下，它都不会成功。</p>
+<p>但是高度渐变是个很常用的动画效果，如果绕过纯 CSS <code>height</code> 属性，有如下方式来实现：</p>
+<ul>
+<li>使用 <code>max-height</code> 属性，为元素设置一个不可能达到的最大高度，然后将 transition 转换为 <code>max-height</code> 从 0 到某个固定的值；</li>
+<li>使用 <code>transform: scaleY</code> 实现；</li>
+<li>使用 JavaScript 动画。</li>
+</ul>
+<p>上面的解决方案都从某种程度上解决了问题，但是，各有各的限制于缺点：</p>
+<ul>
+<li>使用 <code>max-height</code> 会造成动画效果与预期有些许出入（加速与延迟），实际体验是，它与实际 <code>height</code> 区别越大，这种感觉就会越明显，原因也很容易想到，因为 transition 的起点与终点均不在实际的起点与终点上；</li>
+<li>使用 <code>scaleY</code> 有两个问题：一是动效与高度渐变不一样，元素的内容看上去是被压缩了（而不是被收起或展开），这个倒可以忍耐。可恶的是第二点，它虽然看起来是渐变了，然而高度却并没有被渐变！意思是，在它下面的元素会在动画结束后"跳"到另一个位置而不是平滑地渐变到这个位置；</li>
+<li>使用 JavaScript 动画其实已经可以完美地实现高度渐变了，然而，问题是我们需要引入额外的 lib 来做成这件事，我可没心情纯 js 手写动画。</li>
+</ul>
+<p>所以，我的目标是：</p>
+<ol>
+<li>使用 css transition 完成动画；</li>
+<li>动画效果必须完美；</li>
+<li>与 vue transition 组件集成。</li>
+</ol>
+<p>这实际上是一个很艰难的任务。经过了大量的失败尝试，最终还是 google 救了我。。下面先直接上解决方案。</p>
+<!--more-->
+<p>css 部分非常简单，因为它不可以完成从 0 到 auto 的渐变，却可以完成从 0 到固定值的渐变，因此，思路是渐变仍由 css 完成，但会通过钩子给元素做些魔法操作：</p>
+<pre><code class="language-css"><span class="hljs-selector-class">.collapse</span> {
+  <span class="hljs-attribute">transition</span>: height .<span class="hljs-number">3s</span> ease-in-out;
+  <span class="hljs-attribute">overflow</span>: hidden;
+}
+</code></pre>
+<p>下面是重点 vue transition 部分：</p>
+<pre><code class="language-js">on: {
+  enter (el) {
+    el.style.height = <span class="hljs-string">'auto'</span>
+    <span class="hljs-comment">// noinspection JSSuspiciousNameCombination</span>
+    <span class="hljs-keyword">let</span> endWidth = <span class="hljs-built_in">window</span>.getComputedStyle(el).height
+    el.style.height = <span class="hljs-string">'0px'</span>
+    el.offsetHeight <span class="hljs-comment">// force repaint</span>
+    <span class="hljs-comment">// noinspection JSSuspiciousNameCombination</span>
+    el.style.height = endWidth
+  },
+  afterEnter (el) {
+    el.style.height = <span class="hljs-literal">null</span>
+  },
+  leave (el) {
+    el.style.height = <span class="hljs-built_in">window</span>.getComputedStyle(el).height
+    el.offsetHeight <span class="hljs-comment">// force repaint</span>
+    el.style.height = <span class="hljs-string">'0px'</span>
+  },
+  afterLeave (el) {
+    el.style.height = <span class="hljs-literal">null</span>
+  }
+}
+</code></pre>
+<p>这些钩子大概是这样的：</p>
+<ul>
+<li><code>enter</code> 会在元素从无到有的时候触发，即我们期望的高度从 0 到 auto 的时候；</li>
+<li><code>afterEnter</code> 会在 <code>enter</code> 结束后触发；</li>
+<li><code>leave</code> 会在元素从有到无，即高度从 auto 到 0 的时候触发；</li>
+<li><code>afterLeave</code> 同理</li>
+</ul>
+<p>这些钩子内的代码真的很魔性，大概是这样的：</p>
+<p><strong>enter</strong></p>
+<p>这个方法被调用的时候，元素实际上已经被插入到 dom 中（ <code>v-if</code> ）或者 display 属性不为 none 了（ <code>v-show</code> ），因此，是可以获取到它的实际高度的。</p>
+<ol>
+<li>先将其高度设置为 <code>auto</code>，然后通过 <code>getComputedStyle</code> 方法来获取其实际高度；</li>
+<li>将其高度设置为 <code>0</code>；</li>
+<li>将其高度设置为第一步取得的实际高度。</li>
+</ol>
+<p>但是！这么做有个致命问题，我是在同一个方法内同步完成这些步骤的，因此，第二步和第三步执行的结果看起来就像跳过了第二步而只执行了第三步一样，这样就没有高度从 0 到某个值的过程，自然也就没有渐变动画了。</p>
+<p><strong>重点！</strong></p>
+<p><strong>这里说的魔法，实际上就是那一句看似啥都没做的 <code>el.offsetHeight</code>，它使浏览器强制进入了一个 repaint 流程。至于它为什么能实现这个功能，真的不太清楚，google 一波也只是知其然不知其所以然，我们甚至不用给它赋值，只要引用一次就行了。可以看做一个非常神奇的技巧。实测在 IE 10 以上 / Chrome / Firefox / Safari 上均能工作。</strong></p>
+<p>因此，enter 的流程变为：</p>
+<ol>
+<li>先将其高度设置为 <code>auto</code>，然后通过 <code>getComputedStyle</code> 方法来获取其实际高度；</li>
+<li>将其高度设置为 <code>0</code>；</li>
+<li>强制浏览器重绘；</li>
+<li>将其高度设置为第一步取得的实际高度。</li>
+</ol>
+<p>这样动画就成功执行了！</p>
+<p>理解了 <code>enter</code> 过程，剩下的 <code>afterEnter</code> / <code>leave</code> / <code>afterLeave</code> 钩子，里面的内容就很容易理解了。</p>
+<p>效果演示：<a href="https://uiv.wxsm.space/collapse">https://uiv.wxsm.space/collapse</a></p>
+<p>回过头来看一下实现原理其实很简单粗暴，因此，除了在 vue 上面可以这么玩，其实其他支持 css transition 的框架肯定也是可以的（如 angular 中有 ngAnimate 可以实现），最终达到的动画效果十分完美，并且没有借助主框架以外的任何额外 js 库。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/change-socks-proxy-to-http" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Change SOCKS Proxy to HTTP
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/uiv-release" class="">
+        基于 Vue 2 与 Bootstrap 3 的组件库 uiv 发布啦 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - 为 Vue 组件库实现国际化支持</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">为 Vue 组件库实现国际化支持</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">June 8, 2017</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Vue" class="label-tag"><span data-v-3cd447cb="" class="label label-success">Vue</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#i18n" class="label-tag"><span data-v-3cd447cb="" class="label label-default">i18n</span></a></div></section> <div data-v-713b0d1c=""><p>其实这部分代码主要是参考着 element ui 和 iview 做的（iview 又是抄的 element），对关键代码进行了一些简化。主要需要实现的需求有：</p>
+<ol>
+<li>用户可以更改、切换组件库使用的语言（应用级别）</li>
+<li>用户可以自定义组件使用的措辞</li>
+<li>兼容 <code>vue-i18n</code> 这个库</li>
+</ol>
+<!--more-->
+<h2 id="">关键代码 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<h3 id="srclocalelangen-usjs">src/locale/lang/en-US.js <a class="header-anchor" href="#srclocalelangen-usjs" aria-hidden="true">🔗</a></h3>
+<p>首先是 Locale 文件，把措辞映射到一个 key 上面去，比如说英文：</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">uiv</span>: {
+    <span class="hljs-attr">datePicker</span>: {
+      <span class="hljs-attr">clear</span>: <span class="hljs-string">'Clear'</span>,
+      <span class="hljs-attr">today</span>: <span class="hljs-string">'Today'</span>,
+      <span class="hljs-attr">month</span>: <span class="hljs-string">'Month'</span>,
+      <span class="hljs-attr">month1</span>: <span class="hljs-string">'January'</span>,
+      <span class="hljs-attr">month2</span>: <span class="hljs-string">'February'</span>,
+      <span class="hljs-comment">// ...</span>
+    }
+  }
+}
+</code></pre>
+<p>对应的中文文件只需要把相应的 Value 翻译成中文即可。这里有一个最基本的设想就是，<strong>如果需要增加一种语言，应该是只需要增加一个这样的文件即可</strong>。</p>
+<h3 id="srclocaleindexjs">src/locale/index.js <a class="header-anchor" href="#srclocaleindexjs" aria-hidden="true">🔗</a></h3>
+<pre><code class="language-javascript"><span class="hljs-keyword">import</span> defaultLang <span class="hljs-keyword">from</span> <span class="hljs-string">'./lang/en-US'</span>
+<span class="hljs-keyword">let</span> lang = defaultLang
+
+<span class="hljs-keyword">let</span> i18nHandler = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> vuei18n = <span class="hljs-built_in">Object</span>.getPrototypeOf(<span class="hljs-keyword">this</span>).$t
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> vuei18n === <span class="hljs-string">'function'</span>) {
+    <span class="hljs-keyword">return</span> vuei18n.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>)
+  }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> t = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">path, options</span>) </span>{
+  <span class="hljs-keyword">let</span> value = i18nHandler.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>)
+  <span class="hljs-keyword">if</span> (value !== <span class="hljs-literal">null</span> &amp;&amp; <span class="hljs-keyword">typeof</span> value !== <span class="hljs-string">'undefined'</span>) {
+    <span class="hljs-keyword">return</span> value
+  }
+  <span class="hljs-keyword">const</span> array = path.split(<span class="hljs-string">'.'</span>)
+  <span class="hljs-keyword">let</span> current = lang
+
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>, j = array.length; i &lt; j; i++) {
+    <span class="hljs-keyword">const</span> property = array[i]
+    value = current[property]
+    <span class="hljs-keyword">if</span> (i === j - <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> value
+    <span class="hljs-keyword">if</span> (!value) <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>
+    current = value
+  }
+  <span class="hljs-keyword">return</span> <span class="hljs-string">''</span>
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> use = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">l</span>) </span>{
+  lang = l || lang
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> i18n = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">fn</span>) </span>{
+  i18nHandler = fn || i18nHandler
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {use, t, i18n}
+</code></pre>
+<p>这段代码乍一看挺复杂，其实弄明白后就很简单：</p>
+<ol>
+<li><code>i18nHandler</code> 是用来检测并套用 <code>vue-i18n</code> 的，如果用户安装了这个插件，则会使用绑定在 Vue 实例上的 <code>$t</code> 方法进行取值</li>
+<li><code>t</code> 方法是用来取值的。首先看能否用 <code>i18nHandler</code> 取到，如果能取到则直接用，取不到就要自行解决了。最后返回取到（或者取不到，则为空）的值。</li>
+<li><code>use</code> 与 <code>i18n</code> 这两个方法是在整个组件库作为插件被 Vue 安装的时候调用的，主要用来让用户自定义语言等等。</li>
+</ol>
+<p>原版的 <code>t</code> 方法有一个与之配合的模板字符串替换的方法（比如说处理 <code>My name is ${0}</code> 这种 Value），这里简洁起见把它删掉了，实际上也暂时用不到。</p>
+<h3 id="srcmixinslocalejs">src/mixins/locale.js <a class="header-anchor" href="#srcmixinslocalejs" aria-hidden="true">🔗</a></h3>
+<p>一个 mixin，很简单：</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { t } <span class="hljs-keyword">from</span> <span class="hljs-string">'../locale'</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">methods</span>: {
+    t (...args) {
+      <span class="hljs-keyword">return</span> t.apply(<span class="hljs-keyword">this</span>, args)
+    }
+  }
+}
+</code></pre>
+<p>就是给组件加上一个 <code>t</code> 方法。那么现在组件在需要根据语言切换的地方，只要加入这个 mixin 并在输出的地方使用 <code>t(key)</code> 即可，比如 <code>t('uiv.datePicker.month1')</code> 在默认的配置下会使用 <code>January</code>，而如果用户配置了中文则会使用 <code>一月</code>。</p>
+<h3 id="srccomponentsindexjs">src/components/index.js <a class="header-anchor" href="#srccomponentsindexjs" aria-hidden="true">🔗</a></h3>
+<p>最后一步：将上述的两个方法 <code>use</code> 和 <code>i18n</code> 写入到组件库入口的 <code>install</code> 方法中去。</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">const</span> install = <span class="hljs-function">(<span class="hljs-params">Vue, options = {}</span>) =&gt;</span> {
+  locale.use(options.locale)
+  locale.i18n(options.i18n)
+  <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<h2 id="-2">如何使用 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<h3 id="-3">简单用法 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h3>
+<p>切换中文：</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">import</span> Vue <span class="hljs-keyword">from</span> <span class="hljs-string">'vue'</span>
+<span class="hljs-keyword">import</span> uiv <span class="hljs-keyword">from</span> <span class="hljs-string">'uiv'</span>
+<span class="hljs-keyword">import</span> locale <span class="hljs-keyword">from</span> <span class="hljs-string">'uiv/src/locale/lang/zh-CN'</span>
+
+Vue.use(uiv, { locale })
+</code></pre>
+<p>显然, 如果对预设的措辞不满意，我们还可以自定义, 只需要创造一个 <code>locale</code> 对象并替换之即可。</p>
+<h3 id="vue-i18n">配合 Vue I18n 使用 <a class="header-anchor" href="#vue-i18n" aria-hidden="true">🔗</a></h3>
+<p>只要跟着 <code>vue-i18n</code> 的文档把自己的 App 配好就行，不用管组件库，会自动适配。<strong>但有一点要注意：需要先将 组件库的语言包合并到 App 语言包中去</strong>。比如：</p>
+<pre><code class="language-javascript"><span class="hljs-keyword">import</span> uivLocale <span class="hljs-keyword">from</span> <span class="hljs-string">'uiv/src/locale/lang/zh-CN'</span>
+
+<span class="hljs-keyword">let</span> appLocale = <span class="hljs-built_in">Object</span>.assign({}, uivLocale, {
+  <span class="hljs-comment">// ...</span>
+})
+
+<span class="hljs-comment">// 接下来该干嘛干嘛</span>
+</code></pre>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/travis-ci-in-github" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Travis CI in Github
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/koa-note" class="">
+        Koa Note <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

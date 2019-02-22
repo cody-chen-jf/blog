@@ -1,0 +1,151 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Angular 教程：手机展示应用</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Angular 教程：手机展示应用</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">December 21, 2015</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#AngularJs" class="label-tag"><span data-v-3cd447cb="" class="label label-danger">AngularJs</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#NodeJs" class="label-tag"><span data-v-3cd447cb="" class="label label-success">NodeJs</span></a></div></section> <div data-v-713b0d1c=""><p>本系列教程是<a href="https://docs.angularjs.org/tutorial">AngularJs官方教程</a>（基于<a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0协议</a>发布）的个人翻译，原版权属<a href="https://angularjs.org/">AngularJs官方网站</a>所有，主要用于学习与分享，如有纰漏敬请指出。转载请注明出处。 学习AngularJs的方法之一就是跟着本教程做一个完整的项目，这个项目会向你介绍一个 AngularJS Web App 应有的架构体系。项目的目的是构建一个安卓设备目录，它可以显示一个带过滤/排序功能的列表页，同时允许用户点击列表中的设备以查看其中的详细内容。就像这样：</p>
+<p><img src="https://user-images.githubusercontent.com/5960988/48595800-401d6c80-e991-11e8-94ca-54fa12eb9f8c.png" alt=""></p>
+<p>在不使用任何原生扩展包以及插件的情况下，跟随本教程来体会 Angular 是如何让浏览器变得更聪明的：</p>
+<ul>
+<li>学习使用客户端数据绑定来创建会随着用户操作而改变的带有动态数据的视图（View）</li>
+<li>学习不使用 DOM 操作来保持视图与数据的同步</li>
+<li>学习使用 Karma 和 Protractor 测试框架</li>
+<li>学习使用依赖注入（Dependency Injection）和服务（Services）来使得 Web 设计更优雅</li>
+</ul>
+<p>本教程可以让你学会：</p>
+<ul>
+<li>在主流浏览器上创建一个 Angular 动态应用</li>
+<li>使用数据绑定让你的数据模型（Model）和视图互连</li>
+<li>使用 Karma 创建和执行单元测试</li>
+<li>使用 Protractor 创建和执行端到端测试</li>
+<li>将应用的控制逻辑从模板（Template）转移到控制器（Controller）</li>
+<li>使用 Angular Service 从服务端获取数据</li>
+<li>使用 ngAnimate 为应用添加动画效果</li>
+<li>如何寻找其它 Angular 的学习资源</li>
+</ul>
+<p>本教程将指导构读者建一个简单应用的完整过程，包括如何编写 / 执行单元 / 端到端测试。每个步骤最后的试验环节将为你提供更多的关于学习 AngularJS / 本项目的建议。 几个小时或者一天的时间就足以完成教程了。</p>
+<!--more-->
+<h2 id="">起步 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>本章节余下的内容会指导你完成本地开发环境的搭建，如果你只想读教程的话就可以直接进入第一步：<a href="/p/angular-tutorial-bootstrapping/">Step 0 - 起步</a></p>
+<h2 id="-2">使用代码 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>本教程使用&nbsp;<a href="http://git-scm.com/">Git</a>&nbsp;来管理源代码。</p>
+<h3 id="git">安装Git <a class="header-anchor" href="#git" aria-hidden="true">🔗</a></h3>
+<p>从&nbsp;<a href="http://git-scm.com/download">http://git-scm.com/download</a>&nbsp;下载和安装 Git，在&nbsp;git&nbsp;命令行界面中，将会使用到的命令有：</p>
+<ul>
+<li><code>git clone</code>：克隆一个远程代码仓库到本地机器</li>
+<li><code>git checkout ...</code>：登入 / 登出一个仓库的不同分支或标签</li>
+</ul>
+<h3 id="angular-phonecat">下载 angular-phonecat <a class="header-anchor" href="#angular-phonecat" aria-hidden="true">🔗</a></h3>
+<p>用以下命令从 GitHub 下载 <a href="https://github.com/angular/angular-phonecat">angular-phonecat repository</a>：</p>
+<pre><code>git clone --depth=14 https://github.com/angular/angular-phonecat.git
+</code></pre>
+<p>这条命令会在你的当前目录下创建<code>angular-phonecat</code>代码仓库。</p>
+<blockquote>
+<p><code>--depth=14</code>选项会告诉 Git 只拉取最新的14条 Commits，这会让你的下载速度快很多。</p>
+</blockquote>
+<p>把当前目录转到<code>angular-phonecat</code>：</p>
+<pre><code>cd angular-phonecat
+</code></pre>
+<p>从现在开始，如非特别说明，教程中所有的指令都是在<code>angular-phonecat</code>目录下执行的。</p>
+<h3 id="nodejs">安装 Node.js <a class="header-anchor" href="#nodejs" aria-hidden="true">🔗</a></h3>
+<p>如果想要运行已经预配置好的 web 服务器和测试工具，你还需要安装&nbsp;<a href="http://nodejs.org/">Node.js v0.10.27+</a></p>
+<p>你可以通过&nbsp;<a href="http://nodejs.org/download/">http://nodejs.org/download/</a>&nbsp;下载 Node.js 安装包。 使用以下命令查看安装好的 Node.js 版本：</p>
+<pre><code>node --version
+</code></pre>
+<p>在基于 Debian 的分布式系统下，存在另外一个名叫<code>node</code>的工具，这样一来名字就冲突了。推荐的解决方案是安装<code>nodejs-legacy</code>包，这个包会将我们需要的<code>node</code>重命名为<code>nodejs</code></p>
+<pre><code>apt-get install nodejs-legacy npm
+nodejs --version
+npm --version
+</code></pre>
+<blockquote>
+<p>如果需要在本地环境下运行不同版本的 Nodejs，可以考虑安装&nbsp;<a href="https://github.com/creationix/nvm" title="Node Version Manager Github Repo link">Node Version Manager (nvm)</a></p>
+</blockquote>
+<p>安装好 Nodejs 后，可以通过以下命令安装项目依赖：</p>
+<pre><code>npm install
+</code></pre>
+<p>这条指令会读取 angular-phonecat 目录下的<code>package.json</code>文件，并且把以下内容下载到<code>node_modules</code>目录：</p>
+<ul>
+<li><a href="http://bower.io/">Bower</a>&nbsp;- 客户端的包管理器</li>
+<li><a href="https://github.com/nodeapps/http-server">Http-Server</a>&nbsp;- 一个简单的本地静态 web 服务器</li>
+<li><a href="https://github.com/karma-runner/karma">Karma</a>&nbsp;- 单元测试框架</li>
+<li><a href="https://github.com/angular/protractor">Protractor</a>&nbsp;- 端到端（E2E）测试框架</li>
+</ul>
+<p>执行<code>npm install</code>也会自动地使用 bower 将 Angular 下载到<code>app/bower_components</code>目录。</p>
+<blockquote>
+<p>需要注意的是，angular-phonecat 项目使用 npm 脚本来安装和运行这些工具，这意味着它们在默认情况下没有被全局安装。查看下面的<strong>安装帮助工具</strong>以获得更多信息。</p>
+</blockquote>
+<p>本项目为了简化开发过程中一些无关紧要的任务，已经预设了一些 npm 脚本：</p>
+<ul>
+<li>
+<p><code>npm start</code></p>
+<ul>
+<li>启动一个本地开发服务器</li>
+</ul>
+</li>
+<li>
+<p><code>npm test</code></p>
+<ul>
+<li>启动 Karmar</li>
+</ul>
+</li>
+<li>
+<p><code>npm run protractor</code></p>
+<ul>
+<li>启动 Protractor</li>
+</ul>
+</li>
+<li>
+<p><code>npm run update-webdriver</code></p>
+<ul>
+<li>安装 Protractor 的依赖驱动</li>
+</ul>
+</li>
+</ul>
+<h3 id="-3">安装帮助工具（可选） <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h3>
+<p>Bower，Http-Server，Karma 和 Protractor 模块同时也是可执行的工具，可以全局安装并且通过终端、命令行直接执行。在本教程中你不需要这么做，但是如果你想要直接执行它们，你可以使用<code>sudo npm install -g ...</code>全局安装这些模块。</p>
+<p>比如，使用以下命令来全局安装Bower：</p>
+<pre><code>sudo npm install -g bower
+</code></pre>
+<p>（如果在 windows 下请忽略 sudo ）</p>
+<p>然后你就可以直接执行 bower 工具了，像这样：</p>
+<pre><code>bower install
+</code></pre>
+<h3 id="-4">启动开发服务器 <a class="header-anchor" href="#-4" aria-hidden="true">🔗</a></h3>
+<p>虽然本 Angular 应用是以纯客户端代码组成，并且可以使用浏览器通过点击文件系统中的页面直接打开，但我们还是需要一个 Http web 服务器，尤其是出于一些安全方面的考虑，在页面是从文件系统中直接加载的情况下，大多数主流浏览器会阻止 JavaScript 发送异步请求。 本项目使用了一个简单的静态 Web 服务器来搭载应用。使用以下命令来启动它：</p>
+<pre><code>npm start
+</code></pre>
+<p>这条命令会创建一个监听 8000 端口的本机服务器，你现在可以通过以下地址访问应用了： <a href="http://localhost:8000/app/index.html">http://localhost:8000/app/index.html</a></p>
+<blockquote>
+<p>如果想要更改 Web 服务器启动的 ip 或者&nbsp;port， 可以编辑<code>package.json</code>中的<code>start</code>脚本。你可以使用<code>-a</code>来设置地址，使用<code>-p</code>来设置端口号。</p>
+</blockquote>
+<h3 id="-5">执行单元测试 <a class="header-anchor" href="#-5" aria-hidden="true">🔗</a></h3>
+<p>单元测试关注应用程序中细小且独立的代码块，以保证 JavaScript 代码运行的正确性。单元测试的代码存放在<code>test/unit</code>目录中。 本项目使用&nbsp;<a href="https://github.com/karma-runner/karma">Karma</a>&nbsp;作为单元测试框架，使用以下命令启动 Karma：</p>
+<pre><code>npm test
+</code></pre>
+<p>这条命令会启动 Karma 单元测试执行器。Karma 会读取配置文件<code>test/karma.conf.js</code>，在其指导下完成：</p>
+<ul>
+<li>打开 Chrome 浏览器并且连接到 Karma</li>
+<li>在浏览器中执行所有单元测试</li>
+<li>在终端或命令行中打印测试结果</li>
+<li>监听项目下的所有 JavaScript 代码，当它们发生改变的时候重新执行单元测试</li>
+</ul>
+<p>你可以在开发过程中保持 Karma 后台运行，它会及时地告诉你修改后的代码是否通过了单元测试。</p>
+<h3 id="-6">执行端到端测试 <a class="header-anchor" href="#-6" aria-hidden="true">🔗</a></h3>
+<p>端到端测试通过模拟一个真正的用户与运行在浏览器上的应用程序实时交互来保证整个应用在客户端上表现与行为的正确性。 端到端测试的代码存放在<code>test/e2e</code>目录中。 本项目使用&nbsp;<a href="https://github.com/angular/protractor">Protractor</a>&nbsp;来执行端到端测试。Protractor 为了与浏览器交互将依赖于一些驱动，你可以通过以下指令安装它们：</p>
+<pre><code>npm run update-webdriver
+</code></pre>
+<p>（运行一次就够了）</p>
+<p>因为 Protractor 通过与应用程序交互来工作，所以我们需要先启动 Web 服务器：</p>
+<pre><code>npm start
+</code></pre>
+<p>然后在另外一个终端或命令行窗口中，使用以下命令启动 Protractor 测试脚本：</p>
+<pre><code>npm run protractor
+</code></pre>
+<p>Protractor 会读取配置文件<code>test/protractor-conf.js</code>，在其指导下完成：</p>
+<ul>
+<li>打开 Chrome 浏览器并连接到应用程序</li>
+<li>在浏览器中执行所有的端到端测试</li>
+<li>在终端或命令行中打印测试结果</li>
+<li>关闭浏览器并退出</li>
+</ul>
+<p>当你对 HTML 视图做出改动或者想要测试整个应用程序是否运行正常的时候，最好是执行一次端到端测试。在提交代码前执行此类测试是一种普遍的做法。</p>
+<p>现在你已经在本地机器上搭好了环境，我们可以从头开始本教程了：<a href="/p/angular-tutorial-bootstrapping/">Step 0 - 起步</a></p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/2048-game-base-on-jquery" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> jQuery 写的 2048 小游戏
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/angular-tutorial-bootstrapping" class="">
+        Angular 教程：起步 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

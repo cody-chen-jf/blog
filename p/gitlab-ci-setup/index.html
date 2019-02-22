@@ -1,0 +1,116 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Gitlab CI Setup</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Gitlab CI Setup</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">July 19, 2018</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#CI" class="label-tag"><span data-v-3cd447cb="" class="label label-default">CI</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Gitlab" class="label-tag"><span data-v-3cd447cb="" class="label label-warning">Gitlab</span></a></div></section> <div data-v-713b0d1c=""><!-- 「」 -->
+<p>Gitlab 有一套内置的 CI 系统，相比集成 Jenkins 来说更加方便一些，用法也稍为简单。以下是搭建过程。</p>
+<p>前置准备：须要准备一台用来跑 CI 任务的机器（可以是 Mac / Linux / Windows 之一）。</p>
+<!-- more -->
+<h2 id="gitlab-ciyml">创建 <code>.gitlab-ci.yml</code> 文件 <a class="header-anchor" href="#gitlab-ciyml" aria-hidden="true">🔗</a></h2>
+<p>和 Github CI 一样，Gitlab CI 也使用 <a href="https://en.wikipedia.org/wiki/YAML">YAML</a> 文件来定义项目的整个构建任务。只要在需要集成 CI 的项目根目录下添加这份文件并写入内容，默认情况下 Gitlab 就会为此项目启用构建。</p>
+<p>配置文档：<a href="https://docs.gitlab.com/ee/ci/yaml/README.html">https://docs.gitlab.com/ee/ci/yaml/README.html</a></p>
+<p>一份较为完整的配置文件样例：</p>
+<pre><code class="language-yaml"><span class="hljs-comment"># 指定 docker 镜像</span>
+<span class="hljs-attr">image:</span> <span class="hljs-attr">node:9.3.0</span>
+
+<span class="hljs-comment"># 为 docker 镜像安装 ssh-agent 以执行部署任务</span>
+<span class="hljs-attr">before_script:</span>
+<span class="hljs-bullet">  -</span> <span class="hljs-string">'which ssh-agent || ( apt-get update -y &amp;&amp; apt-get install openssh-client -y )'</span>
+<span class="hljs-bullet">  -</span> <span class="hljs-string">eval</span> <span class="hljs-string">$(ssh-agent</span> <span class="hljs-bullet">-s)</span>
+<span class="hljs-bullet">  -</span> <span class="hljs-string">echo</span> <span class="hljs-string">"$SSH_PRIVATE_KEY"</span> <span class="hljs-string">| tr -d '\r' | ssh-add - &gt; /dev/null
+  - mkdir -p ~/.ssh
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" &gt; ~/.ssh/config
+  - chmod 700 ~/.ssh
+
+# 定义构建的三个阶段
+</span><span class="hljs-attr">stages:</span>
+<span class="hljs-bullet">  -</span> <span class="hljs-string">build</span>
+<span class="hljs-bullet">  -</span> <span class="hljs-string">test</span>
+<span class="hljs-bullet">  -</span> <span class="hljs-string">deploy</span>
+
+<span class="hljs-comment"># 定义可缓存的文件夹</span>
+<span class="hljs-attr">cache:</span>
+<span class="hljs-attr">  paths:</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">node_modules/</span>
+
+<span class="hljs-comment"># 构建任务</span>
+<span class="hljs-attr">build-job:</span>
+<span class="hljs-attr">  stage:</span> <span class="hljs-string">build</span>
+<span class="hljs-attr">  script:</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">"npm install"</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">"npm run build"</span>
+<span class="hljs-attr">  tags:</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">node</span>
+
+<span class="hljs-comment"># 测试任务</span>
+<span class="hljs-attr">test-job:</span>
+<span class="hljs-attr">  stage:</span> <span class="hljs-string">test</span>
+<span class="hljs-attr">  script:</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">"npm install"</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">"npm run lint"</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">"npm test"</span>
+<span class="hljs-attr">  tags:</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">node</span>
+
+<span class="hljs-comment"># 部署任务</span>
+<span class="hljs-attr">deploy-job:</span>
+<span class="hljs-attr">  stage:</span> <span class="hljs-string">deploy</span>
+<span class="hljs-attr">  only:</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">release</span>
+<span class="hljs-attr">  script:</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">"npm install"</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">"npm run build"</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">ssh</span> <span class="hljs-string">user@host</span> <span class="hljs-string">"[any shell commands]"</span>
+<span class="hljs-attr">  tags:</span>
+<span class="hljs-bullet">    -</span> <span class="hljs-string">node</span>
+</code></pre>
+<p>整个构建过程基本上一目了然，比 Jenkins 简便很多。Gitlab CI 会按顺序执行 build / test / deploy 三个 stage 的任务，遇到出错即中止，并不再往下执行。同个 stage 中的多个任务会并发执行。需要注意的是，各个 stage 的工作空间是独立的。</p>
+<p>其中 <code>$SSH_PRIVATE_KEY</code> 是在相应 Gitlab 项目中配置的一个 Secret Value，是构建机的 ssh 私钥。后面再谈。</p>
+<p>将 <code>.gitlab-ci.yml</code> 文件推送到服务器后，打开项目主页，点击 Commit 记录，会发现构建任务启动并处于 pending 状态：</p>
+<p><img src="https://docs.gitlab.com/ee/ci/quick_start/img/new_commit.png" alt="img"></p>
+<p>点击构建图标，则可以进入到 CI 详情页面：</p>
+<p><img src="https://docs.gitlab.com/ee/ci/quick_start/img/single_commit_status_pending.png" alt="img"></p>
+<p>点击具体任务查看 log 则提示项目没有配置相应的 runner 来执行构建任务。也就是下一步要做的事情。</p>
+<h2 id="gitlab-runner">搭建 Gitlab runner <a class="header-anchor" href="#gitlab-runner" aria-hidden="true">🔗</a></h2>
+<p><a href="https://docs.gitlab.com/runner/">Gitlab runner</a> 是用来执行 CI 任务的客户端，它可以在一台机器上搭建，并且同时为多个项目服务。<a href="https://docs.gitlab.com/runner/install/">安装教程</a>。</p>
+<p>安装好 runner 后，还要为机器安装 <a href="https://www.docker.com/community-edition">Docker</a>，用来作为具体构建的容器。</p>
+<p>以上均安装完成后，就可以开始配置 runner 了。配置过程中需要用到的一些信息可以在下图位置找到（项目主页 -&gt; Settings -&gt; CI / CD -&gt; Runners settings）。</p>
+<p><img src="https://docs.gitlab.com/ee/ci/quick_start/img/runners_activated.png" alt="img"></p>
+<pre><code>$ sudo gitlab-runner register
+
+Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com )
+(填写上图位置的地址)
+
+Please enter the gitlab-ci token for this runner
+(填写上图位置的token)
+
+Please enter the gitlab-ci description for this runner
+[hostame] my-runner
+
+Please enter the gitlab-ci tags for this runner (comma separated):
+node
+
+Please enter the executor: ssh, docker+machine, docker-ssh+machine, kubernetes, docker, parallels, virtualbox, docker-ssh, shell:
+docker
+
+Please enter the Docker image (eg. ruby:2.1):
+node:latest
+</code></pre>
+<p>其中 description 与 tags 将来都可以在 Gitlab UI 中更改。注意 tag 必须与 <code>.gitlab-ci.yml</code> 中各个 job 指定的 tag 一致，这个 job 才会分配到这个 runner 上去。</p>
+<p>如此一来则大功告成，回到 Gitlab UI，在 Runner settings 内可以看到配置好的 runner，并且可以执行任务了。</p>
+<p><img src="https://docs.gitlab.com/ee/ci/quick_start/img/pipelines_status.png" alt="img"></p>
+<h2 id="">遇到的问题 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>其实本地构建基本上都没什么问题，遇到的坑基本集中在 deploy 阶段，即远程到服务器上去发布的这一步。按照 Gitlab 提供的<a href="https://docs.gitlab.com/ee/ci/ssh_keys/">文档</a>，走完了所有的步骤后，构建机总是无法使用 private key 直接登录，而是必须输入密码登录。尝试了查看 ssh 日志，重启服务器 sshd 服务，修改文件夹权限等等，debug 了半天还是没有解决该问题。后来偶然发现在部署服务器上使用 sshd 开启一个新的服务，用新的端口即可顺利登录，也不知道是为什么。</p>
+<p>更新：另外一个方法，可以使用 <code>sshpass</code> 命令来进行登录。用法：</p>
+<ol>
+<li>在 docker 镜像中安装 <code>sshpass</code><pre><code>$ which sshpass || ( apt-get update -y &amp;&amp; apt-get install sshpass -y )
+</code></pre>
+其中 <code>-y</code> 是为了防止安装过程中出现需要选择的项目，一律选 YES</li>
+<li>在项目 CI 变量中设置 ssh 密码</li>
+<li>使用 <code>sshpass</code> 复制文件，或登录远程服务器<pre><code># scp
+$ SSHPASS=$YOUR_PASSWORD_VAR sshpass -e scp -r local_folder user@host:remote_folder"
+# ssh
+$ SSHPASS=$YOUR_PASSWORD_VAR sshpass -e ssh user@host
+</code></pre>
+</li>
+</ol>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/dying-to-survive" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> 中国药神
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/disappointed" class="">
+        失望 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

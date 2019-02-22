@@ -1,0 +1,82 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Node.js Web Spider Note - 2</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><script type="text/javascript" async="" id="embed-disqus" data-timestamp="1550820584432" src="//wxsm.disqus.com/embed.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Node.js Web Spider Note - 2</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">November 5, 2016</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#NodeJs" class="label-tag"><span data-v-3cd447cb="" class="label label-success">NodeJs</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Spider" class="label-tag"><span data-v-3cd447cb="" class="label label-default">Spider</span></a></div></section> <div data-v-713b0d1c=""><h2 id="cookie-session">Cookie &amp; Session <a class="header-anchor" href="#cookie-session" aria-hidden="true">🔗</a></h2>
+<p>HTTP 是一种无状态协议，服务器与客户端之间储存状态信息主要靠 Session，但是，Session 在浏览器关闭后就会失效，再次开启先前所储存的状态都会丢失，因此还需要借助 Cookie</p>
+<p>一般来说，网络爬虫不是浏览器，因此，只能靠手动记住 Cookie 来与服务器“保持联系”。</p>
+<h3 id="cookie">Cookie <a class="header-anchor" href="#cookie" aria-hidden="true">🔗</a></h3>
+<p>Cookie 是 HTTP 协议的一部分，处理流程为：</p>
+<ul>
+<li>服务器向客户端发送 cookie
+<ul>
+<li>通常使用 HTTP 协议规定的 set-cookie 头操作</li>
+<li>规范规定 cookie 的格式为 name = value 格式，且必须包含这部分</li>
+</ul>
+</li>
+<li>浏览器将 cookie 保存</li>
+<li>每次请求浏览器都会将 cookie 发向服务器</li>
+</ul>
+<p>因此，爬虫要做的工作就是模拟浏览器，识别服务端发来的 Cookie 并保存，之后每次请求都带上 Cookie 头。</p>
+<p>在 Node.js 中有很多与 Cookie 处理相关的 package，就不再赘述。</p>
+<h3 id="session">Session <a class="header-anchor" href="#session" aria-hidden="true">🔗</a></h3>
+<p>Cookie 虽然方便，但是由于保存在客户端，可保存的长度有限，且可以被伪造。因此，为了解决这些问题，就有了 Session</p>
+<p>区别：</p>
+<ul>
+<li>Cookie 保存在客户端</li>
+<li>Session 保存在服务端</li>
+</ul>
+<p>Cookie 与 Session 储存的都是客户端与服务器之间的会话状态信息，它们之间主要靠一个秘钥来进行匹配，称之为 <code>SESSION_ID</code>&nbsp;，如 express 中默认为&nbsp;<code>connect.sid</code> 字段。只要浏览器发出的 SESSION_ID 与服务器储存的字段匹配上，那么服务器就将其认作为一个 Session，只要 SESSION_ID 的长度足够大，几乎是不可能被伪造的。因此，敏感信息储存在 Session 中要比 Cookie 安全得多。</p>
+<p>常见的 Session 存放媒介有：</p>
+<ul>
+<li>RAM</li>
+<li>Database</li>
+<li>Cache (e.g. Redis)</li>
+</ul>
+<p>Session 不是爬虫可以接触到的东西。</p>
+<h2 id="ajax">AJAX 页面 <a class="header-anchor" href="#ajax" aria-hidden="true">🔗</a></h2>
+<p>对于静态页面（服务端渲染），使用爬虫不需要考虑太多，把页面抓取下来解析即可。但对于客户端渲染，尤其是前后端完全分离的网站，一般不能直接获取页面（甚至没有必要获取页面），而是转而分析其实际请求内容。</p>
+<h3 id="">请求分析 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h3>
+<p>通过一些请求拦截分析工具（如 Chrome 开发者工具）可以截获网站向服务器发送的所有请求以及相应的回复。</p>
+<p>包括（不限于）以下信息：</p>
+<ul>
+<li>请求地址</li>
+<li>请求方法（GET / POST 等）</li>
+<li>所带参数</li>
+<li>请求头</li>
+</ul>
+<p>只要把信息尽数伪造，那么爬虫发出的请求照样可以从服务器取得正确的结果。</p>
+<h3 id="-2">秘钥处理 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h3>
+<p>一些请求中会带有秘钥（token / sid / secret），可能随除了请求方法外的任一个位置发出，也可能都带有秘钥。更可能不止一个秘钥。</p>
+<p>理论上来说，正常客户端取得秘钥有两种方式：</p>
+<ul>
+<li>服务端提供</li>
+<li>客户端自行计算，由服务端校对</li>
+</ul>
+<p>对于服务端提供给客户端的秘钥，只要仔细分析 HTML 或服务端返回的 Cookie Header 就一定能发现。</p>
+<p>而对于客户端自行计算的秘钥则比较麻烦了，尤其是在 JS 代码加密、混淆的情况下。这种时候，只能自己去用开发者工具调试原始站点代码，找出加密代码段，并在爬虫中实现。这里面有许多技巧，如各种断点、单步调试等。</p>
+<h2 id="-3">表单处理 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h2>
+<p>表单实际上也是 HTTP 请求，使用 GET / POST 等方法即可模拟表单提交。然而这不是重点。重点是表单常常伴随着验证码而存在。</p>
+<p>验证码的识别暂未涉及。</p>
+<h2 id="-4">浏览器模拟 <a class="header-anchor" href="#-4" aria-hidden="true">🔗</a></h2>
+<p>爬虫的下下策才是使用浏览器完全模拟用户操作。实在是属于无奈之举。Nodejs 可以驱动 Chrome 与 Firefox 浏览器，存在相应的 Package，但是，更方便的是使用各种 E2E Testing 工具。</p>
+<p>比如 Night Watch JS：</p>
+<pre><code>module.exports = {
+ 'Demo test Google' : function (client) {
+ client
+ .url('http://www.google.com')
+ .waitForElementVisible('body', 1000)
+ .assert.title('Google')
+ .assert.visible('input[type=text]')
+ .setValue('input[type=text]', 'rembrandt van rijn')
+ .waitForElementVisible('button[name=btnG]', 1000)
+ .click('button[name=btnG]')
+ .pause(1000)
+ .assert.containsText('ol#rso li:first-child',
+ 'Rembrandt - Wikipedia')
+ .end();
+ }
+};
+</code></pre>
+<p>在这种模式下，Cookie / Session / 请求等各种细节都不用关心了。只需要按部就班地执行操作即可。模拟浏览器的代价是效率太低，内存开销大，但在某些特定需求情况下，却比一般爬虫要简单得多。</p>
+<p>&nbsp;</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/d3-note-basis" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> D3 Note - Basis
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/webpack-hmr-not-work-in-idea" class="">
+        Webpack HMR Not Work in IDEA <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

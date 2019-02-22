@@ -1,0 +1,168 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Angular 教程：动态模版</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Angular 教程：动态模版</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">December 24, 2015</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#AngularJs" class="label-tag"><span data-v-3cd447cb="" class="label label-danger">AngularJs</span></a></div></section> <div data-v-713b0d1c=""><p>现在我们可以用 AngularJS 把页面变成动态的了，同时使用一个小测试来验证我们将要添加的代码正确性。 一个应用可以有很多种组织形式，对于 Angular 应用来说，使用 MVC 设计模式来解耦代码应该是比较合适的。接下来我们会使用一小点 Angular/JavaScript 代码来给应用添加模型，视图以及控制器。</p>
+<ul>
+<li>手机设备列表现在是由动态数据生成的了</li>
+</ul>
+<p>最重要的改动如下所示。你可以在&nbsp;<a href="https://github.com/angular/angular-phonecat/compare/step-1...step-2" title="See diff on Github">GitHub</a>&nbsp;上查看它与之前的代码有何区别。</p>
+<hr>
+<h2 id="">视图与模板 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>在 Angular 世界中，<strong>视图</strong>可以理解为<strong>模型</strong>在 HTML&nbsp;**模板&nbsp;**上的投影。这意味着无论模型在何时发生变化，Angular 都会通过刷新被影响的绑定节点来更新视图。</p>
+<p>视图现在由以下 Angular 模板组成：</p>
+<p><code>app/index.html</code>：</p>
+<pre><code>&lt;html ng-app="phonecatApp"&gt;
+&lt;head&gt;
+  ...
+  &lt;script src="bower_components/angular/angular.js"&gt;&lt;/script&gt;
+  &lt;script src="js/controllers.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body ng-controller="PhoneListCtrl"&gt;
+
+  &lt;ul&gt;
+    &lt;li ng-repeat="phone in phones"&gt;
+      &lt;span&gt;{{phone.name}}&lt;/span&gt;
+      &lt;p&gt;{{phone.snippet}}&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>现在&nbsp;Hard Code&nbsp;的手机列表被&nbsp;<a href="https://docs.angularjs.org/api/ng/directive/ngRepeat">ngRepeat</a>&nbsp;指令以及两条&nbsp;<a href="https://docs.angularjs.org/guide/expression">Angular表达式</a>&nbsp;替代了：</p>
+<ul>
+<li><code>&lt;li&gt;</code>元素中的<code>ng-repeat="phone in phones"</code>是 Angular 的循环指令。它会告诉 Angular 为 ‘phones’ 中的每个 ‘phone’ 使用<code>&lt;li&gt;</code>元素中的模板来创建一个<code>&lt;li&gt;</code>元素</li>
+<li>被双花括号包围的表达式（<code>{{phone.name}}</code>与<code>{{phone.snippet}}</code>）会被表达式得出的值所替代</li>
+</ul>
+<p>我们给<code>&lt;body&gt;</code>元素添加了一个名叫<code>ng-controller</code>的新指令，这会将<code>PhoneListCtrl</code>控制器关联到<code>&lt;body&gt;</code>节点中，此时：</p>
+<ul>
+<li>双花括号中的表达式（<code>{{phone.name}}</code>与<code>{{phone.snippet}}</code>）将与<code>PhoneListCtrl</code>控制器中建立的模型绑定</li>
+</ul>
+<p>注意：我们使用<code>ng-app="phonecatApp"</code>指定了一个名为<code>phonecatApp</code>的&nbsp;<a href="https://docs.angularjs.org/api/ng/type/angular.Module">Angular模块</a>，这个模块中将包含<code>PhoneListCtrl</code>控制器。</p>
+<p><img src="https://user-images.githubusercontent.com/5960988/48595811-427fc680-e991-11e8-8a47-09a71f5f5ce7.png" alt=""></p>
+<hr>
+<h2 id="-2">模型与控制器 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>数据<strong>模型</strong>（一个由对象组成的简单数组）现在在<code>PhoneListCtrl</code><strong>控制器</strong>内被初始化了。<strong>控制器</strong>是一个简单的、带<code>$scope</code>参数的函数构造器。</p>
+<p><code>app/js/controllers.js</code>：</p>
+<pre><code>var phonecatApp = angular.module('phonecatApp', []);
+
+phonecatApp.controller('PhoneListCtrl', function ($scope) {
+  $scope.phones = [
+    {'name': 'Nexus S',
+     'snippet': 'Fast just got faster with Nexus S.'},
+    {'name': 'Motorola XOOM™ with Wi-Fi',
+     'snippet': 'The Next, Next Generation tablet.'},
+    {'name': 'MOTOROLA XOOM™',
+     'snippet': 'The Next, Next Generation tablet.'}
+  ];
+});
+</code></pre>
+<p>在此我们定义了一个名为<code>PhoneListCtrl</code></p>
+<p>的控制器，同时在 Angular 模块中注册它。注意我们在<code>&lt;html&gt;</code></p>
+<p>标签上定义的<code>ng-app</code></p>
+<p>指令现在为这个 Angular 应用指定了引导模块为<code>phonecatApp</code>模块。</p>
+<p>虽然这个控制器此时并没有做什么事情，但是它起着至关重要的作用。这个控制器通过提供数据模型的上下文来允许我们在模型与视图中创建数据绑定。</p>
+<ul>
+<li><code>&lt;body&gt;</code>标签上的&nbsp;<a href="https://docs.angularjs.org/api/ng/directive/ngController">ngController</a>&nbsp;指令引用了控制器的名字：<code>PhoneListCtrl</code>（在<code>controllers.js</code>文件中）</li>
+<li><code>PhoneListCtrl</code>将手机数据附加到被注入进来的<code>$scope</code>上。scope 是在应用程序被定义时创建的根作用域的一个后代。这个控制器的作用域对<code>&lt;body ng-controller="PhoneListCtrl"&gt;</code>标签内的所有绑定都是有效的。</li>
+</ul>
+<h3 id="-3">作用域 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h3>
+<p>在 Angular 中作用域的概念很关键。</p>
+<p>作用域可以视为使模板，模型以及控制器在一起工作的粘合剂。Angular 使用作用域以及模板，模型，控制器中所包含的信息来保持模型与视图的分离与同步。任何对模型的改动都会反映到视图上；任何对视图的改变也会反映到模型上。 通过&nbsp;<a href="https://docs.angularjs.org/api/ng/type/$rootScope.Scope">Angular作用域文档</a>&nbsp;来学习更多关于作用域的知识。</p>
+<hr>
+<h2 id="-4">测试 <a class="header-anchor" href="#-4" aria-hidden="true">🔗</a></h2>
+<p>Angular 分离控制器与视图的方式使得测试代码将更容易编写。如果控制器是可以通过全局命名空间访问的，我们就可以简单地使用一个<code>scope</code>演员对象来实例化它：</p>
+<pre><code>describe('PhoneListCtrl', function(){
+
+  it('should create "phones" model with 3 phones', function() {
+    var scope = {},
+        ctrl = new PhoneListCtrl(scope);
+
+    expect(scope.phones.length).toBe(3);
+  });
+
+});
+</code></pre>
+<p>这个测试实例化了<code>PhoneListCtrl</code>，并且通过验证作用域中包含 3 条记录来验证了手机数组的正确性。代码十分简洁。</p>
+<h3 id="-5">测试非全局的控制器 <a class="header-anchor" href="#-5" aria-hidden="true">🔗</a></h3>
+<p>一般来说，没有人会想要把控制器直接挂载到全局命名空间上。</p>
+<p>实际上你可以看到我们把通过使用一个匿名函数构造器把它注册在了<code>phonecatApp</code>模块下。 在这个例子中，Angular 提供了一个名为<code>$controller</code>的服务，它将为你根据名字获取到相应的控制器。以下是通过<code>$controller</code>完成的与之前相同的测试：</p>
+<p><code>test/unit/controllersSpec.js</code>：</p>
+<pre><code>describe('PhoneListCtrl', function(){
+
+  beforeEach(module('phonecatApp'));
+
+  it('should create "phones" model with 3 phones', inject(function($controller) {
+    var scope = {},
+        ctrl = $controller('PhoneListCtrl', {$scope:scope});
+
+    expect(scope.phones.length).toBe(3);
+  }));
+
+});
+</code></pre>
+<ul>
+<li>在每一次测试之前我们都告诉 Angular 要加载<code>phonecatApp</code>模块</li>
+<li>告诉 Angular 要为测试方法注入<code>$controller</code>服务</li>
+<li>使用<code>$controller</code>来实例化<code>PhoneListCtrl</code></li>
+<li>通过这个实例，我们就可以验证手机数组的正确性了</li>
+</ul>
+<h3 id="-6">编写和执行测试 <a class="header-anchor" href="#-6" aria-hidden="true">🔗</a></h3>
+<p>Angular 开发者偏好于使用 Jasmine’s Behavior-driven Development (BDD) 框架来编写测试。虽然 Angular 并没有要求使用 Jasmine，我们还是使用 Jasmine v1.3 来编写了教程中的所有测试。</p>
+<p>你可以从&nbsp;<a href="http://jasmine.github.io/">Jasmine主页</a>&nbsp;以及&nbsp;<a href="http://jasmine.github.io/1.3/introduction.html">Jasmine文档</a>&nbsp;中学习 Jasmine</p>
+<p>Angular-seed 项目使用&nbsp;<a href="http://karma-runner.github.io/">Karma</a>&nbsp;来执行单元测试，你可以通过执行<code>npm install</code>来确保 Karma 以及它所必须的插件都已经被安装。</p>
+<p>使用<code>npm test</code>来执行单元测试并且监听文件的改动：</p>
+<ul>
+<li>Karma 会自动启动新的 Chrome 和 Firefox 浏览器进程，忽略并且让它们在后台运行就好了。Karma 会使用这些浏览器来执行测试</li>
+<li>如果你只安装了 Chrome 或者 Firefox 的其中一款浏览器，请在运行测试前修改 Karma 配置文件。找到<code>test/karma.conf.js</code>，并且修改其中的<code>browsers</code>属性，比如说你只安装了 Chrome：</li>
+</ul>
+<pre><code>...
+  browsers: ['Chrome'],
+  ...
+</code></pre>
+<ul>
+<li>你将在终端中看到类似以下的输出，可以发现测试通过了（或者并没有）：</li>
+</ul>
+<pre><code>info: Karma server started at http://localhost:9876/
+  info (launcher): Starting  browser "Chrome"
+  info (Chrome 22.0): Connected on socket id tPUm9DXcLHtZTKbAEO-n
+  Chrome 22.0: Executed 1 of 1 SUCCESS (0.093 secs / 0.004 secs)
+</code></pre>
+<ul>
+<li>如果想要重新执行一遍测试，只需要修改任意源代码或者<code>test.js</code>文件即可。Karma 会监听到改动然后重新执行测试。这一定很贴心吧~</li>
+</ul>
+<blockquote>
+<p>当 Karma 启动的时候务必不要将浏览器窗口最小化。在一些操作系统中，分配给最小化的浏览器的内存是有限的，这会导致 Karma 的执行速度非常慢。</p>
+</blockquote>
+<h2 id="-7">课外扩展 <a class="header-anchor" href="#-7" aria-hidden="true">🔗</a></h2>
+<p>尝试给<code>index.html</code>再添加些绑定，比如说：</p>
+<pre><code>&lt;p&gt;Total number of phones: {{phones.length}}&lt;/p&gt;
+</code></pre>
+<p>在控制器中创建一个新的属性并且将它绑定到模板上，比如说：</p>
+<pre><code>$scope.name = "World";
+</code></pre>
+<p>然后给<code>index.html</code>添加绑定：</p>
+<pre><code>&lt;p&gt;Hello, {{name}}!&lt;/p&gt;
+</code></pre>
+<p>刷新浏览器，看看它说的是不是“Hello, World!”</p>
+<p>更新单元测试<code>./test/unit/controllersSpec.js</code>来映射上一步的改动，比如说：</p>
+<pre><code>expect(scope.name).toBe('World');
+</code></pre>
+<p>给<code>index.html</code>添加一个循环器来构造一个简单的表格：</p>
+<pre><code>&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;row number&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]"&gt;&lt;td&gt;{{i}}&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<p>现在通过在绑定中给i加1来把表格变成从 1 开始的：</p>
+<pre><code>&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;row number&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr ng-repeat="i in [0, 1, 2, 3, 4, 5, 6, 7]"&gt;&lt;td&gt;{{i+1}}&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<p>附加题：</p>
+<p>尝试使用嵌套的<code>ng-repeat</code>来创建一个 8×8 的表格。</p>
+<p>将<code>expect(scope.phones.length).toBe(3)</code>改成<code>toBe(4)</code>看看单元测试是不是没有通过。</p>
+<h2 id="-8">总结 <a class="header-anchor" href="#-8" aria-hidden="true">🔗</a></h2>
+<p>你现在拥有了一个 MVC 构造形态的动态应用了，并且在开发过程中编写了单元测试。现在我们可以通过&nbsp;<a href="/p/angular-tutorial-filtering-repeaters/">step 3</a>&nbsp;来学习如何给应用添加关键字搜索功能。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/angular-tutorial-static-template" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Angular 教程：静态模版
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/angular-tutorial-filtering-repeaters" class="">
+        Angular 教程：过滤循环器 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

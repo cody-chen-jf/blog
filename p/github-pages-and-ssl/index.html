@@ -1,0 +1,46 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Github Pages and SSL</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Github Pages and SSL</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">December 8, 2016</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Github" class="label-tag"><span data-v-3cd447cb="" class="label label-warning">Github</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#SSL" class="label-tag"><span data-v-3cd447cb="" class="label label-default">SSL</span></a></div></section> <div data-v-713b0d1c=""><p>经过一些努力，把博客迁移到了 Github Pages，将域名改成了自定义，并且成功启用了 SSL，以下是步骤（就不截图了）。</p>
+<h2 id="">部署代码 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>Github Pages 支持两种级别的部署：</p>
+<ol>
+<li><strong>user / organization</strong> 方式
+<ul>
+<li>repo 名字必须为 <code>&lt;user-name or org-name&gt;.github.io</code></li>
+<li>pages build branch 固定为 <code>master</code></li>
+<li>部署后的发布域名即为 repo 名</li>
+</ul>
+</li>
+<li><strong>project</strong> 方式
+<ul>
+<li>repo 名字没有限制</li>
+<li>pages build branch 可以任意指定</li>
+<li>发布域名为 <code>&lt;user-name or org-name&gt;.github.io/&lt;project-name&gt;</code></li>
+</ul>
+</li>
+</ol>
+<p>因此，如果要做个人页面则必然选择第一种方式。</p>
+<p>因为 build branch 限制为 master，因此我一开始选择了重建 repo，实际上没有必要，可以直接 rename 旧的 repo</p>
+<p>rename 后，到 repo settings -&gt; options -&gt; Github Pages，即可发现自动部署已经开始了。即刻访问 <code>&lt;user-name or org-name&gt;.github.io</code> 可以看到部署结果。</p>
+<h2 id="-2">自定义域名 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<ol>
+<li>在 repo settings -&gt; options -&gt; Github Pages -&gt; Custom Domain 中，填入自己的域名，如 <code>wxsm.space</code>，保存</li>
+<li>在自己的域名供应商处修改域名解析，添加两条 A 记录（此处可以参考最新<a href="https://help.github.com/articles/setting-up-an-apex-domain/">文档</a>）：
+<ul>
+<li><code>192.30.252.153</code></li>
+<li><code>192.30.252.154</code></li>
+</ul>
+</li>
+<li>等待记录生效</li>
+</ol>
+<p>过一会就可以发现，使用自定义域名可以访问网站了，并且原 <code>&lt;user-name or org-name&gt;.github.io</code> 会重定向到自定义域名。</p>
+<h2 id="ssl">启用 SSL <a class="header-anchor" href="#ssl" aria-hidden="true">🔗</a></h2>
+<p>这里是最麻烦的。虽然 Github Pages 原生支持 SSL，但是只针对 <code>*.github.io</code> 域名，对于自定义域名，无法直接启用。因此需要找一个支持 SSL 的 CDN 供应商。考虑到免费这个关键因素，选择了 CloudFlare（以下简称 CF）</p>
+<ol>
+<li>前往 CF 官网，注册账号，填入自己的域名，点几个 Continue</li>
+<li>到注册的最后一步时，需要将域名的 DNS 服务器切换为 CF 服务器（CF 会提供两个，两个都要填上），到原域名供应商处修改域名 DNS 服务器即可，24 小时内生效</li>
+<li>生效后可以打开网站查看是否正常。控制台页面上方有一个 Crypto Tab，点开，SSL 选择 <code>Flexible</code> 或者 <code>Full</code>，同样需要等待一段时间生效</li>
+<li>生效后即可以通过 <code>https</code> 访问网站了，如果需要强制 SSL，可以到 Page Rules Tab，添加一些记录，为某些域名段设置强制 SSL <code>Aways use https</code></li>
+</ol>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/d3-note-interpolate" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> D3 Note - Interpolate
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/outlook-wrong-unread-num" class="">
+        Fix Outlook Wrong Unread Number Issue <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

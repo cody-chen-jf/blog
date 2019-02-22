@@ -1,0 +1,210 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - WordPress 文章归档页面实现</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" async="" id="embed-disqus" data-timestamp="1550820598502" src="//wxsm.disqus.com/embed.js"></script><link rel="prefetch" href="https://c.disquscdn.com/next/embed/styles/lounge.7881ba4704e5c647ac74c94714fe89c0.css"><link rel="prefetch" href="https://c.disquscdn.com/next/embed/common.bundle.505b628fe4a369d7faa766dd8c23b076.js"><link rel="prefetch" href="https://c.disquscdn.com/next/embed/lounge.bundle.c9237ca4eec89ddb1320c66204dab595.js"><link rel="prefetch" href="https://disqus.com/next/config.js"></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">WordPress 文章归档页面实现</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">February 2, 2016</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#MySQL" class="label-tag"><span data-v-3cd447cb="" class="label label-primary">MySQL</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#PHP" class="label-tag"><span data-v-3cd447cb="" class="label label-info">PHP</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Wordpress" class="label-tag"><span data-v-3cd447cb="" class="label label-primary">Wordpress</span></a></div></section> <div data-v-713b0d1c=""><p>归档页就是一个包含站点所有已发布文章的列表页面，通常默认会根据发布时间来进行排序，然后可能会有一些分页排序页内搜索等功能。实现这个功能可以用Wordpress插件，当然也可以自己写代码，我一开始就是用了一款插件，觉得实现了功能还不错就没管它。后来想要做一些自定义的修改，比如插件是按月份分组然而我想改成年份，就稍微看了看它的代码。一看不得了，莫名地有一种总算见识到了什么叫又烂又臭的代码的感觉涌上心头，做了这么多年伸手党总算是被恶心到了，简直不能忍，于是琢磨着自己写一个简单的模板页，不用它了。</p>
+<!--more-->
+<h2 id="">吐槽区 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>首先来说说为什么这个插件的代码<strong>又烂又臭</strong>，在后面我再对它进行针对性的改进。哦对了它的名字叫<strong>Clean Archives Reloaded</strong>，作者叫<strong>Viper007Bond</strong>，来自美国俄勒冈州，没错就是点名批评，看来鬼佬的编码水平也不是普遍的高啊，这坨屎简直是开源界的耻辱。去到各搜索引擎搜索“Wordpress归档”关键字还有很多文章推荐使用该插件，看来大家都不太关心代码质量，只要能用就行。 该插件的主要设计思路如下：</p>
+<ol>
+<li>从WP数据库中抓取文章</li>
+<li>根据用户配置分组并排序</li>
+<li>组织并输出HTML到页面相关位置</li>
+</ol>
+<p>OK，就这么三步，实际上我们也只需要这么点东西。暂且不讨论步骤是否可以简化，我们先来看看它有着怎样的内心世界。</p>
+<pre><code>// A direct query is used instead of get_posts() for memory reasons
+$rawposts = $wpdb-&gt;get_results( "SELECT ID, post_date, post_date_gmt, comment_status, comment_count FROM $wpdb-&gt;posts WHERE post_status = 'publish' AND post_type = 'post' AND post_password = ''" );
+
+</code></pre>
+<p>这个是它的唯一一条SQL语句，可以看到作者为了给我们节省内存真是殚精竭力，本着够用就行的精神，放弃使用Wordpress自带的API，直接使用查询语句从数据库中查询出来了非常有限的一些字段。值得称赞。 按照插件的思路，紧接着就是分组啦：</p>
+<pre><code>// Loop through each post and sort it into a structured array
+foreach( $rawposts as $post ) {
+	$posts[ mysql2date( 'Y.m', $post-&gt;post_date ) ][] = $post;
+}
+$rawposts = null; // More memory cleanup
+</code></pre>
+<p>排序啦：</p>
+<pre><code>( 'new' == $atts['monthorder'] ) ? krsort( $posts ) : ksort( $posts );
+
+// Sort the posts within each month based on $atts
+foreach( $posts as $key =&gt; $month ) {
+    $sorter = array();
+    foreach ( $month as $post )
+        $sorter[] = $post-&gt;post_date_gmt;
+
+    $sortorder = ( 'new' == $atts['postorder'] ) ? SORT_DESC : SORT_ASC;
+
+    array_multisort( $sorter, $sortorder, $month );
+
+    $posts[$key] = $month;
+    unset($month);
+}
+</code></pre>
+<p>分组的思路就是根据一篇文章的年以及月来将原本的一维数组重新组织到一个新的二维数组中去，以方便后面的循环。排序有点复杂，首先大局上它是能够根据配置按月份从新到旧或者反方向的排序，然后在每个月份里面也能够根据配置从新到旧或者反方向的排序，这个设定简直蛋疼，谁这么无聊正着排一遍在里面反着又排一遍，即折磨自己又折磨读者，不过存在即合理，这里也不说它。**我想吐槽的是，既然你都把SQL写出来了，你也知道至少要排一次序了，又何必费尽周章在查出来以后排呢，我们直接在SQL里面排不比这一大串代码优雅吗？不快速吗？不节省内存吗？此外，这个分组也是萌萌哒，我们就不能在SQL里面先把组给分好吗，非要写个循环来调用&nbsp;**<code>mysql2date</code>，这样真的好吗？当然如果作者没有学过&nbsp;<code>ORDER BY</code>，也不知道SQL都有各自的内置日期函数，这些也就算了。我们接着往下看。 接下来的步骤是组织HTML：</p>
+<pre><code>// Generate the HTML
+$html = '&lt;div class="car-container';
+if ( 1 == $atts['usejs'] ) $html .= ' car-collapse';
+$html .= '"&gt;'. "\n";
+
+// 此处省略n行
+
+$html .= "&lt;/ul&gt;\n&lt;/div&gt;\n";
+return $html;
+</code></pre>
+<p>看到这里我已经瞎了。。。尤其是高亮的那一行。。。省略的N行中充斥着的都是如此的代码。它还不止有&nbsp;<code>. "\n"</code>&nbsp;之流，在省略的内容中甚至连HTML的编码器缩进作者都保留得很好很好。WTF？？这TM都是些什么鬼？？作者的这些杠N和缩进是写给鬼看的吗？？？字符串拼凑各种内容这种事我自己不懂事的时候也干过不少也就不说了，但这作者这一种原汁原味的拼法真是我有屎以来见过的最特立独行的行为艺术。</p>
+<p>让我们接着来看生成HTML之中的一部分核心代码。显然其中会有一些循环用来生成列表，并且在每个内层循环之前应该输出一个标题之类的东西用来指示以下的内容属于哪一年哪一个月。代码如下：</p>
+<pre><code>$firstmonth = TRUE;
+foreach( $posts as $yearmonth =&gt; $posts ) {
+    list( $year, $month ) = explode( '.', $yearmonth );
+
+    $firstpost = TRUE;
+    foreach( $posts as $post ) {
+        if ( TRUE == $firstpost ) {
+            $html .= '	&lt;li&gt;&lt;span class="car-yearmonth"&gt;' . sprintf( __('%1$s %2$d'), $wp_locale-&gt;get_month($month), $year );
+            if ( '0' != $atts['postcount'] ) $html .= ' &lt;span title="' . __('Post Count', 'clean-archives-reloaded') . '"&gt;(' . count($posts) . ')&lt;/span&gt;';
+            $html .= "&lt;/span&gt;\n		&lt;ul class='car-monthlisting'&gt;\n";
+            $firstpost = FALSE;
+        }
+
+        $html .= '			&lt;li&gt;' .  mysql2date( 'd', $post-&gt;post_date ) . ': &lt;a href="' . get_permalink( $post-&gt;ID ) . '"&gt;' . get_the_title( $post-&gt;ID ) . '&lt;/a&gt;';
+
+        // Unless comments are closed and there are no comments, show the comment count
+        if ( '0' != $atts['commentcount'] &amp;&amp; ( 0 != $post-&gt;comment_count || 'closed' != $post-&gt;comment_status ) )
+            $html .= ' &lt;span title="' . __('Comment Count', 'clean-archives-reloaded') . '"&gt;(' . $post-&gt;comment_count . ')&lt;/span&gt;';
+
+        $html .= "&lt;/li&gt;\n";
+    }
+
+    $html .= "		&lt;/ul&gt;\n	&lt;/li&gt;\n";
+}
+</code></pre>
+<p>第5-12行代码，第一眼看到的时候马上就能闻到一股弱者的气息。<strong>作者想要在循环开始之前先输出一个列表标题，所以想到了一个使用标志位的办法，但是我们明明可以直接在循环前面做这件事的，根本不需要这个萌萌哒标志位。</strong></p>
+<p>还有第14行。作者明明一直在标榜自己是如何节省时间节省内存的，结果在这里却使用了内置函数&nbsp;<code>get_the_title</code>&nbsp;以及&nbsp;<code>get_permalink</code>，后者很正常，因为 wordpress 的文章链接是可以改变的，不能直接写死，必须查，那前者这个函数是做什么的呢？很明显，根据一篇文章的 ID 来获取它的标题。要如何根据 ID 来获取标题呢，我们能用算法算出来吗？显然不能，这里面显然需要一次数据库查询，至少也是一次缓存查询，而且它这个函数写在循环里面，我的天，这里面是多少条 SQL，你直接在一开始把 Title 也给查出来不就万事大吉了吗。。。</p>
+<p>插件的核心功能大概就到此为止，为了实现让用户可以点击收起与展开每个内层列表的功能，作者还添加了一些 JavaScript 代码，就不吐槽了吧，我已经好累了。</p>
+<h2 id="-2">改进 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>赶紧把这插件删了，删个干净，然后我们来改代码。因为我并不需要配置什么什么的，也不需要什么JS，怎么个分组怎么个排序的需求很明确，所以直接 HARD CODE。原插件还有一个缓存查询出来的数据的功能，由于我已经用了更强大的缓存，直接将动态页面缓存成纯 HTML，所以也不需要。以上内容通通砍掉，核心代码就很简单了。 首先是 SQL 查询：</p>
+<pre><code>global $wpdb;
+$rawposts = $wpdb-&gt;get_results("SELECT ID, year(post_date) as post_year, post_date, post_date_gmt, post_title FROM $wpdb-&gt;posts WHERE post_status = 'publish' AND post_type = 'post' AND post_password = '' order by post_date_gmt desc");
+</code></pre>
+<p>这里按照发布时间降序排序，为什么要用GMT时间而不直接用本地时间呢，我猜可能是为了防止我在这边发了一篇文章然后马上飞到美国又发一篇，可能会乱套吧，反正这么写更严谨，虽然不太可能发生。然后除了多选择一个post_title字段以外，还使用MySQL的一个内置函数选择了这篇文章发布时的年度，这样就不用在分组的时候使用N多遍&nbsp;<code>mysql2date</code>&nbsp;函数了。节省了大量步骤。 然后是分组：</p>
+<pre><code>foreach ($rawposts as $post) {
+    $posts[$post-&gt;post_year][] = $post;
+}
+$rawposts = null;
+</code></pre>
+<p>然后是HTML部分：</p>
+<pre><code>$html = '&lt;div class="archives-container"&gt;&lt;ul class="archives-list"&gt;';
+foreach ($posts as $year =&gt; $posts_yearly) {
+    $html .= '&lt;li&gt;&lt;div class="archives-year"&gt;' . $year . '年&lt;/div&gt;&lt;ul class="archives-sublist"&gt;';
+    foreach ($posts_yearly as $post) {
+        $html .= '&lt;li&gt;';
+        $html .= '&lt;time datetime="' . $post-&gt;post_date . '"&gt;' . mysql2date('m月d日 D', $post-&gt;post_date, true) . '&lt;/time&gt;';
+        $html .= '&lt;a href="' . get_permalink($post-&gt;ID) . '"&gt;' . $post-&gt;post_title . '&lt;/a&gt;';
+        $html .= "&lt;/li&gt;";
+    }
+    $html .= "&lt;/ul&gt;&lt;/li&gt;";
+}
+$html .= "&lt;/ul&gt;&lt;/div&gt;";
+return $html;
+</code></pre>
+<p>两个字：简洁。</p>
+<h2 id="-3">使用方法 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h2>
+<p>我们复制一份主题目录下的&nbsp;<code>page.php</code>&nbsp;文件，然后重命名为&nbsp;<code>template-archives.php</code>，主要是给它加上以上的代码并且调用之。 对于我正在使用的主题来说，文件内容如下：</p>
+<pre><code>&lt;?php
+/*
+Template Name: archives
+*/
+
+
+function _PostList($atts = array())
+{
+    global $wpdb;
+    $rawposts = $wpdb-&gt;get_results("SELECT ID, year(post_date) as post_year, post_date, post_title FROM $wpdb-&gt;posts WHERE post_status = 'publish' AND post_type = 'post' AND post_password = '' order by post_date desc");
+    foreach ($rawposts as $post) {
+        $posts[$post-&gt;post_year][] = $post;
+    }
+    $rawposts = null;
+    $html = '&lt;div class="archives-container"&gt;&lt;ul class="archives-list"&gt;';
+    foreach ($posts as $year =&gt; $posts_yearly) {
+        $html .= '&lt;li&gt;&lt;div class="archives-year"&gt;' . $year . '年&lt;/div&gt;&lt;ul class="archives-sublist"&gt;';
+        foreach ($posts_yearly as $post) {
+            $html .= '&lt;li&gt;';
+            $html .= '&lt;time datetime="' . $post-&gt;post_date . '"&gt;' . mysql2date('m月d日 D', $post-&gt;post_date, true) . '&lt;/time&gt;';
+            $html .= '&lt;a href="' . get_permalink($post-&gt;ID) . '"&gt;' . $post-&gt;post_title . '&lt;/a&gt;';
+            $html .= "&lt;/li&gt;";
+        }
+        $html .= "&lt;/ul&gt;&lt;/li&gt;";
+    }
+    $html .= "&lt;/ul&gt;&lt;/div&gt;";
+    return $html;
+}
+
+function _PostCount()
+{
+    $num_posts = wp_count_posts('post');
+    return number_format_i18n($num_posts-&gt;publish);
+}
+
+get_header(); ?&gt;
+
+    &lt;div id="primary" class="content-area"&gt;
+        &lt;main id="main" class="site-main" role="main"&gt;
+
+            &lt;article &lt;?php post_class(); ?&gt;&gt;
+                &lt;header class="entry-header"&gt;
+                    &lt;h1 class="entry-title"&gt;&lt;?php the_title(); ?&gt;&lt;/h1&gt;
+                &lt;/header&gt;
+                &lt;!-- .entry-header --&gt;
+
+                &lt;div class="entry-content"&gt;
+                    &lt;?php
+                    echo _PostList();
+                    ?&gt;
+                &lt;/div&gt;
+                &lt;!-- .entry-content --&gt;
+            &lt;/article&gt;
+            &lt;!-- #post-## --&gt;
+
+
+        &lt;/main&gt;
+        &lt;!-- #main --&gt;
+    &lt;/div&gt;
+    &lt;!-- #primary --&gt;
+
+&lt;?php get_sidebar(); ?&gt;
+&lt;?php get_footer(); ?&gt;
+</code></pre>
+<p>然后我们把它上传到主机的主题目录下，来到wordpress管理控制台新建一个page，模板选择&nbsp;<code>archives</code>，什么也不用输入（可以加个标题），保存，就可以看到效果了。当然这里没有涉及到CSS样式，可以在主题的&nbsp;<code>style.css</code>&nbsp;中自定义，也可以直接写在&nbsp;<code>template-archives.php</code>&nbsp;内，爱写哪写哪。本站使用的CSS如下所示：</p>
+<pre><code>.archives-year {
+    color: #777;
+    border-bottom: 1px solid #e8e8e8;
+    margin: 40px 0 10px 0;
+    padding-bottom: 7px;
+}
+
+.archives-list {
+    list-style: none;
+    margin: 20px 0!important;
+}
+
+.archives-sublist {
+    list-style: none;
+    font-size: 90%;
+    margin-left: 0 !important;
+}
+
+.archives-sublist li time {
+    color: #777;
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
+    display: table-cell;
+    vertical-align: top;
+}
+
+.archives-sublist li a {
+    display: table-cell;
+    vertical-align: top;
+}
+</code></pre>
+<p><a href="http://anubarak.com/archives/">点此查看实际效果</a>&nbsp;（可能因为网站更新而不符合）</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/angular-router-note" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Angular Router 学习笔记
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/using-idea-to-config-ftp-auto-deployment" class="">
+        使用 IDEA 配置自动同步到FTP服务器 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div><iframe style="display: none;"></iframe><div class="adsbox">&nbsp;</div></body></html>

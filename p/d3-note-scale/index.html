@@ -1,0 +1,175 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - D3 Note - Scale</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><script type="text/javascript" async="" id="embed-disqus" data-timestamp="1550820579369" src="//wxsm.disqus.com/embed.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">D3 Note - Scale</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">November 22, 2016</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#D3" class="label-tag"><span data-v-3cd447cb="" class="label label-warning">D3</span></a></div></section> <div data-v-713b0d1c=""><p>之前做的柱状图例子：</p>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> data = [<span class="hljs-number">250</span>, <span class="hljs-number">210</span>, <span class="hljs-number">170</span>, <span class="hljs-number">100</span>, <span class="hljs-number">190</span>]
+
+<span class="hljs-keyword">let</span> rectWidth = <span class="hljs-number">25</span>
+
+svg.selectAll(<span class="hljs-string">'rect'</span>)
+ .data(data)
+ .enter()
+ .append(<span class="hljs-string">'rect'</span>)
+ .attr(<span class="hljs-string">'y'</span>, (d, i) =&gt; height - d)
+ .attr(<span class="hljs-string">'x'</span>, (d, i) =&gt; i * rectWidth)
+ .attr(<span class="hljs-string">'height'</span>, d =&gt; d)
+ .attr(<span class="hljs-string">'width'</span>, rectWidth - <span class="hljs-number">2</span>)
+ .attr(<span class="hljs-string">'fill'</span>, <span class="hljs-string">'steelblue'</span>)
+</code></pre>
+<p>有一个严重的问题，就是没有比例尺的概念，柱状图的高度完全由数据转换成像素值来模拟。这明显是不科学的：如果数据的值过小或过大，作出来的图就会很奇怪，同时也无法做到非线性的映射。</p>
+<p>就跟地图需要比例尺一样，绝大多数的数据图表也需要比例尺。</p>
+<blockquote>
+<p>Scales are a convenient abstraction for a fundamental task in visualization: mapping a dimension of abstract data to a visual representation.</p>
+</blockquote>
+<p><strong>比例尺 - Scale - “将某个维度的抽象数据做可视化映射”</strong></p>
+<p>至于可视化映射的具体实现，<code>d3-scale</code> 模块提供了许多方案，大致可以分为两类：</p>
+<ul>
+<li>Continuous Scales（连续映射）</li>
+<li>Ordinal Scales（散点映射）</li>
+</ul>
+<!--more-->
+<h2 id="continuous-scales">Continuous Scales <a class="header-anchor" href="#continuous-scales" aria-hidden="true">🔗</a></h2>
+<p>Continuous Scales（连续映射）将连续的、定量的 <strong>Input Domain</strong>（定义域）映射为一个连续的 <strong>Output Range</strong>（值域）。如果 Range 也是一个数值范围，那么映射操作可以被反转（即从值域到定义域）。</p>
+<p>连续值映射是一个抽象的概念，不能直接构造。因此，<code>d3-scale</code> 提供了一些具体实现，如线性、次方、对数等。</p>
+<p>一个简单的例子：</p>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> x = d3.scaleLinear()
+    .domain([<span class="hljs-number">10</span>, <span class="hljs-number">130</span>])
+    .range([<span class="hljs-number">0</span>, <span class="hljs-number">960</span>]);
+
+x(<span class="hljs-number">20</span>); <span class="hljs-comment">// 80</span>
+x(<span class="hljs-number">50</span>); <span class="hljs-comment">// 320</span>
+</code></pre>
+<p>这里构造了一个 <code>scaleLinear</code> （线性比例尺），并设置了输入及输出范围。构造器将会返回一个函数，这个函数接受输入值，并且返回对应的输出值。</p>
+<p>如果输入值超出了预定义的范围，那么自然而然地，函数返回的输出值也会超出范围。但是，D3 提供了一个选项 <code>clamp</code>, 可以将输出范围保持在定义值内：</p>
+<pre><code class="language-js">x.clamp(<span class="hljs-literal">true</span>);
+x(<span class="hljs-number">-10</span>); <span class="hljs-comment">// 0, clamped to range</span>
+</code></pre>
+<p>Output Domain 除了可以为数字，也可以是其它东西。比如颜色：</p>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> color = d3.scaleLinear()
+    .domain([<span class="hljs-number">10</span>, <span class="hljs-number">100</span>])
+    .range([<span class="hljs-string">"brown"</span>, <span class="hljs-string">"steelblue"</span>]);
+
+color(<span class="hljs-number">20</span>); <span class="hljs-comment">// "#9a3439"</span>
+color(<span class="hljs-number">50</span>); <span class="hljs-comment">// "#7b5167"</span>
+</code></pre>
+<p>同时，Continuous Scales 也支持<strong>插值</strong>（interpolate）操作，这是 D3 的另一个模块。</p>
+<h3 id="linear-scales">Linear Scales <a class="header-anchor" href="#linear-scales" aria-hidden="true">🔗</a></h3>
+<p><strong>线性比例尺</strong>，顾名思义，输出值对于输入值而言是线性变化的。</p>
+<blockquote>
+<p>y = ax + b</p>
+</blockquote>
+<h3 id="power-scales">Power Scales <a class="header-anchor" href="#power-scales" aria-hidden="true">🔗</a></h3>
+<p><strong>次方比例尺</strong>，与 Linear Scales 类似，但是需要多加一个参数：<code>exponent</code> （次方）</p>
+<blockquote>
+<p>y = mx^k + b</p>
+</blockquote>
+<pre><code class="language-js">pow.exponent([exponent]) <span class="hljs-comment">// default 1</span>
+</code></pre>
+<p>在需要做次方根的时候，使 <code>exponent = 0.x</code> 就可以了，对于 0.5 这个特值，D3 还提供了快捷方式：<code>d3.scaleSqrt()</code>，这将直接构造 <code>exponent = 0.5</code> 的 Power Scale</p>
+<h3 id="log-scales">Log Scales <a class="header-anchor" href="#log-scales" aria-hidden="true">🔗</a></h3>
+<p><strong>对数比例尺</strong>，与 Power Scales 类似，参数变为 <code>base</code> （底数）</p>
+<blockquote>
+<p>y = m log(x) + b</p>
+</blockquote>
+<p>因为 log(0) = -∞，Log Scales 的 Input Domain 不能够跨越 0，即要么全为正，要么全为负</p>
+<h3 id="identity-scales">Identity Scales <a class="header-anchor" href="#identity-scales" aria-hidden="true">🔗</a></h3>
+<p><strong>全等比例尺</strong>，特殊的线性比例尺。定义域与值域完全相等。因此，它的 <code>invert</code> 方法也就是它本身。</p>
+<blockquote>
+<p>y = x</p>
+</blockquote>
+<h3 id="time-scales">Time Scales <a class="header-anchor" href="#time-scales" aria-hidden="true">🔗</a></h3>
+<p><strong>时间比例尺</strong>，线性比例尺的变体。例子：</p>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> x = d3.scaleTime()
+    .domain([<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-number">2000</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>), <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-number">2000</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>)])
+    .range([<span class="hljs-number">0</span>, <span class="hljs-number">960</span>]);
+
+x(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-number">2000</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>,  <span class="hljs-number">5</span>)); <span class="hljs-comment">// 200</span>
+x(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-number">2000</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">16</span>)); <span class="hljs-comment">// 640</span>
+x.invert(<span class="hljs-number">200</span>); <span class="hljs-comment">// Sat Jan 01 2000 05:00:00 GMT-0800 (PST)</span>
+x.invert(<span class="hljs-number">640</span>); <span class="hljs-comment">// Sat Jan 01 2000 16:00:00 GMT-0800 (PST)</span>
+</code></pre>
+<h2 id="sequential-scales">Sequential Scales <a class="header-anchor" href="#sequential-scales" aria-hidden="true">🔗</a></h2>
+<p><strong>Sequential Scales</strong> 与 <strong>Continuous Scales</strong> 类似，区别是，这个比例尺的值域是由 <code>interpolator</code> 决定的，不可控制。同时，<code>invert</code>, <code>range</code>, <code>rangeRound</code> 以及 <code>interpolate</code> 都不可用。</p>
+<p>D3 提供了一系列的颜色插值器，因此其应用场景多与连续的颜色值域有关。</p>
+<h2 id="quantize-scales">Quantize Scales <a class="header-anchor" href="#quantize-scales" aria-hidden="true">🔗</a></h2>
+<p><strong>Quantize Scales</strong> 与 <strong>Linear Scales</strong> 类似，区别是，其值域是离散的。定义域将基于值域元素的个数被切割为<strong>相等的线段</strong>，输出值为线段到值域的<strong>一对一映射</strong>。</p>
+<blockquote>
+<p>y = m round(x) + b</p>
+</blockquote>
+<p>例子：</p>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> color = d3.scaleQuantize()
+    .domain([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>])
+    .range([<span class="hljs-string">"brown"</span>, <span class="hljs-string">"steelblue"</span>]);
+
+color(<span class="hljs-number">0.49</span>); <span class="hljs-comment">// "brown"</span>
+color(<span class="hljs-number">0.51</span>); <span class="hljs-comment">// "steelblue"</span>
+</code></pre>
+<h2 id="quantile-scales">Quantile Scales <a class="header-anchor" href="#quantile-scales" aria-hidden="true">🔗</a></h2>
+<p><strong>Quantile scales</strong> 与 <strong>Quantize Scales</strong> 类似，区别是，其值域是“离散连续的”，即“<strong>离散的连续片段</strong>”。</p>
+<p>首先，构造器会对定义域进行排序操作，然后根据值域元素的个数切分为<strong>相等的片段</strong>。如果无法等分，多余的元素将被加入到最后一组。</p>
+<p>如：</p>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> quantile = d3.scaleQuantile()
+  .domain([<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">16</span>])
+  .range([<span class="hljs-string">'blue'</span>, <span class="hljs-string">'white'</span>, <span class="hljs-string">'red'</span>]);
+
+quantile(<span class="hljs-number">3</span>)   <span class="hljs-comment">// will output "red"</span>
+quantile(<span class="hljs-number">16</span>)  <span class="hljs-comment">// will output "red"</span>
+</code></pre>
+<p>解析：</p>
+<p>其定义域将先被排序，而后被切分为 3 个片段：<code>[1, 1], [2, 2], [3, 3, 16]</code></p>
+<p>此时，如果执行 <code>quantile.quantiles()</code>，将得到一个数组 <code>[2, 3]</code>，长度为值域长度减一。假设将其赋值为 <code>quantiles</code>，其含义为：</p>
+<ul>
+<li>定义域中小于 <code>quantiles[0]</code> 的值的，将被划分到第一个片段</li>
+<li>大于等于数组元素 <code>quantiles[0]</code> 的值但是小于数组元素 <code>quantiles[1]</code> 的值的，将被划分到第二个片段</li>
+<li>以此类推</li>
+</ul>
+<p>划分线段后，定义域就与值域成为一一对应的关系了。因此就有了以上结果。</p>
+<h2 id="threshold-scales">Threshold Scales <a class="header-anchor" href="#threshold-scales" aria-hidden="true">🔗</a></h2>
+<p><strong>Threshold scales</strong> 与 <strong>Quantile Scales</strong> 类似，区别是，我们将往 <code>domain</code> 中 直接传入与前者类似的 <code>quantiles</code>，也就是说，真正的定义域不做限制，限制的是它<strong>划分片段的方式</strong>。</p>
+<p>例子：</p>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> color = d3.scaleThreshold()
+    .domain([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>])
+    .range([<span class="hljs-string">"red"</span>, <span class="hljs-string">"white"</span>, <span class="hljs-string">"green"</span>]);
+
+color(<span class="hljs-number">-1</span>);   <span class="hljs-comment">// "red"</span>
+color(<span class="hljs-number">0</span>);    <span class="hljs-comment">// "white"</span>
+color(<span class="hljs-number">0.5</span>);  <span class="hljs-comment">// "white"</span>
+color(<span class="hljs-number">1</span>);    <span class="hljs-comment">// "green"</span>
+color(<span class="hljs-number">1000</span>); <span class="hljs-comment">// "green"</span>
+</code></pre>
+<h2 id="ordinal-scales">Ordinal Scales <a class="header-anchor" href="#ordinal-scales" aria-hidden="true">🔗</a></h2>
+<p><strong>Ordinal Scales</strong>（散点映射）</p>
+<p>与连续映射不同，散点映射接受<strong>离散的定义域与值域</strong>。比如在一个博客中把不同的标签映射到一组颜色上去等。如果值域的元素量比定义域少，那么值域会“重复使用”。如：</p>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> ordinal = d3.scaleOrdinal()
+  .domain([<span class="hljs-string">"apple"</span>, <span class="hljs-string">"orange"</span>, <span class="hljs-string">"banana"</span>, <span class="hljs-string">"grapefruit"</span>])
+  .range([<span class="hljs-number">0</span>, <span class="hljs-number">100</span>]);
+
+ordinal(<span class="hljs-string">"apple"</span>); <span class="hljs-comment">// 0</span>
+ordinal(<span class="hljs-string">"orange"</span>); <span class="hljs-comment">// 100</span>
+ordinal(<span class="hljs-string">"banana"</span>); <span class="hljs-comment">// 0</span>
+ordinal(<span class="hljs-string">"grapefruit"</span>); <span class="hljs-comment">// 100</span>
+</code></pre>
+<h3 id="band-scales">Band Scales <a class="header-anchor" href="#band-scales" aria-hidden="true">🔗</a></h3>
+<p><strong>Band Scales</strong> 与 <strong>Ordinal Scales</strong> 类似，区别是，其<strong>值域是连续的数值</strong>。例子：</p>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> band = d3.scaleBand()
+  .domain([<span class="hljs-string">"apple"</span>, <span class="hljs-string">"orange"</span>, <span class="hljs-string">"banana"</span>, <span class="hljs-string">"grapefruit"</span>])
+  .range([<span class="hljs-number">0</span>, <span class="hljs-number">100</span>]);
+
+band(<span class="hljs-string">"apple"</span>); <span class="hljs-comment">// 0</span>
+band(<span class="hljs-string">"orange"</span>); <span class="hljs-comment">// 25</span>
+band(<span class="hljs-string">"banana"</span>); <span class="hljs-comment">// 50</span>
+band(<span class="hljs-string">"grapefruit"</span>); <span class="hljs-comment">// 75</span>
+</code></pre>
+<p>Band Scales 提供了一些实用方法，用于控制映射的结果。比如获取 Band Width，强制转换整数，添加 Padding 等。</p>
+<h3 id="point-scales">Point Scales <a class="header-anchor" href="#point-scales" aria-hidden="true">🔗</a></h3>
+<p><strong>Point Scales</strong> 是 <strong>Band Scales</strong> 的特例，它的 <strong>Band Width 始终为 0</strong></p>
+<pre><code class="language-js"><span class="hljs-keyword">let</span> point = d3.scalePoint()
+  .domain([<span class="hljs-string">"apple"</span>, <span class="hljs-string">"orange"</span>, <span class="hljs-string">"banana"</span>, <span class="hljs-string">"grapefruit"</span>])
+  .range([<span class="hljs-number">0</span>, <span class="hljs-number">100</span>]);
+
+point(<span class="hljs-string">"apple"</span>); <span class="hljs-comment">// 0</span>
+point(<span class="hljs-string">"orange"</span>); <span class="hljs-comment">// 33.333333333333336</span>
+point(<span class="hljs-string">"banana"</span>); <span class="hljs-comment">// 66.66666666666667</span>
+point(<span class="hljs-string">"grapefruit"</span>); <span class="hljs-comment">// 100</span>
+</code></pre>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/static-blog-built-with-vue" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Static Blog Built with Vue
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/d3-note-interpolate" class="">
+        D3 Note - Interpolate <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

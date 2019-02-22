@@ -1,0 +1,134 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Linux Setup for Work</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <div data-v-ab0ce35e="" class="toc-div"><ul data-v-d065e12c="" data-v-ab0ce35e="" class="toc-ul"><li data-v-d065e12c=""><a data-v-d065e12c="" href="#system-installation"><b data-v-d065e12c="">System installation </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#nvidia-driver-setup"><b data-v-d065e12c="">NVIDIA driver setup </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#chrome-setup"><b data-v-d065e12c="">Chrome setup </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#secondary-drive-mount"><b data-v-d065e12c="">Secondary drive mount </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#input-method-setup"><b data-v-d065e12c="">Input method setup </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#email-setup"><b data-v-d065e12c="">Email setup </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#screenshot"><b data-v-d065e12c="">Screenshot </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#jdk-setup"><b data-v-d065e12c="">JDK setup </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#nodejs-setup"><b data-v-d065e12c="">Node.js setup </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#mongodb-setup"><b data-v-d065e12c="">MongoDB setup </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#change-launcher-position"><b data-v-d065e12c="">Change launcher position </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#enable-workspace"><b data-v-d065e12c="">Enable workspace </b></a> <!----></li><li data-v-d065e12c=""><a data-v-d065e12c="" href="#other-apps"><b data-v-d065e12c="">Other apps </b></a> <!----></li></ul></div></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Linux Setup for Work</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">January 9, 2018</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Linux" class="label-tag"><span data-v-3cd447cb="" class="label label-default">Linux</span></a></div></section> <div data-v-713b0d1c=""><p>因为各种烦人的原因，公司搬家后到新办公室第一件事先把老电脑格了。犹豫了一下，最终还是放弃了重装 Windows，支持我做出选择的原因有几：</p>
+<ul>
+<li>不需要进行（纯）MS 系开发</li>
+<li>没有必须使用的 Windows 软件</li>
+<li>Windows 上跑 Android emulator 卡得头疼</li>
+<li>NVIDIA 已有支持 Linux 的官方显卡驱动</li>
+<li>Linux 开发效率更高</li>
+<li>Linux 学习价值更高</li>
+</ul>
+<p>本文是办公室适用（对我来说）的安装记录。</p>
+<!-- more -->
+<h2 id="system-installation">System installation <a class="header-anchor" href="#system-installation" aria-hidden="true">🔗</a></h2>
+<p>这次选择的发行版是 Ubuntu 16.04 LTS，从 <a href="https://www.ubuntu.com/download/desktop">https://www.ubuntu.com/download/desktop</a> 下载镜像安装包，复制到 u 盘后启动。</p>
+<p>这里有一点问题是，我这台机器必须选择 UEFI 安装，Ubuntu 才能正常安装与启动。如果选择了 Legacy 安装，Ubuntu 可以正常安装，但启动后会一直停留在黑屏光标闪烁的状态，原因未知。</p>
+<h2 id="nvidia-driver-setup">NVIDIA driver setup <a class="header-anchor" href="#nvidia-driver-setup" aria-hidden="true">🔗</a></h2>
+<p>系统默认安装了一个第三方的显卡驱动，基本上没什么可用性，在桌面上都有点卡。因此官方驱动是必须的。但如果安装不正确，会导致系统重启后无限卡在登录界面。如果不幸已经发生了这种情况，可以按 Ctrl + Alt + F1 进入纯命令行操作界面进行修复。</p>
+<p>（以下步骤应该在纯命令行界面下执行）</p>
+<p>首先禁用开源驱动：</p>
+<pre><code>$ sudo vim /etc/modprobe.d/blacklist.conf
+</code></pre>
+<p>添加以下内容：</p>
+<pre><code>blacklist amd76x_edac
+blacklist vga16fb
+blacklist nouveau
+blacklist nvidiafb
+blacklist rivatv
+</code></pre>
+<p>然后，依次执行（注意先到 NVIDIA 官网查询适用自己显卡的版本号，比如我的辣鸡 GTX650 是适用 384）：</p>
+<pre><code>$ sudo apt-get remove  --purge nvidia-*
+$ sudo add-apt-repository ppa:graphics-drivers/ppa
+$ sudo apt-get update
+$ sudo service lightdm stop
+$ sudo apt-get install nvidia-384 nvidia-settings nvidia-prime
+$ sudo nvidia-xconfig
+$ sudo update-initramfs -u
+</code></pre>
+<p>最后重启系统：</p>
+<pre><code>$ sudo reboot
+</code></pre>
+<p>如此，显卡驱动就装好了。</p>
+<h2 id="chrome-setup">Chrome setup <a class="header-anchor" href="#chrome-setup" aria-hidden="true">🔗</a></h2>
+<p>虽然 Ubuntu App Store 有提供开源版本的 Chromium，但是经过实测它在有些情况下并不能完全替代 Chrome（比如有些工具会调用 <code>google-chrome</code> 来打开一个浏览器页，如果安装的是 Chromium 就会失败）。因此，还是建议到 <a href="https://www.google.com/chrome/browser/desktop/index.html">Google Chrome Downloads</a> 下载适用于 Linux 平台的 Chrome 完全体。</p>
+<h2 id="secondary-drive-mount">Secondary drive mount <a class="header-anchor" href="#secondary-drive-mount" aria-hidden="true">🔗</a></h2>
+<p>两块硬盘已经不是什么新鲜事了。痛苦的是系统盘以外的另一块硬盘需要手动挂载。</p>
+<p>首先，使用 <code>sudo fdisk -l</code> 命令来显示目前可用的所有硬盘。假设 <code>/dev/sdb</code> 是未分区并且想要挂载的一块硬盘：</p>
+<p>执行 <code>sudo fdisk /dev/sdb</code>：</p>
+<ol>
+<li>Press <kbd>O</kbd> and press <kbd>Enter</kbd> (creates a new table)</li>
+<li>Press <kbd>N</kbd> and press <kbd>Enter</kbd> (creates a new partition)</li>
+<li>Press <kbd>P</kbd> and press <kbd>Enter</kbd> (makes a primary partition)</li>
+<li>Then press <kbd>1</kbd> and press <kbd>Enter</kbd> (creates it as the 1st partition)</li>
+<li>Finally, press <kbd>W</kbd> (this will write any changes to disk)</li>
+</ol>
+<p>然后，执行 <code>sudo mkfs.ext4 /dev/sdb1</code></p>
+<p>现在新硬盘就已经被分区并格式化了。接下来让系统在启动的时候自动挂载它，执行 <code>sudo gnome-disks</code> 打开一个 GUI 界面。</p>
+<p><img src="https://i.stack.imgur.com/WZeoX.png" alt="img"></p>
+<p>选择刚才添加的那块硬盘，点击配置按钮，选择目标挂载点，并点击 OK 即可。</p>
+<p><img src="https://i.stack.imgur.com/h529h.png" alt="img"></p>
+<p>需要注意的是，目前硬盘是只有读权限的，使用以下命令来给用户赋予读写权限：</p>
+<pre><code>$ cd /mount/point
+$ sudo chmod -R -v 777 *
+$ sudo chown -R -v username:username *
+</code></pre>
+<h2 id="input-method-setup">Input method setup <a class="header-anchor" href="#input-method-setup" aria-hidden="true">🔗</a></h2>
+<p>到 <a href="https://pinyin.sogou.com/linux/">https://pinyin.sogou.com/linux/</a> 下载合适的输入法包，并安装之。然后从 Settings -&gt; Language Support 中将 Keyboard input method system 从 iBus 切换为 fcitx（有可能会遇到语言包安装不完全的情况，输入 <code>sudo apt-get install -f</code> 可以修复），然后重启。</p>
+<p>重启后，右键桌面右上角的 fcitx 图标，选择 ConfigureFcitx，点击 + 号添加输入法，<strong>去掉 Only show current language 的勾</strong>，然后输入 sogou 搜索即可看到安装好的搜狗输入法。添加即可。</p>
+<h2 id="email-setup">Email setup <a class="header-anchor" href="#email-setup" aria-hidden="true">🔗</a></h2>
+<p>因为我的公司邮箱是用的 Ms Exchange，所以设置步骤很简单：</p>
+<ol>
+<li>Ubuntu 自带 <a href="https://www.mozilla.org/en-US/thunderbird/">Mozilla Thunderbird</a> 邮件客户端，直接用这个就行了。</li>
+<li>它本身是不支持 Exchange 配置的，需要添加一个插件 <a href="https://addons.mozilla.org/en-US/thunderbird/addon/exquilla-exchange-web-services/">ExQuilla for Microsoft Exchange</a> 以支持。</li>
+<li>安装好插件后，从菜单栏的 Tools -&gt; ExQuilla for Microsoft Exchange -&gt; Add Microsoft Exchange Account 进入配置入口，然后就是正常的邮件配置了。</li>
+</ol>
+<h2 id="screenshot">Screenshot <a class="header-anchor" href="#screenshot" aria-hidden="true">🔗</a></h2>
+<p>以下安装截图工具 Shutter，并设置快捷键：</p>
+<pre><code>$ sudo add-apt-repository ppa:shutter/ppa
+$ sudo apt-get update
+$ sudo apt-get install shutter
+</code></pre>
+<p>打开 Settings -&gt; Keyboard -&gt; Shortcuts -&gt; Custom Shortcuts，点击 + 添加，输入 Name (Shutter Select) Command (shutter -s)，保存。然后点击刚才添加的项目，在快捷键那里按下 <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>A</kbd> 即可。</p>
+<p><img src="http://www.linuxidc.com/upload/2015_07/150711194568203.png" alt="shutter-1"></p>
+<p><img src="http://www.linuxidc.com/upload/2015_07/150711194568205.png" alt="shutter-2"></p>
+<h2 id="jdk-setup">JDK setup <a class="header-anchor" href="#jdk-setup" aria-hidden="true">🔗</a></h2>
+<p>JDK 可以到 Oracle 网站下载，也可以通过 apt-get 安装 openjdk，以下是安装 openjdk 的过程：</p>
+<pre><code>$ sudo apt-get install openjdk-8-jdk
+$ apt-cache search jdk
+$ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk
+$ export PATH=$PATH:$JAVA_HOME/bin
+</code></pre>
+<p>注意 JAVA_HOME 的 folder 可能有所变化，注意使用实际目录。</p>
+<h2 id="nodejs-setup">Node.js setup <a class="header-anchor" href="#nodejs-setup" aria-hidden="true">🔗</a></h2>
+<p>Node.js 不直接安装，而是选择使用 <a href="https://github.com/creationix/nvm">nvm</a> 进行管理。</p>
+<pre><code>$ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
+$ export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] &amp;&amp; . "$NVM_DIR/nvm.sh" # This loads nvm
+$ command -v nvm
+</code></pre>
+<p>使用方法：<a href="https://github.com/creationix/nvm#usage">https://github.com/creationix/nvm#usage</a></p>
+<h2 id="mongodb-setup">MongoDB setup <a class="header-anchor" href="#mongodb-setup" aria-hidden="true">🔗</a></h2>
+<p>这里其实参照<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/">官方文档</a>就行了。</p>
+<pre><code>$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+$ echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+$ sudo apt-get update
+$ sudo apt-get install -y mongodb-org
+$ sudo service mongod start
+</code></pre>
+<h2 id="change-launcher-position">Change launcher position <a class="header-anchor" href="#change-launcher-position" aria-hidden="true">🔗</a></h2>
+<p>Ubuntu 默认的 Launcher 设置在了屏幕的左边，但是如果有三屏的话，那用起来其实并不方便。可以通过一个简单的命令将其下置：</p>
+<pre><code>$ gsettings set com.canonical.Unity.Launcher launcher-position Bottom
+</code></pre>
+<p>这样 Launcher 就到了屏幕下方了，就像 Windows 默认的任务栏一样。Ubuntu 会记住这个设定，所以下次登录时也无需重新输入。</p>
+<h2 id="enable-workspace">Enable workspace <a class="header-anchor" href="#enable-workspace" aria-hidden="true">🔗</a></h2>
+<p>Ubuntu 16.04 默认关闭了 Workspace （即类似 OSX 的全屏切换功能），其实挺好用的。可以手动开启：</p>
+<pre><code>Settings -&gt; Appearance -&gt; Behavior -&gt; Enable workspaces
+</code></pre>
+<p><img src="https://i.stack.imgur.com/wQ3hD.png" alt="enable-workspace"></p>
+<p>如果有配置双屏的话，一般会想固定副屏的内容，只需在副屏标题栏右键，选择 <code>Always on Visible Workspace</code> 即可。</p>
+<p><img src="https://i.stack.imgur.com/Xx7pQ.png" alt="always-on-visible-workspace"></p>
+<p>默认的切换屏幕快捷键是 <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Arrow</kbd>，跟 Intellij 的快捷键冲突了，并且与 OSX 上的不一致。可以手动修复：</p>
+<pre><code>Settings -&gt; Keyboard -&gt; Shortcuts -&gt; Navigation
+</code></pre>
+<p>找到 Switch workspace to left / right / up / down, 各自改成相应的 <kbd>Ctrl</kbd> + <kbd>Arrow</kbd> 即可。</p>
+<h2 id="other-apps">Other apps <a class="header-anchor" href="#other-apps" aria-hidden="true">🔗</a></h2>
+<ul>
+<li><a href="https://github.com/geeeeeeeeek/electronic-wechat">微信</a></li>
+<li><a href="http://cidian.youdao.com/index-linux.html">有道词典</a></li>
+<li><a href="http://music.163.com/#/download">网易云音乐</a></li>
+<li><a href="http://store.steampowered.com/about/">Steam</a></li>
+</ul>
+<p>Linux 下可玩的 Steam 游戏还是挺多的。玩 DOTA2 感觉跟 Windows 也没什么差别。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/2017" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> 2017
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/some-thougths-about-momentjs" class="">
+        关于 Moment.js 的一些思考 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

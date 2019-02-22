@@ -1,0 +1,179 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Angular Router 学习笔记</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Angular Router 学习笔记</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">February 1, 2016</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#AngularJs" class="label-tag"><span data-v-3cd447cb="" class="label label-danger">AngularJs</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#Router" class="label-tag"><span data-v-3cd447cb="" class="label label-default">Router</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#SPA" class="label-tag"><span data-v-3cd447cb="" class="label label-default">SPA</span></a></div></section> <div data-v-713b0d1c=""><p>使用Angular Router可以很方便地构建SPA应用，同时它支持深度链接，支持各种浏览器操作（前进、后退、收藏等），非常有趣。使用过类似模块就会觉得它要比传统的路由方式，比如服务端的Forward，Redirect以及一般的JavaScript Redirect等，好用得多。特别是用户体验这一块，上升了很大的档次。</p>
+<p>就在不久前我还开发了一个使用iframe与jQuery的SPA项目，当时由于是老板提供的所有前端页面所以也没多想。现在学过了Angular Router真是有些不堪回首的感觉。</p>
+<!--more-->
+<h2 id="">传统路由方式 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<div class="table-responsive">
+  <pre><code>  &lt;td&gt;
+    &nbsp;&lt;strong&gt;Server Forward&lt;/strong&gt;
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;&lt;strong&gt;Server Redirect&lt;/strong&gt;
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;&lt;strong&gt;Client Redirect&lt;/strong&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;
+    &nbsp;&lt;strong&gt;Request(s)&nbsp;&lt;/strong&gt;
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;1
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;&lt;span style="color: #ff0000;"&gt;2&lt;/span&gt;
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;1
+  &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;
+    &nbsp;&lt;strong&gt;Browser URL Change&lt;/strong&gt;
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;&lt;span style="color: #ff0000;"&gt;NO&lt;/span&gt;
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;YES
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;YES
+  &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;
+    &nbsp;&lt;strong&gt;Page Refresh&nbsp;&lt;/strong&gt;
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;YES
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;YES
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;YES
+  &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;
+    &nbsp;&lt;strong&gt;Maintainable&lt;/strong&gt;
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;YES
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;YES
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;&lt;span style="color: #ff0000;"&gt;NO&lt;/span&gt;
+  &lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+  &lt;td&gt;
+    &nbsp;&lt;strong&gt;Browser Actions&lt;/strong&gt;
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;&lt;span style="color: #ff0000;"&gt;NO&lt;/span&gt;
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;YES
+  &lt;/td&gt;
+  
+  &lt;td&gt;
+    &nbsp;YES
+  &lt;/td&gt;
+&lt;/tr&gt;
+</code></pre><table class="table table-bordered table-hover">
+    <tbody><tr>
+      <td>
+      </td>
+
+  </tr></tbody></table>
+</div>
+<p>以上是一个简单的对比，从请求次数、显示URL是否变化、页面是否刷新、是否可维护、是否支持浏览器动作这5个方面进行，可以看到彼此都有一些遗憾。由于Server Forward以及Client Redirect的限制实在太大，很多情况下我们用到的都是Server Redirect，但是两次请求是硬伤。并且以上所有方式都需要强制刷新页面。Wordpress博客使用的就都是Redirect方式。</p>
+<h2 id="-2">前端路由 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p>Angular Router支持两种使用方式：</p>
+<ul>
+<li>#锚点</li>
+<li>HTML5 API</li>
+</ul>
+<p>其实在我看来很多情况下第一种较为朴素的方式已经足够用了。以下是一个简单的Demo：</p>
+<p>独立页面链接：<a href="http://wxsm.space/others/examples/angular-router/" target="_blank">http://wxsm.space/others/examples/angular-router/</a></p>
+<p>点击Edit/Delete/Add/Show几个链接，可以发现下面的内容发生了变化。同时地址栏的URL也相应地变了。也可以尝试前进、后退、收藏等操作（在独立页面进行）。 代码如下：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;head&gt;
+    &lt;meta charset="UTF-8"/&gt;
+    &lt;title&gt;$routeProvide example&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+&lt;div ng-app="pathApp"&gt;
+
+    Choose your option:
+    &lt;br/&gt;
+    &lt;br/&gt;
+    &lt;a href="#/Book/Edit"&gt;Edit&lt;/a&gt; |
+    &lt;a href="#/Book/Delete"&gt;Delete&lt;/a&gt; |
+    &lt;a href="#/Book/Add"&gt;Add&lt;/a&gt; |
+    &lt;a href="#/Book/Show"&gt;Show&lt;/a&gt;
+
+    &lt;div ng-view&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.0.7/angular.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    angular.module('pathApp', [], function ($routeProvider, $locationProvider) {
+        $routeProvider
+                .when('/Book/Edit', {
+                    template: '&lt;div&gt;Edit&lt;/div&gt;',
+                })
+                .when('/Book/Delete', {
+                    template: '&lt;div&gt;Delete&lt;/div&gt;',
+                })
+                .when('/Book/Show', {
+                    template: '&lt;div&gt;Show&lt;/div&gt;',
+                })
+                .when('/Book/Add', {
+                    template: '&lt;div&gt;Add&lt;/div&gt;',
+                })
+                .otherwise({
+                    redirectTo: '/Book'
+                });
+    });
+&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>这个Demo为了简便使用了直接的HTML字符串来作为一个页面的内容，我们在实际使用的时候可以把它换成一个实际页面的地址，这样在点击一个链接的时候Angular Router就会异步地加载相应的页面并且填充到相应的<code>ng-view</code>节点中去。整个过程无需全局刷新。由此带来的好处是非常多的。我们不需要重新加载和渲染一些固定的板块（比如通常情况下一个网站的Header和Footer部分都是不会发生变化的，当然如果需要变化Angular Router也能做到），同时也可以真正地给页面切换添加一些酷炫的动画（CSS或者JS）。并且由于加载一个新页面只需要从服务器读取它的HTML内容而不需要如JS/CSS等静态文件（这些都将会在页面第一次打开的时候加载完毕），因此速度将会非常快。</p>
+<p>需要注意的是，这里使用的是比较旧的AngularJS版本。在新版本中，Angular Router从AngularJS的核心代码内分离了出来，成为了一个叫做ngRoute的独立模块。我们需要同时引入AngularJS和ngRoute模块来启用Angular Router路由器。</p>
+<h2 id="routeproviderroute">关于$routeProvider与$route <a class="header-anchor" href="#routeproviderroute" aria-hidden="true">🔗</a></h2>
+<p>这个路由功能是由Angular的一个服务提供者（service provider）实现的，它的名字就叫做<code>$routeProvider</code>&nbsp;。Angular服务是由服务工厂创建出来的一系列单例对象，而工厂则是由服务提供者来创建。服务提供者必须实现一个<code>$get</code>方法，它就是该服务的工厂方法了。 当我们使用AngularJS的依赖注入给控制器注入一个服务对象的时候，Angular会使用<code>$injector</code>来查找相应的注入器。一旦找到了，它就会调用相应<code>$get</code>方法来或取服务对象的实例。有时候服务提供者在实例化服务对象之前需要其调用者提供一些参数。</p>
+<p>Angular路由功能是由<code>$routeProvider</code>声明的，同时它也是<code>$route</code>服务的提供者。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/bootstrap-file-input-in-firefox" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Bootstrap file input in Firefox
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/wordpress-archives-page-implementation" class="">
+        WordPress 文章归档页面实现 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>

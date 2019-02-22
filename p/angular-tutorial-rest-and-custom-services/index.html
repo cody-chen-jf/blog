@@ -1,0 +1,191 @@
+<!DOCTYPE html><html class="nprogress-busy"><head><meta charset="utf-8"><meta name="google-site-verification" content="ekuL5J7xK1IdFtP13v3KxpuGKnYS1oCT9PvZdjYm8Eg"><meta name="viewport" content="user-scalable=no,width=device-width,initial-scale=1,maximum-scale=1"><link rel="shortcut icon" type="image/png" href="/static/favicon.png"><link rel="apple-touch-icon" sizes="200x200" href="/static/favicon-iphone.png"><title>wxsm's space - Angular 教程：REST 和自定义服务</title><meta name="description" content="wxsms's personal blog."><meta name="keywords" content="Blog,JavaScript,HTML,CSS,Vue,Bootstrap"><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link href="/static/css/app.3aeb34a43e50974ec0d6e6dec4b0fa04.css" rel="stylesheet"><script type="text/javascript" src="/static/js/manifest.5f8d73d19d4e533183ee.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script><script type="text/javascript" src="/static/js/vendor.19a2875ac58b9bf76cc9.js"></script><script type="text/javascript" src="/static/js/app.8e85c8941c265ea266cc.js"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script async="" src="https://www.google-analytics.com/analytics.js" charset="utf8"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/4.f6eaab3002dc8add016f.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/0.24af7fe1e27d3b16bd28.js"></script><script type="text/javascript" charset="utf-8" async="" src="/static/js/1.449897c665fe4a4fda05.js"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=localhost"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=localhost"></script></head><body><section id="app"><section data-v-6a2c05ce="" style="display: none;"></section> <aside data-v-ab0ce35e="" class=""><div data-v-ab0ce35e="" class="brand"><h4 data-v-ab0ce35e="" class="brand-link"><a data-v-ab0ce35e="" href="/" class="router-link-active">wxsm's space</a></h4></div> <div data-v-ab0ce35e="" class="search-container"><form data-v-e01410e2="" data-v-ab0ce35e="" class="form-inline search-form-box"><div data-v-e01410e2="" class="form-group"><input data-v-e01410e2="" type="search" placeholder="Search..." required="required" minlength="2" class="form-control"></div></form></div> <div data-v-ab0ce35e="" class="nav-container"><div data-v-ab0ce35e="" class="nav-div"><ul data-v-ab0ce35e="" role="tablist" class="nav nav-pills nav-stacked"><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/p" class="router-link-active btn btn-link" role="button">Archive</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/t" class="btn btn-link" role="button">Tags</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/g" class="btn btn-link" role="button">Guestbook</a></li><li data-v-ab0ce35e="" role="presentation"><a data-v-ab0ce35e="" href="/a" class="btn btn-link" role="button">About</a></li></ul></div> <!----></div> <div data-v-ab0ce35e="" class="google-ad"><ins data-v-ab0ce35e="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="7250193427" class="adsbygoogle" style="display: inline-block; width: 200px; height: 200px;"></ins></div></aside> <section data-v-79039cdb="" class="page"><div data-v-79039cdb="" class="page-body"><button data-v-01aba251="" data-v-79039cdb="" type="button" class="navbar-toggle collapsed"><span data-v-01aba251="" class="sr-only">Toggle navigation</span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span> <span data-v-01aba251="" class="icon-bar"></span></button> <div data-v-79039cdb="" class="container-fluid"><div data-v-79039cdb="" class="row"><div data-v-79039cdb="" class="col-xs-12"><section data-v-713b0d1c="" data-v-79039cdb=""><h1 data-v-713b0d1c="">Angular 教程：REST 和自定义服务</h1> <section data-v-713b0d1c="" id="post-content"><section data-v-19e352bd="" data-v-713b0d1c=""><div data-v-19e352bd="" class="meta-block"><i data-v-19e352bd="" class="glyphicon glyphicon-calendar"></i> <span data-v-19e352bd="">December 29, 2015</span></div> <div data-v-19e352bd="" class="meta-block"><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#AngularJs" class="label-tag"><span data-v-3cd447cb="" class="label label-danger">AngularJs</span></a><a data-v-3cd447cb="" data-v-19e352bd="" href="/t#RESTful" class="label-tag"><span data-v-3cd447cb="" class="label label-default">RESTful</span></a></div></section> <div data-v-713b0d1c=""><p>在这一步中，应用程序抓取数据的方式将会改变。</p>
+<ul>
+<li>我们定义了一个代表着<a href="http://en.wikipedia.org/wiki/Representational_State_Transfer">RESTful</a>客户端的自定义服务。通过这个客户端我们可以用更简洁的方式向服务器发起数据请求，不再与低层次的<a href="https://docs.angularjs.org/api/ng/service/$http">$http</a>接口，HTTP方法与URL等打交道</li>
+</ul>
+<p>最重要的改动如下所示。你可以在<a href="https://github.com/angular/angular-phonecat/compare/step-10...step-11" title="See diff on Github">GitHub</a>上查看它与之前的代码有何区别。</p>
+<hr>
+<h2 id="">依赖 <a class="header-anchor" href="#" aria-hidden="true">🔗</a></h2>
+<p>RESTful功能由Angular的<code>ngResource</code>模块提供，该模块没有包含在Angular的核心框架中。 我们使用<a href="http://bower.io/">Bower</a>来安装客户端的依赖。通过更新<code>bower.json</code>配置文件来加入新的依赖项：</p>
+<pre><code>{
+  "name": "angular-seed",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-mocks": "1.4.x",
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.1.1",
+    "angular-route": "1.4.x",
+    "angular-resource": "1.4.x"
+  }
+}
+</code></pre>
+<p>新的依赖项<code>"angular-resource": "1.4.x"</code>告诉Bower需要安装1.4.x版本的angular-resource组件。通过以下命令下载并安装依赖：</p>
+<pre><code>npm install
+</code></pre>
+<blockquote>
+<p>警告：如果在你上一次运行<code>npm install</code>之后Angular发布了新版本的话，在运行<code>bower install</code>的时候可能就会遇到问题（因为angular.js的版本发生了冲突）。解决方法是在执行<code>npm install</code>之前先删除<code>app/bower_components</code>目录。</p>
+</blockquote>
+<p>&nbsp;</p>
+<blockquote>
+<p>注意：如果你已经全局安装了bower，你可以使用<code>bower install</code>指令。但在这个项目中我们有预设的<code>npm install</code>指令来完成相同的事情</p>
+</blockquote>
+<hr>
+<h2 id="-2">模板 <a class="header-anchor" href="#-2" aria-hidden="true">🔗</a></h2>
+<p><code>app/js/services.js</code>文件将包含一些自定义服务的代码，所以我们要把它添加到布局模版中。同时我们也要加载<code>angular-resource.js</code>文件，它包含了ngResource模块。</p>
+<p><code>app/index.html</code>：</p>
+<pre><code>...
+  &lt;script src="bower_components/angular-resource/angular-resource.js"&gt;&lt;/script&gt;
+  &lt;script src="js/services.js"&gt;&lt;/script&gt;
+...
+</code></pre>
+<hr>
+<h2 id="-3">服务 <a class="header-anchor" href="#-3" aria-hidden="true">🔗</a></h2>
+<p>我们通过自己创建的服务来与服务器上的手机数据打交道：</p>
+<p><code>app/js/services.js</code>：</p>
+<pre><code>var phonecatServices = angular.module('phonecatServices', ['ngResource']);
+
+phonecatServices.factory('Phone', ['$resource',
+  function($resource){
+    return $resource('phones/:phoneId.json', {}, {
+      query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
+    });
+  }]);
+</code></pre>
+<p>我们通过使用工厂（Factory）方法以及模块（Module）API来注册一个自定义服务。我们给它传递了两个参数：服务名（Phone）以及工厂方法。工厂方法的构造与控制器非常相似，它们都能通过方法参数来接受注入。在这个服务中我们声明了一项对<code>$resource</code>服务的依赖。<code>$resource</code>服务可以让我们使用更少的代码以更简洁的方式来创建RESTful客户端。这个客户端可以取代低层次的<code>$http</code>服务在应用中的作用。</p>
+<p><code>app/js/app.js</code>：</p>
+<pre><code>...
+angular.module('phonecatApp', ['ngRoute', 'phonecatControllers','phonecatFilters', 'phonecatServices']).
+...
+</code></pre>
+<p>我们需要给<code>phonecatApp</code>主模块添加对<code>phonecatServices</code>模块的依赖。</p>
+<hr>
+<h2 id="-4">控制器 <a class="header-anchor" href="#-4" aria-hidden="true">🔗</a></h2>
+<p>我们通过使用<code>Phone</code>服务替代低层次的<code>$http</code>服务来简化子控制器（<code>PhoneListCtrl</code>和<code>PhoneDetailCtrl</code>）。对于暴露的RESTful数据资源来说，Angular的<code>$recource</code>服务比<code>$http</code>服务用起来更简单，并且代码也更容易看懂了。</p>
+<p><code>app/js/controllers.js</code>：</p>
+<pre><code>var phonecatControllers = angular.module('phonecatControllers', []);
+
+...
+
+phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone', function($scope, Phone) {
+  $scope.phones = Phone.query();
+  $scope.orderProp = 'age';
+}]);
+
+phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone', function($scope, $routeParams, Phone) {
+  $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
+    $scope.mainImageUrl = phone.images[0];
+  });
+
+  $scope.setImage = function(imageUrl) {
+    $scope.mainImageUrl = imageUrl;
+  }
+}]);
+</code></pre>
+<p>注意在<code>PhoneListCtrl</code>中我们使用：</p>
+<pre><code>$scope.phones = Phone.query();
+</code></pre>
+<p>替代了：</p>
+<pre><code>$http.get('phones/phones.json').success(function(data) {
+  $scope.phones = data;
+});
+</code></pre>
+<p>这是一个查询所有手机设备的简写。 这里有一个重点，就是我们在调用Phone服务的时候不会给它传入任何的回调函数。虽然结果看起来像是同步返回的一样，然而并不是。同步返回的实际上不是数据，而是“未来（Future）”——一个在XHR响应返回的时候将会被数据填充的对象。因为Angular的数据绑定特性，我们可以用这个“未来”对象给模板做绑定。那么在数据真正到来的时候，视图也就会自然而然地更新了。 有时候仅仅依靠这个未来的对象并不能完成我们想要的所有工作，因此在本例中，我们还是给它添加了一个回调参数来处理服务器响应。比如<code>PhoneDetailCtrl</code>，我们在回调函数中设置了<code>mainImageUrl</code>的值。</p>
+<hr>
+<h2 id="-5">测试 <a class="header-anchor" href="#-5" aria-hidden="true">🔗</a></h2>
+<p>因为我们使用了ngResource模块，所以想要让测试通过的话就必须要更新一下Karma配置文件了：</p>
+<p><code>test/karma.conf.js</code>：</p>
+<pre><code>files : [
+  'app/bower_components/angular/angular.js',
+  'app/bower_components/angular-route/angular-route.js',
+  'app/bower_components/angular-resource/angular-resource.js',
+  'app/bower_components/angular-mocks/angular-mocks.js',
+  'app/js/**/*.js',
+  'test/unit/**/*.js'
+],
+</code></pre>
+<p>我们修改了一下单元测试来验证新服务是否使用了HTTP请求并且是否工作正确。同时测试也会验证控制器与服务之间的连接是否正确。 <a style="line-height: 1.5;" href="https://docs.angularjs.org/api/ngResource/service/$resource">$resource</a>服务自动地给响应体添加了更新以及删除数据的方法。所以如果我们使用标准的<code>toEqual</code>匹配器的话，测试将会失败。这是因为测试数据并没有和响应体完全一模一样。为了解决这个问题，我们使用一个新定义的<code>toEqualData</code><a href="http://jasmine.github.io/1.3/introduction.html#section-Matchers">Jasmine匹配器</a>。<code>toEqualData</code>匹配器在比较两个对象的时候会只比较其属性而忽略对象所携带的方法。</p>
+<p><code>test/unit/controllersSpec.js</code>：</p>
+<pre><code>describe('PhoneCat controllers', function() {
+
+  beforeEach(function(){
+    this.addMatchers({
+      toEqualData: function(expected) {
+        return angular.equals(this.actual, expected);
+      }
+    });
+  });
+
+  beforeEach(module('phonecatApp'));
+  beforeEach(module('phonecatServices'));
+
+
+  describe('PhoneListCtrl', function(){
+    var scope, ctrl, $httpBackend;
+
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
+      $httpBackend = _$httpBackend_;
+      $httpBackend.expectGET('phones/phones.json').
+          respond([{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
+
+      scope = $rootScope.$new();
+      ctrl = $controller('PhoneListCtrl', {$scope: scope});
+    }));
+
+
+    it('should create "phones" model with 2 phones fetched from xhr', function() {
+      expect(scope.phones).toEqualData([]);
+      $httpBackend.flush();
+
+      expect(scope.phones).toEqualData(
+          [{name: 'Nexus S'}, {name: 'Motorola DROID'}]);
+    });
+
+
+    it('should set the default value of orderProp model', function() {
+      expect(scope.orderProp).toBe('age');
+    });
+  });
+
+
+  describe('PhoneDetailCtrl', function(){
+    var scope, $httpBackend, ctrl,
+        xyzPhoneData = function() {
+          return {
+            name: 'phone xyz',
+            images: ['image/url1.png', 'image/url2.png']
+          }
+        };
+
+
+    beforeEach(inject(function(_$httpBackend_, $rootScope, $routeParams, $controller) {
+      $httpBackend = _$httpBackend_;
+      $httpBackend.expectGET('phones/xyz.json').respond(xyzPhoneData());
+
+      $routeParams.phoneId = 'xyz';
+      scope = $rootScope.$new();
+      ctrl = $controller('PhoneDetailCtrl', {$scope: scope});
+    }));
+
+
+    it('should fetch phone detail', function() {
+      expect(scope.phone).toEqualData({});
+      $httpBackend.flush();
+
+      expect(scope.phone).toEqualData(xyzPhoneData());
+    });
+  });
+});
+</code></pre>
+<p>现在你应该能在Karma终端内看到以下输出：</p>
+<pre><code>Chrome 22.0: Executed 5 of 5 SUCCESS (0.038 secs / 0.01 secs)
+</code></pre>
+<h2 id="-6">总结 <a class="header-anchor" href="#-6" aria-hidden="true">🔗</a></h2>
+<p>现在我们见识了如何构建一个自定义的服务来作为RESTful客户端，下一步<a href="/p/angular-tutorial-applying-animations/">step 12</a>（最后一步）我们将会学习如何让应用程序动起来（加点特效）。</p>
+</div> <br data-v-713b0d1c=""> <ins data-v-713b0d1c="" data-ad-client="ca-pub-4714899946256166" data-ad-slot="2940247473" data-ad-format="auto" data-full-width-responsive="true" class="adsbygoogle" style="display: block;"></ins> <hr data-v-713b0d1c=""> <nav data-v-7144c3e4="" data-v-713b0d1c=""><ul data-v-7144c3e4="" class="pager"><li data-v-7144c3e4="" class="previous"><a data-v-7144c3e4="" href="/p/angular-tutorial-event-handlers" class=""><i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-left"></i> Angular 教程：事件处理
+      </a></li> <li data-v-7144c3e4="" class="next"><a data-v-7144c3e4="" href="/p/angular-tutorial-applying-animations" class="">
+        Angular 教程：添加动画 <i data-v-7144c3e4="" class="glyphicon glyphicon-chevron-right"></i></a></li></ul></nav> <hr data-v-713b0d1c=""> <div data-v-c95cba9e="" data-v-713b0d1c="" id="disqus_thread"><i data-v-c95cba9e="" class="glyphicon glyphicon-refresh icon-spin"></i> <span data-v-c95cba9e="">Loading Disqus......</span></div></section></section></div></div></div></div> <section data-v-f9dc3034="" data-v-79039cdb="" class="page-footer"><div data-v-f9dc3034="" class="container-fluid"><div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><p data-v-f9dc3034=""><span data-v-f9dc3034="">Links:</span> <!----> <a data-v-f9dc3034="" href="https://blog.aquariuslt.com/" target="_blank">Aquariuslt</a><span data-v-f9dc3034="">&nbsp;/</span> <a data-v-f9dc3034="" href="https://lz5z.com" target="_blank">Leo's Blog</a></p></div></div> <div data-v-f9dc3034="" class="row"><div data-v-f9dc3034="" class="col-xs-12"><a data-v-f9dc3034="" href="https://wxsm.space">© 2019 WXSM</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" href="/feed.xml" rel="nofollow" target="_blank">FEED</a> <span data-v-f9dc3034="">/</span> <a data-v-f9dc3034="" title="LICENSE" href="https://creativecommons.org/licenses/by/4.0/" rel="nofollow">CC BY 4.0</a></div></div></div></section></section></section>
+<div id="nprogress" style="transition: none; -webkit-transition: none; opacity: 1;"><div class="bar" role="bar" style="transition: all 200ms ease; -webkit-transition: all 200ms ease; -webkit-transform: translate3d(0%, 0px, 0px);"><div class="peg"></div></div></div></body></html>
